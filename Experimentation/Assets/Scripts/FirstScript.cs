@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class FirstScript : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class FirstScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.Getkey(KeyCode.A))
+        {
+            
+        }
     }
 }
