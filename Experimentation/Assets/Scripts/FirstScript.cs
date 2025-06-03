@@ -7,39 +7,96 @@ using static UnityEditor.PlayerSettings;
 
 public class FirstScript : MonoBehaviour
 {
+
     float Speed;
+    private CharacterController controller;
+    private Animator animator;
+    private Vector3 playerDirection;
+
+    private Vector3 a;
+    private Vector3 b;
+    private Vector3 origin;
+
+
+    public float rotationFactor = 0.2f;
+
+
+    private Quaternion currentRotation;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Speed = 10f;
+
+        //controller = GetComponent<CharacterController>();
+        //animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        if (Input.GetKey(KeyCode.A))
-        {
-            pos.x -= Speed * Time.deltaTime; 
-        }
+        //Inputs
+        float HorizontalInput = Input.GetAxis("Horizontal");
+        float VerticalInput = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            pos.x += Speed * Time.deltaTime; 
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            pos.z += Speed * Time.deltaTime; 
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            pos.z -= Speed * Time.deltaTime; 
-        }
+        // Horizontal input
+        Vector3 move = new Vector3(HorizontalInput, 0, VerticalInput);
+        move = Vector3.ClampMagnitude(move, 1f);
 
-        transform.position = pos;
-        
+        if (move != Vector3.zero)
+        {
+            //walking process
+            transform.forward = move;
+            //Quaternion targetRotation = Quaternion.LookRotation(move);
+            //transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactor * Time.deltaTime);
 
+            if (move.sqrMagnitude > 0.01f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(move.normalized);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactor * Time.deltaTime);
+            }
+
+
+            currentRotation = transform.rotation;
+
+
+            Vector3 origin = transform.position;
+
+            //Normalize Vectors
+            Vector3 a = Vector3.forward;
+            Vector3 b = transform.forward;
+
+            //Ensure Length Preserved
+            Vector3 c = ((a + b) / 2f).normalized;
+
+
+            //Vector3 PlayerDirection = new Vector3(HorizontalInput, 0, VerticalInput);
+            //PlayerDirection.Normalize();
+
+            Vector3 pos = transform.position;
+            if (Input.GetKey(KeyCode.A))
+            {
+                pos.x -= Speed * Time.deltaTime;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                pos.x += Speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                pos.z += Speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                pos.z -= Speed * Time.deltaTime;
+            }
+
+            transform.position = pos;
+
+
+        }
     }
 }
