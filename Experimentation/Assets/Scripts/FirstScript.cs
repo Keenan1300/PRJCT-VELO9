@@ -38,11 +38,8 @@ public class FirstScript : MonoBehaviour
     void Update()
     {
         //Inputs
-        float HorizontalInput = Input.GetAxis("Horizontal");
-        float VerticalInput = Input.GetAxis("Vertical");
-
-        // Horizontal input
-        Vector3 move = new Vector3(HorizontalInput, 0, VerticalInput);
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        move = Quaternion.Euler(0, 45, 0) * move;
         move = Vector3.ClampMagnitude(move, 1f);
 
         if (move != Vector3.zero)
