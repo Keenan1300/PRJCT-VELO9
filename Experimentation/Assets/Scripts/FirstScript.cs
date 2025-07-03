@@ -12,6 +12,7 @@ public class FirstScript : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
     private Vector3 playerDirection;
+    public AnimationCurve t;
 
     private Vector3 a;
     private Vector3 b;
@@ -20,6 +21,7 @@ public class FirstScript : MonoBehaviour
 
     public float rotationFactor = 0.2f;
 
+ 
 
     private Quaternion currentRotation;
 
