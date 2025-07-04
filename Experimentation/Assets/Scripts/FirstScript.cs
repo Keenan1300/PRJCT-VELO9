@@ -77,20 +77,20 @@ public class FirstScript : MonoBehaviour
             Vector3 pos = transform.position;
             if (Input.GetKey(KeyCode.A))
             {
-                pos.x -= Speed * Time.deltaTime;
+                pos.z += Speed * Time.deltaTime;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                pos.x += Speed * Time.deltaTime;
+                pos.z -= Speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                pos.z += Speed * Time.deltaTime;
+                pos.x += Speed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                pos.z -= Speed * Time.deltaTime;
+                pos.x -= Speed * Time.deltaTime;
             }
 
             transform.position = pos;
