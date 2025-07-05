@@ -5,35 +5,49 @@ using UnityEngine;
 public class Newhope : MonoBehaviour
 {
 
-    private Quaternion currentRotation;
-    public float rotationFactorPerFrame = 2f;
+    private CharacterController controller;
 
-    // Start is called before the first frame update
+    public float rotationSpeed = 720f; // degrees per second
+    public float moveSpeed = 5f;
+    public float gravity = -9.81f;
+    private Vector3 velocity;
+
     void Start()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Raw keyboard input (WASD or arrows)
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        currentRotation = transform.rotation;
+        Vector3 inputDirection = new Vector3(h, 0f, v).normalized;
 
-        // Horizontal input
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        move = Quaternion.Euler(0, 45, 0) * move;
-        move = Vector3.ClampMagnitude(move, 1f); 
-    
-
-        if (move != Vector3.zero)
+        // Only move if there's input
+        if (inputDirection.sqrMagnitude > 0.01f)
         {
-            //walking
-            //animator.SetBool("isWalking", true);
-            transform.forward = move;
-            Quaternion targetRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
+            // Rotate toward movement direction (world-relative)
+            Quaternion targetRotation = Quaternion.LookRotation(inputDirection);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
         }
 
+        // Movement
+        Vector3 move = inputDirection * moveSpeed;
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move((move + velocity) * Time.deltaTime);
+
+        // Reset gravity when grounded
+        if (controller.isGrounded)
+        {
+            velocity.y = 0f;
+        }
     }
 }
+

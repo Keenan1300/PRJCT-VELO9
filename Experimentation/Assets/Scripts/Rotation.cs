@@ -127,7 +127,7 @@ public class Rotation : MonoBehaviour
             
          }
 
-        transform.position = pos;
+        //transform.position = pos;
 
         transform.localRotation = Quaternion.Euler(rotation);
     }
