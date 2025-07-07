@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class A5 : MonoBehaviour
 {
 
-    public PlayerController PlayerController;
+    private PlayerController PlayerController;
 
     private InputAction _moveAction, _lookAction;
 
