@@ -33,8 +33,8 @@ public class newtrial3 : MonoBehaviour
         controller.Move(move);
 
         //rotation bs
-        move = Quaternion.Euler(0, 45, 0) * move;
-        move = move.normalized;
+        //move = Quaternion.Euler(0, 45, 0) * move;
+        //move = move.normalized;
 
         move = Vector3.ClampMagnitude(move, 1f);
 
@@ -49,8 +49,9 @@ public class newtrial3 : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(move);
 
             // Smoothly rotate towards target
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime * 100);
+            //transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime * 100);
 
+            transform.Rotate(0, Input.GetAxisRaw("Horizontal"), 0);
         }
 
        }

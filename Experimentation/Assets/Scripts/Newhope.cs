@@ -7,9 +7,9 @@ public class Newhope : MonoBehaviour
 
     private CharacterController controller;
 
-    public float rotationSpeed = 720f; // degrees per second
-    public float moveSpeed = 5f;
-    public float gravity = -9.81f;
+    public float rotationSpeed = 180f; // degrees per second
+    public float moveSpeed = 0f;
+    public float gravity = 0f;
     private Vector3 velocity;
 
     void Start()
@@ -23,19 +23,16 @@ public class Newhope : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 inputDirection = new Vector3(h, 0f, v).normalized;
+        Vector3 inputDirection = new Vector3(h, 0, v).normalized;
 
         // Only move if there's input
         if (inputDirection.sqrMagnitude > 0.01f)
         {
-            // Rotate toward movement direction (world-relative)
+         // Rotate toward movement direction (world-relative)
             Quaternion targetRotation = Quaternion.LookRotation(inputDirection);
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
+            transform.rotation = Quaternion.RotateTowards( transform.rotation, targetRotation,rotationSpeed * Time.deltaTime);
         }
+
 
         // Movement
         Vector3 move = inputDirection * moveSpeed;
