@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class A5 : MonoBehaviour
 {
 
-    public CharacterController CharacterController;
+    public PlayerController PlayerController;
 
     private InputAction _moveAction, _lookAction;
 
@@ -21,9 +21,9 @@ public class A5 : MonoBehaviour
     void Update()
     {
         Vector2 MovementVector = _moveAction.ReadValue<Vector2>();
-        CharacterController.Move(MovementVector);
+        PlayerController.Move(MovementVector);
 
         Vector2 LookVector = _lookAction.ReadValue<Vector2>();
-        CharacterController.Rotate(LookVector);
+        PlayerController.Rotate(LookVector);
     }
 }
