@@ -25,14 +25,53 @@ public class Here : MonoBehaviour
             velocity.y = groundedGravity;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = 0;
+        if (Input.GetKey(KeyCode.A)) x = -1;
+        if (Input.GetKey(KeyCode.D)) x = 1;
+
+        float z = 0;
+        if (Input.GetKey(KeyCode.W)) z = 1;
+        if (Input.GetKey(KeyCode.S)) z = -1;
+
 
         Vector3 move = transform.right * x + transform.forward * z;
+
+        //no wierd Diagonal crap
+        if (move.magnitude > 1f)
+            move = move.normalized;
+
+
         controller.Move(move * moveSpeed * Time.deltaTime);
+
+
+
 
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+
+
+
+
+
+
+        //Try move rotate towards mouse
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 200f))
+        {
+            Vector3 targetPos = hitInfo.point;
+            targetPos.y = transform.position.y; // Keep only horizontal rotation
+
+            Vector3 direction = targetPos - transform.position;
+
+            if (direction.sqrMagnitude > 0.01f) // Avoid NaN when standing still
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+            }
+        }
     }
 }
