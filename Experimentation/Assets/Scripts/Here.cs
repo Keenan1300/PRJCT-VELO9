@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Here : MonoBehaviour
 {
-    private float moveSpeed = 30;
+    //separate rotation from movement
+    private Transform aimTarget;
+
+    private float moveSpeed = 17;
     private float gravity = 0;
     private float groundedGravity = 0;
 
@@ -12,7 +15,12 @@ public class Here : MonoBehaviour
     void Start()
     {
         Input.ResetInputAxes();
+
         controller = GetComponent<CharacterController>();
+        aimTarget = transform.Find("Aimer");
+
+        if (aimTarget == null)
+            Debug.LogWarning("Aimer child not found!");
     }
 
     void Update()
@@ -58,20 +66,23 @@ public class Here : MonoBehaviour
 
         //Try move rotate towards mouse
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 200f))
+        if (aimTarget != null)
         {
-            Vector3 targetPos = hitInfo.point;
-            targetPos.y = transform.position.y; // Keep only horizontal rotation
-
-            Vector3 direction = targetPos - transform.position;
-
-            if (direction.sqrMagnitude > 0.01f) // Avoid NaN when standing still
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+                Vector3 lookPoint = hit.point;
+                lookPoint.y = aimTarget.position.y;
+
+                Vector3 direction = lookPoint - aimTarget.position;
+
+                if (direction.sqrMagnitude > 0.01f)
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(direction);
+                    aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, lookRotation, 10f * Time.deltaTime);
+                }
             }
+
         }
     }
 }
