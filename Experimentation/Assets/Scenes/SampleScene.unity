@@ -162,7 +162,6 @@ GameObject:
   m_Component:
   - component: {fileID: 704829146}
   - component: {fileID: 704829148}
-  - component: {fileID: 704829149}
   - component: {fileID: 704829150}
   m_Layer: 0
   m_Name: Player
@@ -210,25 +209,8 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0
+  m_MinMoveDistance: 0.03
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &704829149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704829144}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb93c9b1aff7e3648934999dfe6fd2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterspeed: 5
-  rotatespeed: 5
-  moveSpeed: 5
-  gravity: 1
-  groundedGravity: -1
 --- !u!114 &704829150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,9 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144ab186cecf29647b1e756f09d952fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  gravity: -1
-  groundedGravity: -1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +510,7 @@ GameObject:
   - component: {fileID: 1004502994}
   - component: {fileID: 1004502993}
   - component: {fileID: 1004502992}
+  - component: {fileID: 1004502996}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
@@ -628,6 +608,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004502996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004502991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b359e9773753d54588e3bc24eb7a73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1463807539
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +715,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969135006}
-  - component: {fileID: 1969135007}
   m_Layer: 0
   m_Name: playeragain
   m_TagString: Untagged
@@ -746,85 +737,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969135007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969135004}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264cbe4d0bab1294796ad568169f0421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerController: {fileID: 704829149}
-  _moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 0ce89356-0d2d-4863-a70a-24166aa38ea2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: b0174ab3-df03-4198-91b8-e61724c4b25d
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 6b1c6695-fba5-4720-8382-6798decb63d3
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 3398fbc6-c140-4ef4-a528-060aa8dc872f
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 0aee83ef-3e28-4f2a-b836-74eea0ae1709
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: d2632956-9b11-4a61-8c59-ddfb24ca5fd9
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    m_Flags: 0
-  _lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 67475f7f-7f4d-4629-bea6-cd5555312b15
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d1b7fc40-f283-4120-94da-ae83acd9e642
-      m_Path: <Mouse>/delta
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Look
-      m_Flags: 0
-    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
