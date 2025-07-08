@@ -6,15 +6,30 @@ using UnityEngine.InputSystem;
 public class A5 : MonoBehaviour
 {
 
-    private PlayerController PlayerController;
+    public PlayerController PlayerController;
 
-    private InputAction _moveAction, _lookAction;
+    public InputAction _moveAction, _lookAction;
+
+   
+    private void OnEnable()
+    {
+        _moveAction.Enable();
+        _lookAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _moveAction.Disable();
+        _lookAction.Disable();
+    }
+
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        //_moveAction = InputSystem.actions.FindAction("Move");
-        //_moveAction = InputSystem.actions.FindAction("Look");
+        _moveAction = InputSystem.actions.FindAction("Move");
+        _lookAction = InputSystem.actions.FindAction("Look");
     }
 
     // Update is called once per frame
