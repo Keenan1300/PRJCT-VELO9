@@ -17,6 +17,8 @@ public class Here : MonoBehaviour
         Input.ResetInputAxes();
 
         controller = GetComponent<CharacterController>();
+
+        //rotation stuff
         aimTarget = transform.Find("Aimer");
 
         if (aimTarget == null)
@@ -68,7 +70,10 @@ public class Here : MonoBehaviour
 
         if (aimTarget != null)
         {
+            //once aim target is found, perform physics ray cast operation, which connects mouse position to camera screenpoint
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
                 Vector3 lookPoint = hit.point;
