@@ -16,9 +16,9 @@ public class HarbAnimations : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
 
-    
+
     public Animator anim;
-    
+
     //anim controllers
     public RuntimeAnimatorController HarbingerEquipped;
     public RuntimeAnimatorController HarbingerUnequipped;
@@ -29,6 +29,7 @@ public class HarbAnimations : MonoBehaviour
 
     void Start()
     {
+        equipped = true;
         anim = GetComponent<Animator>();
 
         // Set the default controller initially
@@ -45,66 +46,132 @@ public class HarbAnimations : MonoBehaviour
         anim.SetBool("Grab", false);
         anim.SetBool("GunFire", false);
     }
-     
+
     void Update()
     {
-         //bool isGrounded = controller.isGrounded;
+        if (equipped)
+        {
+            anim.SetBool("Idle", true);
 
-        if ((Input.GetKey(KeyCode.W)))
-        {
-            // Keep character pinned to the ground without sliding
-            //velocity.y = groundedGravity;
-            anim.SetBool("Idle", false);
-            anim.SetBool("Run", true);
+            if ((Input.GetKey(KeyCode.W)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("Run", true);
+            }
+            else
+            {
+                anim.SetBool("Run", false);
+            }
+
+            if ((Input.GetKey(KeyCode.D)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("RightStrafe", true);
+
+            }
+            else
+            {
+                anim.SetBool("RightStrafe", false);
+                
+
+            }
+
+            if ((Input.GetKey(KeyCode.A)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("LeftStrafe", true);
+            }
+            else
+            {
+                anim.SetBool("LeftStrafe", false);
+                
+
+            }
+
+            if ((Input.GetKey(KeyCode.S)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("BackStep", true);
+            }
+            else
+            {
+                anim.SetBool("BackStep", false);
+                
+
+            }
+
+
         }
-        else
+
+        if (!equipped)
         {
+            anim.SetBool("Idle", true);
             anim.SetBool("Run", false);
-            anim.SetBool("Idle", true);
+
+            if ((Input.GetKey(KeyCode.W)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("Run", true);
+            }
+            
+
+            if ((Input.GetKey(KeyCode.D)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("Run", true);
+            }
+
+
+            if ((Input.GetKey(KeyCode.A)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("Run", true);
+            }
+            
+
+            if ((Input.GetKey(KeyCode.S)))
+            {
+                // Keep character pinned to the ground without sliding
+                //velocity.y = groundedGravity;
+                anim.SetBool("Idle", false);
+                anim.SetBool("Run", true);
+            }
+        
+              
+
         }
 
-        if ((Input.GetKey(KeyCode.D)))
+
+        if ((Input.GetKeyDown(KeyCode.E)))
         {
-            // Keep character pinned to the ground without sliding
-            //velocity.y = groundedGravity;
-            anim.SetBool("Idle", false);
-            anim.SetBool("RightStrafe", true);
+            if (equipped)
+            {
+                anim.runtimeAnimatorController = HarbingerUnequipped;
+                equipped = false;
+            }
+
+            else if (!equipped)
+            {
+                anim.runtimeAnimatorController = HarbingerEquipped;
+                equipped = true;
+
+            }
+
 
         }
-        else
-        {
-            anim.SetBool("RightStrafe", false);
-            anim.SetBool("Idle", true);
-
-        }
-
-        if ((Input.GetKey(KeyCode.A)))
-        {
-            // Keep character pinned to the ground without sliding
-            //velocity.y = groundedGravity;
-            anim.SetBool("Idle", false);
-            anim.SetBool("LeftStrafe", true);
-        }
-        else
-        {
-            anim.SetBool("LeftStrafe", false);
-            anim.SetBool("Idle", true);
-
-        }
-
-        if ((Input.GetKey(KeyCode.S)))
-        {
-            // Keep character pinned to the ground without sliding
-            //velocity.y = groundedGravity;
-            anim.SetBool("Idle", false);
-            anim.SetBool("BackStep", true);
-        }
-        else
-        {
-            anim.SetBool("BackStep", false);
-            anim.SetBool("Idle", true);
-
-        }
-
     }
 }

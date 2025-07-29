@@ -408,6 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 536253193}
+  - component: {fileID: 536253194}
   m_Layer: 0
   m_Name: Aimer
   m_TagString: Untagged
@@ -424,13 +425,26 @@ Transform:
   m_GameObject: {fileID: 536253191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.48924947, z: -0, w: 0.8721439}
-  m_LocalPosition: {x: -0.66, y: -0, z: 1.25}
+  m_LocalPosition: {x: -1.2722954, y: 0, z: 0.86229634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 106479852}
   m_Father: {fileID: 704829146}
   m_LocalEulerAnglesHint: {x: 0, y: -58.582, z: 0}
+--- !u!114 &536253194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536253191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340891107bc340443bfab14a4d0e0e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipped: 0
 --- !u!1 &549423689
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,14 +685,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704829144}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.44436944, z: -0, w: 0.8958437}
-  m_LocalPosition: {x: -0.6284349, y: 0, z: 0.58109146}
+  m_LocalRotation: {x: 0, y: 0.4383711, z: 0, w: 0.89879405}
+  m_LocalPosition: {x: 0.09, y: 0, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 536253193}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 52.766, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 52, z: 0}
 --- !u!143 &704829148
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6206,9 +6220,9 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 1004502995}
   - {fileID: 704829146}
-  - {fileID: 2117422977}
   - {fileID: 1969135006}
   - {fileID: 951685401}
   - {fileID: 157024443}
   - {fileID: 1818023507}
+  - {fileID: 2117422977}
   - {fileID: 1567611104}
