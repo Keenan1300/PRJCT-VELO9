@@ -21,8 +21,8 @@ public class Here : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
 
-    //bugfixing
-    private bool snapOverride = false;
+    //ResetDirectionForSwitch
+    public Vector3 Reset = new Vector3(0, 52, 0);
 
     void Start()
     {   
@@ -36,6 +36,7 @@ public class Here : MonoBehaviour
 
         //rotation stuff
         aimTarget = transform.Find("Aimer");
+        
 
         if (aimTarget == null)
             Debug.LogWarning("Aimer child not found!");
@@ -54,44 +55,13 @@ public class Here : MonoBehaviour
         {
             if (isGrounded && velocity.y < 0)
             {
-                // Keep character pinned to the ground without sliding
                 velocity.y = groundedGravity;
             }
 
-            float x = 0;
-            if (Input.GetKey(KeyCode.A)) x = -1;
-            if (Input.GetKey(KeyCode.D)) x = 1;
-
-            float z = 0;
-            if (Input.GetKey(KeyCode.W)) z = 1;
-            if (Input.GetKey(KeyCode.S)) z = -1;
-
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            //no wierd Diagonal crap
-            if (move.magnitude > 1f)
-                move = move.normalized;
-
-
-            controller.Move(move * moveSpeed * Time.deltaTime);
-
-
-
-
-            // Apply gravity
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
-
-
-
-            //Try move rotate towards mouse
-
+            //Rotation: rotate aimer toward mouse
             if (aimTarget != null)
             {
-                //once aim target is found, perform physics ray cast operation, which connects mouse position to camera screenpoint
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
 
                 if (Physics.Raycast(ray, out RaycastHit hit, 100f))
                 {
@@ -105,9 +75,49 @@ public class Here : MonoBehaviour
                         Quaternion lookRotation = Quaternion.LookRotation(direction);
                         aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, lookRotation, 10f * Time.deltaTime);
                     }
+
+                    
+
+                    //Movement relative to mouse
+                    Vector3 toMouse = (lookPoint - transform.position).normalized;
+                    toMouse.y = 0f;
+                    Vector3 rightDir = Vector3.Cross(Vector3.up, toMouse);
+
+                    float distanceToMouse = toMouse.magnitude;
+
+                    //bugfix
+                    print("Distance to mouse" + distanceToMouse);
+
+                    //AutoExit Mode if player places cursor ontop of avatar
+                    if (distanceToMouse < 1f)
+                    {
+                        equipped = false;
+                    }
+
+                        // Input
+                        float x = 0;
+                    if (Input.GetKey(KeyCode.A)) x = -1;
+                    if (Input.GetKey(KeyCode.D)) x = 1;
+
+                    //W key only works if magnitude between mouse and player reaches certain minimum
+                    float z = 0;
+                    if (Input.GetKey(KeyCode.W)) z = 1;
+                    if (Input.GetKey(KeyCode.S)) z = -1;
+
+                    // Movement direction relative to mouse position
+                    Vector3 moveDir = (toMouse * z + rightDir * x);
+
+                    if (moveDir.magnitude > 1f)
+                        moveDir = moveDir.normalized;
+
+                    controller.Move(moveDir * moveSpeed * Time.deltaTime);
                 }
 
             }
+
+            // Apply gravity separately
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
         }
 
 
@@ -133,18 +143,6 @@ public class Here : MonoBehaviour
             float z = 0;
             if (Input.GetKey(KeyCode.W)) z = 1;
             if (Input.GetKey(KeyCode.S)) z = -1;
-
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            //no weird Diagonal crap
-            if (move.magnitude > 1f)
-                move = move.normalized;
-
-
-            // Apply gravity
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
             
 
 
@@ -153,13 +151,23 @@ public class Here : MonoBehaviour
             moveDir.Normalize();
 
 
-            if (moveDir != Vector3.zero)
+            
+            
+            if (!equipped && moveDir != Vector3.zero)
             {
-                var targetangle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-                var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetangle, ref currentVelocity, smoothtime);
+                float targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
 
-                transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+                // Snap to nearest 45 instead of 90
+                float snappedAngle = Mathf.Round(targetAngle / 45f) * 45f;
+
+                // Create target rotation
+                Quaternion targetRotation = Quaternion.Euler(0f, snappedAngle, 0f);
+
+                // Smoothly rotate toward the snapped direction
+                aimTarget.rotation = Quaternion.RotateTowards(aimTarget.rotation, targetRotation, 360f * Time.deltaTime);
+
             }
+            
 
                //process movement calculations
                 controller.Move(moveDir * moveSpeed * Time.deltaTime);
@@ -175,13 +183,19 @@ public class Here : MonoBehaviour
             {
 
                 equipped = false;
-                transform.LookAt(new Vector3(52, 0, 0));
-                //transform.rotation = Quaternion.Euler(0, 52, 0);
+
+
+                // Reset aimer's rotation to face world north
+                //Vector3 lookTarget = aimTarget.position + Vector3.forward;
+                //aimTarget.LookAt(lookTarget);
+
+                print("Switched to Mode 2, using LookAt on Aimer!");
+
+              
             }
 
             else if (!equipped)
             {
-                transform.rotation = Quaternion.identity;
                 equipped = true;
                 
 
