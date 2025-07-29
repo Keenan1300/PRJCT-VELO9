@@ -83,13 +83,15 @@ public class Here : MonoBehaviour
                     toMouse.y = 0f;
                     Vector3 rightDir = Vector3.Cross(Vector3.up, toMouse);
 
-                    float distanceToMouse = toMouse.magnitude;
+
+                    //its important to not normalize distance to mouse detection
+                    float distanceToMouse = (lookPoint - transform.position).magnitude;
 
                     //bugfix
-                    print("Distance to mouse" + distanceToMouse);
+                    print("Distance to mouse: " + distanceToMouse);
 
                     //AutoExit Mode if player places cursor ontop of avatar
-                    if (distanceToMouse < 1f)
+                    if (distanceToMouse < 5f)
                     {
                         equipped = false;
                     }
