@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
 using System.Collections;
+using UnityEngine.Events;
 
 public class HarbAnimations : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class HarbAnimations : MonoBehaviour
     private Transform aimTarget;
 
 
+    //retrieve GameObject info
+    public GameObject PlayerBody;
+    public Here PlayerData;
 
+    //variables
     private float moveSpeed = 17;
     private float gravity = 0;
     private float groundedGravity = 0;
@@ -23,12 +28,14 @@ public class HarbAnimations : MonoBehaviour
     public RuntimeAnimatorController HarbingerEquipped;
     public RuntimeAnimatorController HarbingerUnequipped;
 
-
+    //bool
     private bool equipped;
 
 
     void Start()
     {
+
+
         equipped = true;
         anim = GetComponent<Animator>();
 
@@ -173,5 +180,20 @@ public class HarbAnimations : MonoBehaviour
 
 
         }
+
+
+      
     }
+
+    public void SwitchToEquipped()
+    {
+        equipped = true;
+    }
+
+
+    public void SwitchtoWASD()
+    {
+        equipped = false;
+    }
+
 }

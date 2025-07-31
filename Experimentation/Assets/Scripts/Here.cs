@@ -1,13 +1,24 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
+
+
 
 public class Here : MonoBehaviour
 {
     //separate rotation from movement
     private Transform aimTarget;
 
-    private float moveSpeed = 17;
+    //switch move event
+    public UnityEvent SwitchMoveMode;
+
+    //switch move event
+    public UnityEvent CombatMouse;
+
+    private float moveSpeedmode1 = 7;
+    private float moveSpeedmode2 = 15;
+
     private float gravity = 0;
     private float groundedGravity = 0;
     private Vector3 moveDir;
@@ -24,6 +35,8 @@ public class Here : MonoBehaviour
     //ResetDirectionForSwitch
     public Vector3 Reset = new Vector3(0, 52, 0);
 
+
+
     void Start()
     {   
         //establish first move mode
@@ -36,7 +49,8 @@ public class Here : MonoBehaviour
 
         //rotation stuff
         aimTarget = transform.Find("Aimer");
-        
+
+
 
         if (aimTarget == null)
             Debug.LogWarning("Aimer child not found!");
@@ -44,9 +58,6 @@ public class Here : MonoBehaviour
 
     void Update()
     {
-
-       
-
 
         bool isGrounded = controller.isGrounded;
 
@@ -94,6 +105,7 @@ public class Here : MonoBehaviour
                     if (distanceToMouse < 5f)
                     {
                         equipped = false;
+                        SwitchMoveMode.Invoke();
                     }
 
                         // Input
@@ -112,7 +124,7 @@ public class Here : MonoBehaviour
                     if (moveDir.magnitude > 1f)
                         moveDir = moveDir.normalized;
 
-                    controller.Move(moveDir * moveSpeed * Time.deltaTime);
+                    controller.Move(moveDir * moveSpeedmode1 * Time.deltaTime);
                 }
 
             }
@@ -172,7 +184,7 @@ public class Here : MonoBehaviour
             
 
                //process movement calculations
-                controller.Move(moveDir * moveSpeed * Time.deltaTime);
+                controller.Move(moveDir * moveSpeedmode2 * Time.deltaTime);
             
 
         }
@@ -185,11 +197,6 @@ public class Here : MonoBehaviour
             {
 
                 equipped = false;
-
-
-                // Reset aimer's rotation to face world north
-                //Vector3 lookTarget = aimTarget.position + Vector3.forward;
-                //aimTarget.LookAt(lookTarget);
 
                 print("Switched to Mode 2, using LookAt on Aimer!");
 
