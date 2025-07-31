@@ -10,11 +10,11 @@ public class Here : MonoBehaviour
     //separate rotation from movement
     private Transform aimTarget;
 
-    //switch move event
+    //events
     public UnityEvent SwitchMoveMode;
+    public UnityEvent DefaultCursor;
+    public UnityEvent CombatCursor;
 
-    //switch move event
-    public UnityEvent CombatMouse;
 
     private float moveSpeedmode1 = 7;
     private float moveSpeedmode2 = 15;
@@ -106,6 +106,8 @@ public class Here : MonoBehaviour
                     {
                         equipped = false;
                         SwitchMoveMode.Invoke();
+                        DefaultCursor.Invoke();
+
                     }
 
                         // Input
@@ -197,6 +199,7 @@ public class Here : MonoBehaviour
             {
 
                 equipped = false;
+                DefaultCursor.Invoke();
 
                 print("Switched to Mode 2, using LookAt on Aimer!");
 
@@ -206,7 +209,7 @@ public class Here : MonoBehaviour
             else if (!equipped)
             {
                 equipped = true;
-                
+                CombatCursor.Invoke();
 
             }
 
