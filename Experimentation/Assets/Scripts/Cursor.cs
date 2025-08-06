@@ -37,6 +37,7 @@ public class Cursor : MonoBehaviour
 
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
 
+        //Create Offset Because Image doesnt look quite right
         mouseWorldPosition.x += CursorX;
         mouseWorldPosition.y += CursorY;
 
@@ -55,5 +56,7 @@ public class Cursor : MonoBehaviour
     {
         CursorImage.texture = DefaultCursor;
     }
+
+
 
 }

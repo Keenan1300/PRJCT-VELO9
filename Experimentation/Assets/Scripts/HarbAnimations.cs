@@ -35,7 +35,6 @@ public class HarbAnimations : MonoBehaviour
     void Start()
     {
 
-
         equipped = true;
         anim = GetComponent<Animator>();
 
@@ -45,6 +44,7 @@ public class HarbAnimations : MonoBehaviour
         anim.Update(7f);
         anim.speed = 1f;
 
+        //Set Animation bools
         anim.SetBool("Idle", true);
         anim.SetBool("RightStrafe", false);
         anim.SetBool("LeftStrafe", false);
@@ -52,13 +52,14 @@ public class HarbAnimations : MonoBehaviour
         anim.SetBool("Run", false);
         anim.SetBool("Grab", false);
         anim.SetBool("GunFire", false);
+
     }
 
     void Update()
     {
         if (equipped)
         {
-            anim.SetBool("Idle", true);
+            
 
             if ((Input.GetKey(KeyCode.W)))
             {
@@ -177,13 +178,11 @@ public class HarbAnimations : MonoBehaviour
                 equipped = true;
 
             }
-
-
         }
-
-
-      
     }
+
+
+
 
     public void SwitchToEquipped()
     {
@@ -191,9 +190,36 @@ public class HarbAnimations : MonoBehaviour
     }
 
 
+
+
     public void SwitchtoWASD()
     {
         equipped = false;
+    }
+
+
+
+    public void FireGun()
+    {
+        print("pt2");
+        anim.SetBool("Idle", false);
+        anim.SetBool("GunFire", true);
+       
+    }
+
+
+
+    public void Reset()
+    {
+
+        anim.SetBool("Idle", true);
+        anim.SetBool("RightStrafe", false);
+        anim.SetBool("LeftStrafe", false);
+        anim.SetBool("BackStrafe", false);
+        anim.SetBool("Run", false);
+        anim.SetBool("Grab", false);
+        anim.SetBool("GunFire", false);
+
     }
 
 }

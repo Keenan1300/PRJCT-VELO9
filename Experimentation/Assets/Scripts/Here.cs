@@ -9,22 +9,32 @@ public class Here : MonoBehaviour
 {
     //separate rotation from movement
     private Transform aimTarget;
+    
+    //Setup Prefab
+    public GameObject BaseBullet;
+
+    //Where the bullet is firing from
+    public Transform GunTip;
 
     //events
     public UnityEvent SwitchMoveMode;
     public UnityEvent DefaultCursor;
     public UnityEvent CombatCursor;
+    public UnityEvent FireGun;
+    public UnityEvent Reset;
 
-
+    //movespeed
     private float moveSpeedmode1 = 7;
     private float moveSpeedmode2 = 15;
 
+    //Gravity
     private float gravity = 0;
     private float groundedGravity = 0;
+    public float cooldownTimer;
     private Vector3 moveDir;
     bool equipped;
 
-    //move2 variables
+    //Move2 variables
     private float smoothtime = 0.05f;
     private float currentVelocity;
 
@@ -33,15 +43,18 @@ public class Here : MonoBehaviour
     private Vector3 velocity;
 
     //ResetDirectionForSwitch
-    public Vector3 Reset = new Vector3(0, 52, 0);
+    public Vector3 ResetAnim = new Vector3(0, 52, 0);
 
 
 
     void Start()
-    {   
+    {
         //establish first move mode
         equipped = true;
 
+
+        //reset gun cooldown
+        cooldownTimer = 0;
 
         Input.ResetInputAxes();
 
@@ -51,13 +64,19 @@ public class Here : MonoBehaviour
         aimTarget = transform.Find("Aimer");
 
 
-
+        //check existence of AimTarget
         if (aimTarget == null)
             Debug.LogWarning("Aimer child not found!");
+
     }
 
     void Update()
     {
+        //RunCoolDownTimer
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer = cooldownTimer - 1f;
+        }
 
         bool isGrounded = controller.isGrounded;
 
@@ -68,6 +87,21 @@ public class Here : MonoBehaviour
             {
                 velocity.y = groundedGravity;
             }
+
+
+            //Lmb To shoot function to activate once equipped its active
+            if (cooldownTimer < 1)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    print("mouseWorking");
+                    FireGun.Invoke();
+                    ShootBullet();
+                    cooldownTimer = 10;
+
+                }
+            }
+
 
             //Rotation: rotate aimer toward mouse
             if (aimTarget != null)
@@ -87,7 +121,7 @@ public class Here : MonoBehaviour
                         aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, lookRotation, 10f * Time.deltaTime);
                     }
 
-                    
+
 
                     //Movement relative to mouse
                     Vector3 toMouse = (lookPoint - transform.position).normalized;
@@ -102,7 +136,7 @@ public class Here : MonoBehaviour
                     print("Distance to mouse: " + distanceToMouse);
 
                     //AutoExit Mode if player places cursor ontop of avatar
-                    if (distanceToMouse < 5f)
+                    if (distanceToMouse < 3f)
                     {
                         equipped = false;
                         SwitchMoveMode.Invoke();
@@ -110,8 +144,8 @@ public class Here : MonoBehaviour
 
                     }
 
-                        // Input
-                        float x = 0;
+                    // Input
+                    float x = 0;
                     if (Input.GetKey(KeyCode.A)) x = -1;
                     if (Input.GetKey(KeyCode.D)) x = 1;
 
@@ -138,7 +172,6 @@ public class Here : MonoBehaviour
 
 
         //Swap To MovementMode 2
-
         if (!equipped)
         {
             print("mode2!!");
@@ -159,7 +192,7 @@ public class Here : MonoBehaviour
             float z = 0;
             if (Input.GetKey(KeyCode.W)) z = 1;
             if (Input.GetKey(KeyCode.S)) z = -1;
-            
+
 
 
             //calculate direction
@@ -167,10 +200,11 @@ public class Here : MonoBehaviour
             moveDir.Normalize();
 
 
-            
-            
+
+
             if (!equipped && moveDir != Vector3.zero)
             {
+                //calculate angle
                 float targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
 
                 // Snap to nearest 45 instead of 90
@@ -183,11 +217,11 @@ public class Here : MonoBehaviour
                 aimTarget.rotation = Quaternion.RotateTowards(aimTarget.rotation, targetRotation, 360f * Time.deltaTime);
 
             }
-            
 
-               //process movement calculations
-                controller.Move(moveDir * moveSpeedmode2 * Time.deltaTime);
-            
+
+            //process movement calculations
+            controller.Move(moveDir * moveSpeedmode2 * Time.deltaTime);
+
 
         }
 
@@ -195,29 +229,52 @@ public class Here : MonoBehaviour
         //Toggle Between Movement Modes
         if ((Input.GetKeyDown(KeyCode.E)))
         {
+
             if (equipped)
             {
-
                 equipped = false;
                 DefaultCursor.Invoke();
-
                 print("Switched to Mode 2, using LookAt on Aimer!");
-
-              
             }
 
             else if (!equipped)
             {
                 equipped = true;
                 CombatCursor.Invoke();
-
             }
+
+        }
+    }
+
+    public void ShootBullet()
+    {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        {
+            Vector3 lookPoint = hit.point;
+            lookPoint.y = aimTarget.position.y;
+
+            Vector3 pos = transform.position;
+
+            Vector3 bulletRotation = lookPoint - pos;
+            Quaternion targetRotation = Quaternion.LookRotation(bulletRotation);
+
+
+            Vector3 BulletPos = GunTip.position;
+            Instantiate(BaseBullet, BulletPos, targetRotation);
+            Bullet scriptOnBullet = BaseBullet.GetComponent<Bullet>();
+            scriptOnBullet.BulletDirection = lookPoint;
 
         }
 
     }
-            
-
-
-    
 }
+
+
+        
+
+
+
+
