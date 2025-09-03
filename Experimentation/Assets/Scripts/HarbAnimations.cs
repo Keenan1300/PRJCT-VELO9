@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using System.Collections;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class HarbAnimations : MonoBehaviour
 {
@@ -21,11 +22,18 @@ public class HarbAnimations : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
 
+    public float x;
+    public float y;
+
 
     public Animator anim;
 
     //anim controllers
     public RuntimeAnimatorController HarbingerEquipped;
+
+    //test
+    public RuntimeAnimatorController HarbingerEquippedv2;
+
     public RuntimeAnimatorController HarbingerUnequipped;
 
     //bool
@@ -39,7 +47,7 @@ public class HarbAnimations : MonoBehaviour
         anim = GetComponent<Animator>();
 
         // Set the default controller initially
-        anim.runtimeAnimatorController = HarbingerEquipped;
+        anim.runtimeAnimatorController = HarbingerEquippedv2;
 
         anim.Update(7f);
         anim.speed = 1f;
@@ -59,13 +67,22 @@ public class HarbAnimations : MonoBehaviour
     {
         if (equipped)
         {
-            
+            //naturally return to idle
+            y = Input.GetAxisRaw("Vertical");
+            x = Input.GetAxisRaw("Horizontal");
+            anim.SetFloat("x", x);
+            anim.SetFloat("y", y);
+            print("x value" + x);
 
             if ((Input.GetKey(KeyCode.W)))
             {
                 // Keep character pinned to the ground without sliding
                 //velocity.y = groundedGravity;
                 anim.SetBool("Idle", false);
+               
+                anim.SetFloat("y", y);
+                
+
                 anim.SetBool("Run", true);
             }
             else
@@ -79,7 +96,9 @@ public class HarbAnimations : MonoBehaviour
                 //velocity.y = groundedGravity;
                 anim.SetBool("Idle", false);
                 anim.SetBool("RightStrafe", true);
-
+                
+                    anim.SetFloat("x", x);
+                
             }
             else
             {
@@ -94,6 +113,7 @@ public class HarbAnimations : MonoBehaviour
                 //velocity.y = groundedGravity;
                 anim.SetBool("Idle", false);
                 anim.SetBool("LeftStrafe", true);
+                anim.SetFloat("x", x);
             }
             else
             {
@@ -108,12 +128,12 @@ public class HarbAnimations : MonoBehaviour
                 //velocity.y = groundedGravity;
                 anim.SetBool("Idle", false);
                 anim.SetBool("BackStep", true);
+                anim.SetFloat("y", y);
             }
             else
             {
                 anim.SetBool("BackStep", false);
                 
-
             }
 
 
@@ -174,7 +194,7 @@ public class HarbAnimations : MonoBehaviour
 
             else if (!equipped)
             {
-                anim.runtimeAnimatorController = HarbingerEquipped;
+                anim.runtimeAnimatorController = HarbingerEquippedv2;
                 equipped = true;
 
             }
@@ -206,7 +226,11 @@ public class HarbAnimations : MonoBehaviour
         anim.SetBool("GunFire", true);
        
     }
+    public void NOFireGun()
+    {
+        anim.SetBool("GunFire", false);
 
+    }
 
 
     public void Reset()

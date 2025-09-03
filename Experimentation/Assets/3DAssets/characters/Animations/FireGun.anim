@@ -58755,10 +58755,52 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.7916667
+  - time: 0
+    functionName: NOFireGun
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.041666668
     functionName: Reset
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: Reset
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: Reset
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: Reset
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: Reset
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: Reset
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: b50228318a770b34bacf826ece77d41a, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

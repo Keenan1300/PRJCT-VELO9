@@ -27,6 +27,8 @@ public class Here : MonoBehaviour
     private float moveSpeedmode1 = 7;
     private float moveSpeedmode2 = 15;
 
+    public Animator Animatorinfo;
+
     //Gravity
     private float gravity = 0;
     private float groundedGravity = 0;
@@ -49,6 +51,8 @@ public class Here : MonoBehaviour
 
     void Start()
     {
+        //Animatorpart = Animatorinfo 
+
         //establish first move mode
         equipped = true;
 
@@ -94,6 +98,7 @@ public class Here : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+          
                     print("mouseWorking");
                     FireGun.Invoke();
                     ShootBullet();
