@@ -74,6 +74,19 @@ public class HarbAnimations : MonoBehaviour
             anim.SetFloat("y", y);
             print("x value" + x);
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (x == 0 && y == 0)
+                {
+                    // Keep character pinned to the ground without sliding
+                    //velocity.y = groundedGravity;
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("GunFire", true);
+                }
+            }
+            
+
+
             if ((Input.GetKey(KeyCode.W)))
             {
                 // Keep character pinned to the ground without sliding

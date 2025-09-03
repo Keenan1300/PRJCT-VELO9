@@ -96,16 +96,30 @@ public class Here : MonoBehaviour
             //Lmb To shoot function to activate once equipped its active
             if (cooldownTimer < 1)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-          
-                    print("mouseWorking");
-                    FireGun.Invoke();
-                    ShootBullet();
-                    cooldownTimer = 10;
+                // Input
+                float x = 0;
+                if (Input.GetKey(KeyCode.A)) x = -1;
+                if (Input.GetKey(KeyCode.D)) x = 1;
 
+                //W key only works if magnitude between mouse and player reaches certain minimum
+                float z = 0;
+                if (Input.GetKey(KeyCode.W)) z = 1;
+                if (Input.GetKey(KeyCode.S)) z = -1;
+
+                if (x == 0 && z == 0)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+
+                        print("mouseWorking");
+                        FireGun.Invoke();
+                        ShootBullet();
+                        cooldownTimer = 10;
+
+                    }
                 }
             }
+
 
 
             //Rotation: rotate aimer toward mouse

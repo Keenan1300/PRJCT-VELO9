@@ -715,6 +715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerBody: {fileID: 0}
   PlayerData: {fileID: 0}
+  x: 0
+  y: 0
   anim: {fileID: 919132148380776994}
   HarbingerEquipped: {fileID: 0}
   HarbingerEquippedv2: {fileID: 0}
@@ -2089,7 +2091,7 @@ Transform:
   m_Children:
   - {fileID: 7774320716190073248}
   m_Father: {fileID: 2068652276319455398}
-  m_LocalEulerAnglesHint: {x: -72.28057, y: -45.198605, z: 71.72297}
+  m_LocalEulerAnglesHint: {x: -72.262085, y: -45.276775, z: 71.77345}
 --- !u!1 &430108201495316841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerBody: {fileID: 0}
   PlayerData: {fileID: 0}
+  x: 0
+  y: 0
   anim: {fileID: 919132148380776994}
   HarbingerEquipped: {fileID: 9100000, guid: d32208045768bc24f924a2005f719947, type: 2}
   HarbingerEquippedv2: {fileID: 9100000, guid: de4ba29e9a7ccaf44b77c5e43c18cbbf, type: 2}
