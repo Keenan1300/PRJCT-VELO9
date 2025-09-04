@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         
         BulletLife = 50;
-        speed = 10f;
+        speed = 100f;
     }
 
     // Update is called once per frame

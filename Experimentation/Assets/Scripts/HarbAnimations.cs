@@ -25,6 +25,8 @@ public class HarbAnimations : MonoBehaviour
     public float x;
     public float y;
 
+    bool guncooled;
+
 
     public Animator anim;
 
@@ -42,6 +44,8 @@ public class HarbAnimations : MonoBehaviour
 
     void Start()
     {
+
+        guncooled = false; 
 
         equipped = true;
         anim = GetComponent<Animator>();
@@ -76,12 +80,15 @@ public class HarbAnimations : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (x == 0 && y == 0)
+                if (guncooled == true)
                 {
-                    // Keep character pinned to the ground without sliding
-                    //velocity.y = groundedGravity;
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("GunFire", true);
+                    if (x == 0 && y == 0)
+                    {
+                        // Keep character pinned to the ground without sliding
+                        //velocity.y = groundedGravity;
+                        anim.SetBool("Idle", false);
+                        anim.SetBool("GunFire", true);
+                    }
                 }
             }
             
@@ -219,6 +226,7 @@ public class HarbAnimations : MonoBehaviour
 
     public void SwitchToEquipped()
     {
+        anim.runtimeAnimatorController = HarbingerEquippedv2;
         equipped = true;
     }
 
@@ -227,6 +235,7 @@ public class HarbAnimations : MonoBehaviour
 
     public void SwitchtoWASD()
     {
+        anim.runtimeAnimatorController = HarbingerUnequipped;
         equipped = false;
     }
 
@@ -235,6 +244,7 @@ public class HarbAnimations : MonoBehaviour
     public void FireGun()
     {
         print("pt2");
+        guncooled = true;
         anim.SetBool("Idle", false);
         anim.SetBool("GunFire", true);
        
@@ -248,7 +258,7 @@ public class HarbAnimations : MonoBehaviour
 
     public void Reset()
     {
-
+        guncooled = false;
         anim.SetBool("Idle", true);
         anim.SetBool("RightStrafe", false);
         anim.SetBool("LeftStrafe", false);

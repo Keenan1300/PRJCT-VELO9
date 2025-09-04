@@ -29,6 +29,9 @@ public class Here : MonoBehaviour
 
     public Animator Animatorinfo;
 
+    //GunInfo
+    public GameObject Gun;
+
     //Gravity
     private float gravity = 0;
     private float groundedGravity = 0;
@@ -72,6 +75,8 @@ public class Here : MonoBehaviour
         if (aimTarget == null)
             Debug.LogWarning("Aimer child not found!");
 
+        Gun.GetComponent<Renderer>().enabled = true;
+
     }
 
     void Update()
@@ -87,6 +92,7 @@ public class Here : MonoBehaviour
         //Movement Equipped 1
         if (equipped)
         {
+
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = groundedGravity;
@@ -114,7 +120,7 @@ public class Here : MonoBehaviour
                         print("mouseWorking");
                         FireGun.Invoke();
                         ShootBullet();
-                        cooldownTimer = 10;
+                        cooldownTimer = 300;
 
                     }
                 }
@@ -254,12 +260,15 @@ public class Here : MonoBehaviour
                 equipped = false;
                 DefaultCursor.Invoke();
                 print("Switched to Mode 2, using LookAt on Aimer!");
+                Gun.GetComponent<Renderer>().enabled = false;
             }
 
             else if (!equipped)
             {
+                
                 equipped = true;
                 CombatCursor.Invoke();
+                Gun.GetComponent<Renderer>().enabled = true;
             }
 
         }
