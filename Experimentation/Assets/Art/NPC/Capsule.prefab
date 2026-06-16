@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8628928750832542863}
   - component: {fileID: 7498476512686723173}
   - component: {fileID: 2890652024919818787}
+  - component: {fileID: 4657646790814385077}
+  - component: {fileID: 5036398034505316726}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -110,3 +112,50 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4657646790814385077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787328835694086099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32e4b851ebd8fa4ea0645b99be1cf97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedExposedParameters: []
+  _boundGraphSerialization: '{"type":"NodeCanvas.DialogueTrees.DialogueTree","nodes":[{"statement":{"_text":"This
+    is a dialogue text"},"_position":{"x":303.7224,"y":222.4012},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"0"},{"statement":{"_text":"For
+    a prototype"},"_position":{"x":324.5942,"y":395.5013},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"1"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.DialogueTrees.DTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}},"derivedData":{"actorParameters":[],"$type":"NodeCanvas.DialogueTrees.DialogueTree+DerivedSerializationData"}}'
+  _boundGraphObjectReferences: []
+  _boundGraphSource:
+    _version: 3.33
+    _category: 
+    _comments: 
+    _translation: {x: 79.971886, y: 0.8205527}
+    _zoomFactor: 0.8793384
+  _firstActivation: 0
+  _enableAction: 1
+  _disableAction: 2
+  _lockBoundGraphPrefabOverrides: 1
+  _preInitializeSubGraphs: 0
+  _updateMode: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 5036398034505316726}
+--- !u!114 &5036398034505316726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787328835694086099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+  _serializedVariables: []
