@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.HighDefinition;
 #endif
 
 namespace StarterAssets
@@ -54,8 +55,10 @@ namespace StarterAssets
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
-		// player
-		private float _speed;
+		public bool Talking;
+
+        // player
+        private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
@@ -99,7 +102,8 @@ namespace StarterAssets
 
 		private void Start()
 		{
-			_controller = GetComponent<CharacterController>();
+            Talking = false;
+            _controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
@@ -121,8 +125,13 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			CameraRotation();
-		}
+			if (!Talking)
+			{
+				CameraRotation();
+			}
+
+            //CameraRotation();
+        }
 
 		private void GroundedCheck()
 		{
