@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 11400012}
   - component: {fileID: 11400010}
   m_Layer: 5
-  m_Name: '@DialogueUGUI'
+  m_Name: '@DialogueUGUICustom'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
