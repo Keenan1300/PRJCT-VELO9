@@ -29,6 +29,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
 
         //Group...
         [Header("Subtitles")]
+        public GameObject BackgroundUI;
         public RectTransform subtitlesGroup;
         public Text actorSpeech;
         public Text actorName;
@@ -76,6 +77,12 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
         }
 
         void Hide() {
+
+            if (BackgroundUI != null)
+            {
+                BackgroundUI.SetActive(false);
+            }
+
             subtitlesGroup.gameObject.SetActive(false);
             optionsGroup.gameObject.SetActive(false);
             optionButton.gameObject.SetActive(false);
@@ -84,6 +91,12 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
         }
 
         void OnDialogueStarted(DialogueTree dlg) {
+
+            if (BackgroundUI != null)
+            {
+                BackgroundUI.SetActive(true);
+            }
+
             //nothing special...
         }
 
@@ -95,6 +108,12 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
         }
 
         void OnDialogueFinished(DialogueTree dlg) {
+
+            if (BackgroundUI != null)
+            {
+                BackgroundUI.SetActive(false);
+            }
+
             subtitlesGroup.gameObject.SetActive(false);
             optionsGroup.gameObject.SetActive(false);
             if ( cachedButtons != null ) {
