@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4657646790814385077}
   - component: {fileID: 5036398034505316726}
   - component: {fileID: 4523025975687861748}
+  - component: {fileID: 8066285318333478415}
   m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
@@ -177,3 +178,19 @@ MonoBehaviour:
   stopDistance: 0
   talkpos: {fileID: 0}
   lookOption: 1
+--- !u!114 &8066285318333478415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787328835694086099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d71fb7c52372e244baf2e69a9d0d116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Red Capsule
+  _portrait: {fileID: 0}
+  _dialogueColor: {r: 1, g: 0.7311321, b: 0.7311321, a: 1}
+  _dialogueOffset: {x: 0, y: 0, z: 0}
