@@ -250,7 +250,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
 
             optionsGroup.gameObject.SetActive(true);
             var buttonHeight = optionButton.GetComponent<RectTransform>().rect.height;
-            optionsGroup.sizeDelta = new Vector2(optionsGroup.sizeDelta.x, ( info.options.Values.Count * buttonHeight ) + 20);
+            //optionsGroup.sizeDelta = new Vector2(optionsGroup.sizeDelta.x, ( info.options.Values.Count * buttonHeight ) + 20);
 
             cachedButtons = new Dictionary<Button, int>();
             int i = 0;
@@ -269,7 +269,8 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
             if ( info.showLastStatement ) {
                 subtitlesGroup.gameObject.SetActive(true);
                 var newY = optionsGroup.anchoredPosition.y + optionsGroup.sizeDelta.y + 1;
-                subtitlesGroup.anchoredPosition = new Vector2(subtitlesGroup.anchoredPosition.x, newY);
+               //Dont think this applies here
+                // subtitlesGroup.anchoredPosition = new Vector2(subtitlesGroup.anchoredPosition.x, newY);
             }
 
             if ( info.availableTime > 0 ) {
