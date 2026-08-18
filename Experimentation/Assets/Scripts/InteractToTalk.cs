@@ -1,4 +1,5 @@
 using NodeCanvas.DialogueTrees;
+using NodeCanvas.Framework;
 using System;
 using TMPro;
 using UnityEngine;
@@ -9,8 +10,13 @@ using static UnityEditor.PlayerSettings;
 public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public DialogueTreeController DialogueTreeCont;
+    
+
     public Texture2D cursor;
     public float stopDistance;
+
+    //Used in dialogue interaction
+    public float Trustworthiness = 100f;
     public Transform talkpos;
     public GameObject Player;
     public Transform Lookrot;
@@ -24,7 +30,7 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void OnEnable()
     {
-      
+        IBlackboard blackboard = DialogueTreeCont.blackboard;
         DialogueTree.OnDialogueStarted += HandledDialogueStarted;
         DialogueTree.OnDialogueFinished += HandledDialogueFinished;
     }
@@ -39,12 +45,12 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void HandledDialogueStarted(DialogueTree dialogue)
     {
         //look at where player is
-        Player = GameObject.FindWithTag("Player");
-        Quaternion Rot = Player.transform.rotation;
+        //Player = GameObject.FindWithTag("Player");
+        //Quaternion Rot = Player.transform.rotation;
 
-        Vector3 direction = Player.transform.position - transform.position;
-        Vector3 targetPosition = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z);
-        transform.rotation = Quaternion.LookRotation(targetPosition * -1, Vector3.up);
+        //Vector3 direction = Player.transform.position - transform.position;
+        //Vector3 targetPosition = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z);
+        //transform.rotation = Quaternion.LookRotation(targetPosition * -1, Vector3.up);
         
 
         ChangeToDefaultCursor();
