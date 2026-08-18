@@ -1,8 +1,10 @@
-using UnityEngine;
 using NodeCanvas.DialogueTrees;
-using UnityEngine.EventSystems;
 using System;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Assertions.Comparers;
+using UnityEngine.EventSystems;
+using static UnityEditor.PlayerSettings;
 
 public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -10,6 +12,8 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public Texture2D cursor;
     public float stopDistance;
     public Transform talkpos;
+    public GameObject Player;
+    public Transform Lookrot;
 
     public enum LookOption { None, LookAtTarget, MatchTargetFacing }
     public LookOption lookOption = LookOption.LookAtTarget;
@@ -20,6 +24,7 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void OnEnable()
     {
+      
         DialogueTree.OnDialogueStarted += HandledDialogueStarted;
         DialogueTree.OnDialogueFinished += HandledDialogueFinished;
     }
@@ -33,6 +38,15 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
  
     private void HandledDialogueStarted(DialogueTree dialogue)
     {
+        //look at where player is
+        Player = GameObject.FindWithTag("Player");
+        Quaternion Rot = Player.transform.rotation;
+
+        Vector3 direction = Player.transform.position - transform.position;
+        Vector3 targetPosition = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z);
+        transform.rotation = Quaternion.LookRotation(targetPosition * -1, Vector3.up);
+        
+
         ChangeToDefaultCursor();
         //Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }

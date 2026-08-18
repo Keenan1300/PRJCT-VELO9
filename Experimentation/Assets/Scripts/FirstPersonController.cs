@@ -119,8 +119,13 @@ namespace StarterAssets
 		private void Update()
 		{
 			JumpAndGravity();
+		
 			GroundedCheck();
-			Move();
+
+			if (!Talking)
+			{
+				Move();
+			}
 		}
 
 		private void LateUpdate()
