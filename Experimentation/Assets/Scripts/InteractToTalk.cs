@@ -124,4 +124,11 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
 
     }
+
+
+    public void ChangeLocation(Transform TeleportSpot)
+    {
+        //Teleport
+        transform.position = TeleportSpot.position; 
+    }
 }

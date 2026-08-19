@@ -49,6 +49,16 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public void addhealth(float heal)
+    {
+        if (Health < MaxHealth)
+        {
+            Health += heal;
+            SetHealth(Health);
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
