@@ -116,6 +116,17 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 		}
 
+
+		public void FreezeLook()
+		{
+			Talking = true;
+		}
+
+		public void UnfreezeLook()
+		{
+			Talking = false;
+		}
+
 		private void Update()
 		{
 			JumpAndGravity();
