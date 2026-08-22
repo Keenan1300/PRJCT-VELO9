@@ -42,8 +42,9 @@ public class PilotStation : MonoBehaviour
         if( inrange == true && Input.GetKey(KeyCode.E))
         {
             FreezeLook.Invoke();
-            Menu.SetActive(true);
             UnityEngine.Cursor.lockState = CursorLockMode.None;
+            Menu.SetActive(true);
+           
 
         }
     }
