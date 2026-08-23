@@ -389,7 +389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.7, y: -37.5}
+  m_AnchoredPosition: {x: -41.9, y: -33.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &119448104
@@ -8216,10 +8216,10 @@ RectTransform:
   m_LocalScale: {x: 4.2452435, y: 3.010598, z: 3.010598}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1694983439}
   - {fileID: 1520374699}
   - {fileID: 154476360}
   - {fileID: 1229186660}
+  - {fileID: 1694983439}
   - {fileID: 1478650643}
   - {fileID: 439985355}
   - {fileID: 100038222}
@@ -10890,7 +10890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beacons: []
+  BeaconIcon: {fileID: 4264208892990048865, guid: 0cf5146a13eae7e43ae2b30f5b39a317, type: 3}
   BeaconCount: 0
+  BeaconOrigin: {fileID: 100038222}
+  SpaceBetweenBeacons: 0.7
 --- !u!1 &1721507572
 GameObject:
   m_ObjectHideFlags: 0
