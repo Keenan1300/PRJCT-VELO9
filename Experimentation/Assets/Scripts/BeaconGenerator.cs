@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BeaconGenerator : MonoBehaviour
 {
@@ -15,11 +16,29 @@ public class BeaconGenerator : MonoBehaviour
     [SerializeField] public float minimumGap = 5f;
     [SerializeField] private int maxAttemptsPerBeacon = 100; // Protects against infinite loops
 
+
+    //Entry and Exit logic
+    private float lowestXspot;
+    private float highestXspot;
+    float yspot;
+    public GameObject ExitSign;
+
+
     // Keeps track of already spawned positions
     public List<Vector3> spawnedBeaconPositions = new List<Vector3>();
 
     private void Start()
     {
+        //to be used in entry/exit beacons
+        highestXspot = mapSize.x * -100f;
+        lowestXspot = mapSize.x * 100f;
+
+        GenerateSector();
+    }
+
+    private void GenerateSector()
+    {
+
         BeaconCount = Random.Range(12, 20);
         GenerateSpaceMap();
     }
@@ -71,6 +90,12 @@ public class BeaconGenerator : MonoBehaviour
             {
                 Debug.LogWarning($"Could not find a valid spot for beacon {i} after {maxAttemptsPerBeacon} tries. Map might be too crowded.");
             }
+
+            //transition to finding entry and exit
+            if (spawnedBeaconPositions.Count == BeaconCount)
+            {
+                MakeEntryExit();
+            }
         }
 
 
@@ -95,6 +120,8 @@ public class BeaconGenerator : MonoBehaviour
 
         // Store position into the index tracker for future proximity verification loops
         spawnedBeaconPositions.Add(position);
+
+       
     }
 
 
@@ -107,5 +134,39 @@ public class BeaconGenerator : MonoBehaviour
     }
 
 
+    private void MakeEntryExit() 
+    {
+        //find entry -beacon with lowest x value-
+        for (int i = 0; i < BeaconCount; i++)
+        {
+            if (spawnedBeaconPositions[i].x < lowestXspot)
+            {
+                lowestXspot = spawnedBeaconPositions[i].x;
+            }
+
+        }
+
+
+        //find exit beacon -coordinate with highest x value-
+        for (int i = 0; i < BeaconCount; i++)
+        {
+            if (spawnedBeaconPositions[i].x > highestXspot)
+            {
+                highestXspot = spawnedBeaconPositions[i].x;
+                yspot = spawnedBeaconPositions[i].y;
+            }
+
+        }
+
+        Vector3 ExitBeaconLoc = new Vector3(highestXspot, yspot, 0f);
+
+        GameObject ExitBeacon = Instantiate(ExitSign, BeaconOrigin.position + ExitBeaconLoc, Quaternion.identity, transform);
+        ExitBeacon.name = $"ExitBeacon";
+
+    
+
+
+
+    }
 
 }
