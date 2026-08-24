@@ -8232,7 +8232,7 @@ RectTransform:
   m_GameObject: {fileID: 1357487425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.2452435, y: 3.010598, z: 3.010598}
+  m_LocalScale: {x: 5.565939, y: 3.947195, z: 3.947195}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1520374699}
@@ -15765,23 +15765,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1201504289608897171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4480016048012575971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196871477707741139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccad2ac9e35641a4da51cf18451c5b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSFX
-  audioSource: {fileID: 2855813915990837318}
-  slowBreathing: {fileID: 8300000, guid: 38959d073b3c36b4196ca8013e3a5686, type: 3}
-  regularBreathing: {fileID: 8300000, guid: 008154cc7ffe12640a62c37856db6b6c, type: 3}
-  fastBreathing: {fileID: 8300000, guid: fcc87b164a696e84fb9ae9724acd030a, type: 3}
-  breathingDetector: {fileID: 0}
 --- !u!114 &4523025976728040256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16449,29 +16432,6 @@ Transform:
   - {fileID: 2218800216111852845}
   m_Father: {fileID: 4079156918015071497}
   m_LocalEulerAnglesHint: {x: 0.00000008990514, y: -179.99998, z: -168.04417}
---- !u!114 &5895622811048009975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196871477707741139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75552790b3985104f9b9ef81f3bc76ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerBreathing
-  breathVelocity: 0
-  breathingIn: 0
-  breathingOut: 0
-  breathCycle: 0
-  breathCapacity: 0
-  currentState: 0
-  breathMax: 100
-  breathFillRate: 5
-  PlantActivationRange: 4.9
-  gizmoColorIfFound: {r: 0.7315094, g: 1, b: 0.45597476, a: 0.24313726}
-  gizmoColorIfNotFound: {r: 1, g: 0.50628924, b: 0.50628924, a: 0.23529412}
 --- !u!4 &5897652486247088943
 Transform:
   m_ObjectHideFlags: 0
@@ -17247,13 +17207,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8190873352396499078}
   - component: {fileID: 2127750565221067671}
-  - component: {fileID: 5895622811048009975}
   - component: {fileID: 3293027785417706246}
   - component: {fileID: 6854281113284141489}
   - component: {fileID: 823215611174357386}
   - component: {fileID: 3458577564741633361}
   - component: {fileID: 2855813915990837318}
-  - component: {fileID: 4480016048012575971}
   - component: {fileID: 8196871477707741141}
   - component: {fileID: 8196871477707741140}
   m_Layer: 6
