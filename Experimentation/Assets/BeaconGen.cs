@@ -5,7 +5,12 @@ using System.Collections.Generic;
 public class BeaconGen : MonoBehaviour
 {
 
-
+    /// <summary>
+    /// 
+    /// 
+    /// DO NOT USE THIS. SCRIPT CAUSES STACK OVERFLOW
+    /// IT REMAINS HERE FOR DATA PURPOSES ONLY
+    /// </summary>
     //public List<int> beacons = new List<int>();
 
     public List<Vector2> beacons = new List<Vector2>();
@@ -13,16 +18,21 @@ public class BeaconGen : MonoBehaviour
     public int BeaconCount;
     public Transform BeaconOrigin;
     public float SpaceBetweenBeacons;
+    public int SafetyCount = 3;
+    public float squaredMinGap;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //create Random amount of beacons
         BeaconCount = Random.Range(12, 20);
+
         for (int i = 0; i <= BeaconCount; i++)
         {
+            //Generate randomposition
             Vector2 randompos = new Vector2(Random.Range(0, 70), Random.Range(0, 70));
 
-            //take these random coordinates, filter them for acceptable spot placement
+            //take the random pos, filter them for acceptable spot placement... Output beacon position
             GeneratePos(in beacons, in i, in randompos, out Vector2 BeaconPos);
 
             beacons.Add(BeaconPos);
@@ -51,38 +61,34 @@ public class BeaconGen : MonoBehaviour
     void GeneratePos(in List<Vector2> beacon, in int BeaconIndex, in Vector2 FirstRandompos, out Vector2 BeaconPos)
     {
         //If there are more than one beacon. . .
-        if (beacon.Count > 0)
+        if (beacon.Count > 0 && SafetyCount > 0)
         {
 
             // find distance difference from previous and current beacon
-            //need for loop here so that present beacon doesnt go too close to any other beacon before it (current logic only accounts for 2nd most recent beacon)
+            //for loop runs to ensure current beacon isnt made too close to any previous beacons.
 
-            for (int i = 1; i < beacon.Count; i++)
+            foreach (Vector2 ExistingPos in beacons)
             {
-                float dist = (FirstRandompos - beacon[BeaconIndex - i]).magnitude;
+                float Sqrdist = (FirstRandompos - ExistingPos).sqrMagnitude;
 
-                if (dist < SpaceBetweenBeacons)
+                if (Sqrdist < squaredMinGap)
                 {
-
-                    //if beacon is too close, we want the NEW beacon to go to a new spot
-                    Vector2 NewRandompos = new Vector2(Random.Range(0, 70), Random.Range(0, 70));
-                    GeneratePos(in beacons, in BeaconIndex, in NewRandompos, out Vector2 FixedBeaconPos);
-                    BeaconPos = FixedBeaconPos;
-
+                    //isValidPosition = false; // Too close! Break out and generate a new point
+                    break;
                 }
-                BeaconPos = FirstRandompos;
+
+
             }
 
         }
-        // If present beacon is within X distance of previous beacon regenerate present beacon. Repeat this as long as there are now 2 becons too close to each other.
-        else
-        {
-            BeaconPos = FirstRandompos;
-            return;
-        }
+        //there isnt more than 1 beacon so far, allow it to keep its random start.
+        BeaconPos = FirstRandompos;
+        return;
 
-            BeaconPos = FirstRandompos;
-            return;
-        }
     }
+}
 
+//Problem in current script
+//Stack overflow... for loop runs potentially infinite times. Will need safety net
+//Potential issue can be caused by oversized 'beacon boundary' radius. Thus, reducing available spots for spawn
+//Getting data overflow errors, must reduce.
