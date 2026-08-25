@@ -11,12 +11,14 @@ public class PilotStation : MonoBehaviour
     public Collider Collider;
     public  bool inrange;
     public UnityEvent FreezeLook;
+    public AudioSource ConsoleOpenNoise;
    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Collider = GetComponent<Collider>();
+        ConsoleOpenNoise = GetComponent<AudioSource>();
         Popup.SetActive(false);
         inrange = false;
         Menu.SetActive(false);
@@ -43,6 +45,7 @@ public class PilotStation : MonoBehaviour
         {
             FreezeLook.Invoke();
             UnityEngine.Cursor.lockState = CursorLockMode.None;
+            ConsoleOpenNoise.Play();
             Menu.SetActive(true);
            
 

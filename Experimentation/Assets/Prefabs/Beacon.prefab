@@ -132,6 +132,7 @@ MonoBehaviour:
   ImageComp: {fileID: 0}
   scaleupfactor: 1.5
   BeaconHover: {fileID: 8300000, guid: 42f7e435992e1d64e9173ac238a83359, type: 3}
+  Targetselect: {fileID: 8300000, guid: 919c3f8f301cbd34f8f73cd9213b0212, type: 3}
 --- !u!114 &34000803089058035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5097326168192267689}
           m_TargetAssemblyTypeName: HoverInteractionBeacon, Assembly-CSharp
-          m_MethodName: HoverInteractionExit
+          m_MethodName: BeaconSelected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -207,7 +208,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: 42f7e435992e1d64e9173ac238a83359, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.046
-  m_Pitch: 1
+  m_Pitch: 2.36
   Loop: 0
   Mute: 0
   Spatialize: 0

@@ -7,20 +7,30 @@ public class HoverInteractionBeacon : MonoBehaviour
     public Sprite HoveredIcon;
     public Image ImageComp;
     public float scaleupfactor;
+
     private AudioSource AudioSource;
     public AudioClip BeaconHover;
+    public AudioClip Targetselect;
+
+    private GameObject SelectedIcon;
+    public GameObject BeaconGen;
+
+
     //public float defaultscale;
 
     public void Start()
     {
         ImageComp = GetComponent<Image>();
-        AudioSource = GetComponent<AudioSource>();  
+        AudioSource = GetComponent<AudioSource>();
+        
     }
 
     public void HoverInteractionEnter() 
     {
         ImageComp.sprite = HoveredIcon;
         transform.localScale *= scaleupfactor;
+
+        AudioSource.clip = BeaconHover;
         AudioSource.Play();
     }
 
@@ -32,8 +42,17 @@ public class HoverInteractionBeacon : MonoBehaviour
 
     public void BeaconSelected()
     {
-        //Target locked
+
+        //communicate with beacon manager... send target to this location -Target locked-
+        //How can I reach out manager as an independent
+
+        AudioSource.clip = Targetselect;
+        AudioSource.Play();
+
+        //functions
+        BeaconGen.GetComponent<BeaconGenerator>().MoveTarget(transform.position);
 
     }
+
 
 }

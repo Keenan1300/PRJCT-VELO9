@@ -21,7 +21,13 @@ public class BeaconGenerator : MonoBehaviour
     private float lowestXspot;
     private float highestXspot;
     float yspot;
+    float Lyspot;
+
     public GameObject ExitSign;
+
+    public GameObject Target;
+
+    
 
 
     // Keeps track of already spawned positions
@@ -29,6 +35,9 @@ public class BeaconGenerator : MonoBehaviour
 
     private void Start()
     {
+
+    
+
         //to be used in entry/exit beacons
         highestXspot = mapSize.x * -100f;
         lowestXspot = mapSize.x * 100f;
@@ -91,9 +100,10 @@ public class BeaconGenerator : MonoBehaviour
                 Debug.LogWarning($"Could not find a valid spot for beacon {i} after {maxAttemptsPerBeacon} tries. Map might be too crowded.");
             }
 
-            //transition to finding entry and exit
+            //transition to finding entry and exit - After all spots have been generated
             if (spawnedBeaconPositions.Count == BeaconCount)
             {
+            
                 MakeEntryExit();
             }
         }
@@ -117,6 +127,7 @@ public class BeaconGenerator : MonoBehaviour
     {
         GameObject newBeacon = Instantiate(beaconPrefab, BeaconOrigin.position + position, Quaternion.identity, transform);
         newBeacon.name = $"Beacon_{spawnedBeaconPositions.Count}";
+        newBeacon.GetComponent<HoverInteractionBeacon>().BeaconGen = gameObject;
 
         // Store position into the index tracker for future proximity verification loops
         spawnedBeaconPositions.Add(position);
@@ -125,6 +136,11 @@ public class BeaconGenerator : MonoBehaviour
     }
 
 
+    public void MoveTarget(Vector3 MoveLocation) 
+    {
+      Target.transform.position = MoveLocation;
+    
+    }
 
     // Visualizes the map size bounds inside the Scene View
     private void OnDrawGizmos()
@@ -142,6 +158,7 @@ public class BeaconGenerator : MonoBehaviour
             if (spawnedBeaconPositions[i].x < lowestXspot)
             {
                 lowestXspot = spawnedBeaconPositions[i].x;
+                Lyspot = spawnedBeaconPositions[i].y;
             }
 
         }
@@ -157,6 +174,11 @@ public class BeaconGenerator : MonoBehaviour
             }
 
         }
+
+        Vector3 EntryLocation = new Vector3(lowestXspot, Lyspot,0f);
+        Target.transform.position = BeaconOrigin.position + EntryLocation;
+
+
 
         Vector3 ExitBeaconLoc = new Vector3(highestXspot, yspot, 0f);
 
