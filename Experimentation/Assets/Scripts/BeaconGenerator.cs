@@ -23,10 +23,11 @@ public class BeaconGenerator : MonoBehaviour
     float yspot;
     float Lyspot;
 
+    //Beacon Nav Overlay
     public GameObject ExitSign;
-
     public GameObject Target;
-
+    public GameObject ShipIcon;
+    public LineRenderer LineRenderer;
     
 
 
@@ -35,8 +36,9 @@ public class BeaconGenerator : MonoBehaviour
 
     private void Start()
     {
-
-    
+        LineRenderer = GetComponent<LineRenderer>();
+        LineRenderer.enabled = false;
+        LineRenderer.positionCount = 2;
 
         //to be used in entry/exit beacons
         highestXspot = mapSize.x * -100f;
@@ -138,7 +140,11 @@ public class BeaconGenerator : MonoBehaviour
 
     public void MoveTarget(Vector3 MoveLocation) 
     {
-      Target.transform.position = MoveLocation;
+        Target.transform.position = MoveLocation;
+        LineRenderer.SetPosition(0, ShipIcon.transform.position);
+        LineRenderer.SetPosition(1, MoveLocation);
+
+        LineRenderer.enabled = true;
     
     }
 
@@ -175,10 +181,12 @@ public class BeaconGenerator : MonoBehaviour
 
         }
 
+        //Target
         Vector3 EntryLocation = new Vector3(lowestXspot, Lyspot,0f);
         Target.transform.position = BeaconOrigin.position + EntryLocation;
 
-
+        //Spawn ship icon here
+        ShipIcon.transform.position = BeaconOrigin.position + EntryLocation;
 
         Vector3 ExitBeaconLoc = new Vector3(highestXspot, yspot, 0f);
 
