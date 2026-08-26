@@ -1,0 +1,3 @@
+CargoID,CargoName,Description,SPeffects,O2Refill,FuelRefill,MoraleRefill,Value,Cost
+1,O2 Refill,Package of 02 canisters intended for long term space voyage,,20,0,0,50,100
+2,Star Fuel,Fuel canisters made from highly unstable isotopic compounds. Facilitates interstellar travel.,,0,40,0,60,120
