@@ -15,6 +15,8 @@ public class HoverInteractionBeacon : MonoBehaviour
     private GameObject SelectedIcon;
     public GameObject BeaconGen;
 
+    public int BeaconIndex;
+
 
     //public float defaultscale;
 

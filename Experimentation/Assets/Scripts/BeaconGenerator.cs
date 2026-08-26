@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
 
 public class BeaconGenerator : MonoBehaviour
@@ -95,7 +96,7 @@ public class BeaconGenerator : MonoBehaviour
             // If we found a valid spot within the attempt limit, instantiate it
             if (isValidPosition)
             {
-                InstantiateBeacon(proposedPosition);
+                InstantiateBeacon(proposedPosition, i);
             }
             else
             {
@@ -125,11 +126,12 @@ public class BeaconGenerator : MonoBehaviour
         return new Vector3(randomX, randomY);
     }
 
-    private void InstantiateBeacon(Vector3 position)
+    private void InstantiateBeacon(Vector3 position, int BeaconIndex)
     {
         GameObject newBeacon = Instantiate(beaconPrefab, BeaconOrigin.position + position, Quaternion.identity, transform);
         newBeacon.name = $"Beacon_{spawnedBeaconPositions.Count}";
         newBeacon.GetComponent<HoverInteractionBeacon>().BeaconGen = gameObject;
+        newBeacon.GetComponent<HoverInteractionBeacon>().BeaconIndex = BeaconIndex;
 
         // Store position into the index tracker for future proximity verification loops
         spawnedBeaconPositions.Add(position);
