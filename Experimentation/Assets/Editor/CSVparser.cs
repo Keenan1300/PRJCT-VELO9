@@ -1,15 +1,26 @@
-using UnityEngine;
-using UnityEditor;
+using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEditor.Timeline.Actions;
+using UnityEngine;
 
 public class CSVparser
 {
-
+    public GameObject StarshipInventoryTracker;
 
     private static string CargoDataPath = "/Editor/CSVs/CargoDataValues.csv";
 
     [MenuItem("Utilities/GenerateCargo")]
+
+    [MenuItem("Utilities/GenerateCargoInStarship")]
+
+    //Will Generate Random Cargo Item in starship
+    public static void GenerateCargoInStarship()
+    {
+        int Index = Random.Range(0, 1);
+
+    }
+
 
     public static void GenerateCargo()
     {

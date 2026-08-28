@@ -1,8 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CargoData", menuName = "Scriptable Objects/Starship/CargoData")]
-public class CargoData : ScriptableObject
+
+public struct CargoData
 {
     [Header("Cargo Data")]
     public int CargoID;
@@ -16,4 +16,12 @@ public class CargoData : ScriptableObject
     [Header("Store Data")]
     public float Value;
     public float Cost;
+}
+
+// 2. The ScriptableObject simply hosts the struct
+[CreateAssetMenu(fileName = "CargoData", menuName = "Scriptable Objects/Starship/CargoData")]
+public class CargoAsset : ScriptableObject
+{
+    // This wraps the entire struct. It will display beautifully in the Inspector!
+    public CargoData data;
 }
