@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public struct CargoData
+public class CargoData : ScriptableObject
 {
     [Header("Cargo Data")]
     public int CargoID;

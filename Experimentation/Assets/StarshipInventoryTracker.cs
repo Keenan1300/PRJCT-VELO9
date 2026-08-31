@@ -5,11 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.GPUSort;
 
 public class StarshipInventoryTracker : MonoBehaviour
 {
-    
+    public int CargoCapacity = 6;
     public List<CargoData> StarshipInventory;
+    public GameObject CargoVisuals;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,17 +26,129 @@ public class StarshipInventoryTracker : MonoBehaviour
     }
 
 
-    void AddCargoData(CargoData NewCargo)
+    //shouldnt be neccessary
+    public void AddCargoData(CargoData NewCargo)
     {
         StarshipInventory.Add(NewCargo);
 
     }
 
 
-    //Function that should tell if cargo is added, or swapped. (If lmb is down and hovering over x)
-    //Find cargo index(where it should go) - Find data(including gameobject) -  Determine if this is a swap or generation(bool)
-    void ConfigureCargo(int CargoIndex, CargoData CargoData, bool IsSwapping)
+
+    public void GenerateRandomCargo()
     {
+        //Search folder 'cargo' for cargo data
+        CargoData[] AllItems = Resources.LoadAll<CargoData>("Cargo");
+
+        if (AllItems.Length > 0)
+        {
+            int RandomIndex = Random.Range(0, AllItems.Length);
+
+            CargoData randomitem = AllItems[RandomIndex];
+            GenerateCargo(randomitem);
+            Debug.Log("Selected: " + randomitem);
+
+
+        }
+        else
+        {
+            Debug.LogWarning("No items found in the Resources folder.");
+        }
+    }
+
+
+
+    public void GenerateCargo(CargoData item)
+    {
+        //Test to see which cargo spot isnt taken
+        for (int i = 0; i < CargoCapacity; i++)
+        {
+            if (StarshipInventory[i] == null)
+            {
+                StarshipInventory[i] = item;
+
+                //visualize this change
+                CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
+
+                break;
+            }
+            else
+            {
+                Debug.Log("Cant Generate! inventory is full!");
+            }
+        }
+    }
+
+
+    public void ClearAllCargo()
+    {
+
+        for (int i = 0; i < CargoCapacity; i++)
+        {
+           StarshipInventory[i] = null;
+        }
+
+
+        //visualize this change
+        CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
+    }
+
+
+}
+
+
+public class MyCustomMenu
+{
+    StarshipInventoryTracker StarshipTracker;
+
+    // This creates a new top-level menu named "Utilities" with an item named "Perform Task"
+
+
+
+    [MenuItem("Utilities/GenerateRandomCargo")]
+    public static void GenerateRandomCargo()
+    {
+        // 1. Find the target script in the active scene
+        StarshipInventoryTracker InventorySystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+
+        if (InventorySystem != null)
+        {
+            // 2. Execute the function on it
+            InventorySystem.GenerateRandomCargo();
+
+            // 3. Tell Unity that the scene changed so it saves properly
+            EditorUtility.SetDirty(InventorySystem);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(InventorySystem.gameObject.scene);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+        }
+    }
+
+
+
+    [MenuItem("Utilities/ClearAllCargo")]
+    public static void ClearAllCargo()
+    {
+
+        // 1. Find the target script in the active scene
+        StarshipInventoryTracker InventorySystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+
+        if (InventorySystem != null)
+        {
+            // 2. Execute the function on it
+            InventorySystem.ClearAllCargo();
+
+            // 3. Tell Unity that the scene changed so it saves properly
+            EditorUtility.SetDirty(InventorySystem);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(InventorySystem.gameObject.scene);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+        }
+
 
     }
 }
