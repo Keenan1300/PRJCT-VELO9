@@ -120,12 +120,16 @@ namespace StarterAssets
 		public void FreezeLook()
 		{
 			Talking = true;
-		}
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
+        }
 
 		public void UnfreezeLook()
 		{
 			Talking = false;
-		}
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;
+        }
 
 		private void Update()
 		{

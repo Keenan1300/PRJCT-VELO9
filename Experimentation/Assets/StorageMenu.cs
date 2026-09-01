@@ -39,10 +39,15 @@ public class StorageMenu : MonoBehaviour
     public float fuelvalue;
     public float O2Value;
 
+    //SFX
+    public AudioClip SelectSound;
+    public AudioClip EjectSound;
+    private AudioSource SFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SFX = GetComponent<AudioSource>();
         UpdateCargoData();
         CargoDescription.text = null;
         CargoName.text = null;
@@ -135,16 +140,20 @@ public class StorageMenu : MonoBehaviour
         public void CurrentSelectedCargodata(int Index)
         {
             ClearSelection();
+            
             //Refer back to manager
             SelectedCargoItem = StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[Index];
+            StarshipManager.GetComponent<StarshipInventoryTracker>().SelectionIndex = Index;
             CargoDescription.text = SelectedCargoItem.Description;
             CargoName.text = SelectedCargoItem.CargoName;
-            
+            SFX.clip = SelectSound;
+            SFX.Play();
         }
         
         //Clear Pre-existing selection
         public void ClearSelection()
          {
+            StarshipManager.GetComponent<StarshipInventoryTracker>().SelectionIndex = Inventoryslots + 1;
             SelectedCargoItem = null;
             CargoDescription.text = null;
             CargoName.text = null;
@@ -161,6 +170,12 @@ public class StorageMenu : MonoBehaviour
 
         }
     
+    }
+
+    public void EjectSFX() 
+    {
+        SFX.clip = EjectSound;
+        SFX.Play();
     }
 }
 

@@ -9,18 +9,25 @@ using static UnityEngine.Rendering.GPUSort;
 
 public class StarshipInventoryTracker : MonoBehaviour
 {
+    [Header("Cargo Logistics")]
     public int CargoCapacity = 6;
     public List<CargoData> StarshipInventory;
     public GameObject CargoVisuals;
     public GameObject CargoUIVisuals;
 
+    //Tell me whats currently selected
+    public int SelectionIndex;
+
+    [Header("Critical Resource Logistics")]
     public float O2Value;
     public float fuelValue;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      
+        SelectionIndex = CargoCapacity + 1;
     }
 
     // Update is called once per frame
@@ -73,6 +80,7 @@ public class StarshipInventoryTracker : MonoBehaviour
 
                 //visualize this change
                 CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
+                CargoUIVisuals.GetComponent<StorageMenu>().UpdateCargoData();
 
                 break;
             }
@@ -83,6 +91,16 @@ public class StarshipInventoryTracker : MonoBehaviour
         }
     }
 
+
+    public void ClearSelectedCargo()
+    {
+        StarshipInventory[SelectionIndex] = null;
+
+        //visualize this change
+        CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
+        CargoUIVisuals.GetComponent<StorageMenu>().UpdateCargoData();
+        CargoUIVisuals.GetComponent<StorageMenu>().ClearSelection();
+    }
 
     public void ClearAllCargo()
     {
