@@ -25,6 +25,6 @@ public class CargoData : ScriptableObject
 [CreateAssetMenu(fileName = "CargoData", menuName = "Scriptable Objects/Starship/CargoData")]
 public class CargoAsset : ScriptableObject
 {
-    // This wraps the entire struct. It will display beautifully in the Inspector!
+  
     public CargoData data;
 }
