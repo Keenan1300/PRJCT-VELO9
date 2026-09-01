@@ -10,19 +10,12 @@ public class CSVparser
 
     private static string CargoDataPath = "/Editor/CSVs/CargoDataValues.csv";
 
-    [MenuItem("Utilities/GenerateCargo")]
+    //[MenuItem("Utilities/GenerateCargo")]
 
-    [MenuItem("Utilities/GenerateCargoInStarship")]
-
-    //Will Generate Random Cargo Item in starship
-    public static void GenerateCargoInStarship()
-    {
-        int Index = Random.Range(0, 1);
-
-    }
+    [MenuItem("Utilities/RefreshCargoDatainFiles")]
 
 
-    public static void GenerateCargo()
+    public static void RefreshCargoDatainFiles()
     {
     
         string[] alllines = File.ReadAllLines(Application.dataPath + CargoDataPath);
@@ -52,7 +45,8 @@ public class CSVparser
             Cargo.Value = float.Parse(Splitdata[7]);
             Cargo.Cost = float.Parse(Splitdata[8]);
 
-            AssetDatabase.CreateAsset(Cargo, $"Assets/Cargo/{Cargo.CargoName}.asset");
+            //Try not to touch where cargo file is held
+            AssetDatabase.CreateAsset(Cargo, $"Assets/Resources/Cargo/{Cargo.CargoName}.asset");
 
         }
 

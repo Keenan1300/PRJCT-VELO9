@@ -12,6 +12,10 @@ public class StarshipInventoryTracker : MonoBehaviour
     public int CargoCapacity = 6;
     public List<CargoData> StarshipInventory;
     public GameObject CargoVisuals;
+    public GameObject CargoUIVisuals;
+
+    public float O2Value;
+    public float fuelValue;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -108,17 +112,23 @@ public class MyCustomMenu
     [MenuItem("Utilities/GenerateRandomCargo")]
     public static void GenerateRandomCargo()
     {
-        // 1. Find the target script in the active scene
-        StarshipInventoryTracker InventorySystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+        //Find Cargo script
+        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
 
-        if (InventorySystem != null)
+        //Find UI Cargo script
+        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
+
+        if (CargoSystem != null && UICargoSystem != null)
         {
-            // 2. Execute the function on it
-            InventorySystem.GenerateRandomCargo();
+            //Execute the function on it
+            CargoSystem.GenerateRandomCargo();
+            UICargoSystem.UpdateCargoData();
 
-            // 3. Tell Unity that the scene changed so it saves properly
-            EditorUtility.SetDirty(InventorySystem);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(InventorySystem.gameObject.scene);
+            // Tell Unity that the scene changed so it saves properly
+            EditorUtility.SetDirty(CargoSystem);
+            EditorUtility.SetDirty(UICargoSystem);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
         }
         else
         {
@@ -132,17 +142,22 @@ public class MyCustomMenu
     public static void ClearAllCargo()
     {
 
-        // 1. Find the target script in the active scene
-        StarshipInventoryTracker InventorySystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
 
-        if (InventorySystem != null)
+
+        //Find UI Cargo script
+        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
+
+
+        if (CargoSystem != null)
         {
-            // 2. Execute the function on it
-            InventorySystem.ClearAllCargo();
+            CargoSystem.ClearAllCargo();
+            UICargoSystem.ClearAllCargo();
 
-            // 3. Tell Unity that the scene changed so it saves properly
-            EditorUtility.SetDirty(InventorySystem);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(InventorySystem.gameObject.scene);
+            EditorUtility.SetDirty(CargoSystem);
+            EditorUtility.SetDirty(UICargoSystem);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
         }
         else
         {
@@ -151,4 +166,5 @@ public class MyCustomMenu
 
 
     }
+
 }

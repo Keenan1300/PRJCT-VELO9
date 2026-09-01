@@ -46,8 +46,11 @@ public class CargoManager : MonoBehaviour
                 String CargoName = CargoData.CargoName;
 
                 //Establish new mesh and materials
-                Mesh Cargomesh = Resources.Load<Mesh>("Meshes/" + (CargoName + "_mesh"));
-                Material CargoMaterial = Resources.Load<Material>("Materials/" + (CargoName + "_material"));
+                Mesh Cargomesh = CargoData.Mesh;
+                Material CargoMaterial = CargoData.Material;
+
+                //Mesh Cargomesh = Resources.Load<Mesh>("Meshes/" + (CargoName + "_mesh"));
+                //Material CargoMaterial = Resources.Load<Material>("Materials/" + (CargoName + "_material"));
 
                 //Swap out mesh and materials
                 CargoBoxes[i].GetComponent<MeshFilter>().mesh = Cargomesh;

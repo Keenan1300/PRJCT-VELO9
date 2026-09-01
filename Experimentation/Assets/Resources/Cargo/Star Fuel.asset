@@ -16,9 +16,12 @@ MonoBehaviour:
   CargoName: Star Fuel
   Description: Fuel canisters made from highly unstable isotopic compounds. Facilitates
     interstellar travel.
-  SPeffects: NA
+  SPeffects: Consumable
   O2Refill: 0
   FuelRefill: 40
   MoraleRefill: 0
+  Mesh: {fileID: -5495902117074765545, guid: 4864b9ef1457c7a41bda7de7346b37f0, type: 3}
+  Material: {fileID: 2100000, guid: bc651dd7a1374894a96ff91df0a197b1, type: 2}
+  Icon: {fileID: 21300000, guid: 472a57c5a99c23a48b14dab72aed7fb2, type: 3}
   Value: 60
   Cost: 120

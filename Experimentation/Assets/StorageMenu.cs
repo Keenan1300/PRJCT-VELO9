@@ -1,7 +1,11 @@
+using JetBrains.Annotations;
 using StarterAssets;
+using System;
+using System.Collections.Generic;
+using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class StorageMenu : MonoBehaviour
@@ -13,15 +17,35 @@ public class StorageMenu : MonoBehaviour
     public GameObject Player;
     public CargoData CargoData;
 
+    //UI symbols
+    public List<GameObject> StorageIcons;
+
+    public GameObject StarshipManager;
+
+    public int Inventoryslots = 6;
+
     //UI
     public TextMeshProUGUI CargoDescription;
     public TextMeshProUGUI CargoName;
+    public TextMeshProUGUI FuelGauge;
+    public TextMeshProUGUI O2Guage;
+
+    public Sprite DefaultCargoSprite;
+
+    //Needed for lock on selection
+    public CargoData SelectedCargoItem;
+
+    //Displayed resources
+    public float fuelvalue;
+    public float O2Value;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        UpdateCargoData();
+        CargoDescription.text = null;
+        CargoName.text = null;
     }
 
     // Update is called once per frame
@@ -60,4 +84,83 @@ public class StorageMenu : MonoBehaviour
 
     }
 
+
+    public void UpdateCargoData()
+    {
+        //Ensure resource display remains accurate on screen
+        StarshipInventoryTracker StarshipManagerScript = StarshipManager.GetComponent<StarshipInventoryTracker>();
+        fuelvalue = StarshipManagerScript.fuelValue;
+        O2Value = StarshipManagerScript.O2Value;
+
+        //connect to text
+        FuelGauge.text = fuelvalue.ToString();
+        O2Guage.text = O2Value.ToString();
+
+
+
+
+        for (int i = 0; i < Inventoryslots; i++)
+        {
+            if (StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[i] == null)
+            {
+                StorageIcons[i].GetComponent<Image>().sprite = DefaultCargoSprite;
+                StorageIcons[i].name = "CargoBoxIndex" + i;
+            }
+            else
+            {
+                CargoData = StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[i];
+               
+
+                //Index searching name
+                String CargoName = CargoData.CargoName;
+
+                //Establish new Icon and Descriptions
+                Sprite CargoIcon = CargoData.Icon;
+
+                //Sprite CargoIcon = Resources.Load<Sprite>("Icons/" + (CargoName + "_Icon")); <--- avoid searching through folders in runtime
+
+                StorageIcons[i].GetComponent<Image>().sprite = CargoIcon;
+
+                if (CargoIcon == null)
+                {
+                    Debug.Log("Couldnt find Icon!");
+                }
+
+
+                StorageIcons[i].name = CargoName;
+
+            }
+        }
+    }
+        public void CurrentSelectedCargodata(int Index)
+        {
+            ClearSelection();
+            //Refer back to manager
+            SelectedCargoItem = StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[Index];
+            CargoDescription.text = SelectedCargoItem.Description;
+            CargoName.text = SelectedCargoItem.CargoName;
+            
+        }
+        
+        //Clear Pre-existing selection
+        public void ClearSelection()
+         {
+            SelectedCargoItem = null;
+            CargoDescription.text = null;
+            CargoName.text = null;
+    }
+
+    public void ClearAllCargo() 
+    {
+        for (int i = 0; i < Inventoryslots; i++)
+        {
+            StorageIcons[i].GetComponent<Image>().sprite = DefaultCargoSprite;
+            CargoDescription.text = null;
+            CargoName.text = null;
+            StorageIcons[i].name = "CargoBoxIndex" + i;
+
+        }
+    
+    }
 }
+
