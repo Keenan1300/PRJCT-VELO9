@@ -12678,6 +12678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431910356}
   - component: {fileID: 1431910357}
+  - component: {fileID: 1431910358}
   m_Layer: 0
   m_Name: StarshipManager
   m_TagString: Untagged
@@ -12722,9 +12723,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 245dc19365f70d1428921b8716bc966b, type: 2}
   CargoVisuals: {fileID: 88725500}
   CargoUIVisuals: {fileID: 333906154}
+  SelectionIndex: 0
   O2Value: 100
   fuelValue: 100
-  SelectionIndex: 0
+--- !u!114 &1431910358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431910355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe891bb239f1af4fac7865dd3b1f881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrewManager: {fileID: 0}
+  TotalCrewMates: 1
+  MaxRange: 10
+  SelectedBeacon: 0
+  BeaconGenerator: {fileID: 1694983438}
+  ShipIcon: {fileID: 1713308121}
+  TargettingIcon: {fileID: 5253859172992119388}
+  spawnedBeaconPositions: []
+  SelectedBeaconLoc: {x: 0, y: 0, z: 0}
+  MinimalJumpCost: 1
+  MaximalJumpCost: 20
+  JumpCostMultiplier: 1
+  MinimalO2Cost: 1
+  MaximalO2Cost: 20
+  O2CostMultiplier: 1
 --- !u!1 &1437006955
 GameObject:
   m_ObjectHideFlags: 0
@@ -15433,6 +15461,7 @@ MonoBehaviour:
   BeaconCount: 0
   minimumGap: 50
   maxAttemptsPerBeacon: 100
+  StarshipNav: {fileID: 1431910358}
   ExitSign: {fileID: 4264208892990048865, guid: 52fb1b72e61615e4da98380ce6210ac4, type: 3}
   Target: {fileID: 5253859172992119388}
   ShipIcon: {fileID: 1713308121}

@@ -14,6 +14,7 @@ public class HoverInteractionBeacon : MonoBehaviour
 
     private GameObject SelectedIcon;
     public GameObject BeaconGen;
+    public StarshipNavManager StarshipNavManager;
 
     public int BeaconIndex;
 
@@ -46,8 +47,10 @@ public class HoverInteractionBeacon : MonoBehaviour
     {
 
         //communicate with beacon manager... send target to this location -Target locked-
-        //How can I reach out manager as an independent
+        StarshipNavManager.SelectedBeacon = BeaconIndex;
+        StarshipNavManager.PerformJumpCalculations(BeaconIndex);
 
+        //sfx
         AudioSource.clip = Targetselect;
         AudioSource.Play();
 
@@ -55,6 +58,7 @@ public class HoverInteractionBeacon : MonoBehaviour
         BeaconGen.GetComponent<BeaconGenerator>().MoveTarget(transform.position);
 
     }
+
 
 
 }

@@ -133,6 +133,9 @@ MonoBehaviour:
   scaleupfactor: 1.5
   BeaconHover: {fileID: 8300000, guid: 42f7e435992e1d64e9173ac238a83359, type: 3}
   Targetselect: {fileID: 8300000, guid: 919c3f8f301cbd34f8f73cd9213b0212, type: 3}
+  BeaconGen: {fileID: 0}
+  StarshipNavManager: {fileID: 0}
+  BeaconIndex: 0
 --- !u!114 &34000803089058035
 MonoBehaviour:
   m_ObjectHideFlags: 0

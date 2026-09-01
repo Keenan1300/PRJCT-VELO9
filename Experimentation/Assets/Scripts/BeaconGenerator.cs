@@ -17,6 +17,7 @@ public class BeaconGenerator : MonoBehaviour
     [SerializeField] public float minimumGap = 5f;
     [SerializeField] private int maxAttemptsPerBeacon = 100; // Protects against infinite loops
 
+    public StarshipNavManager StarshipNav;
 
     //Entry and Exit logic
     private float lowestXspot;
@@ -131,6 +132,9 @@ public class BeaconGenerator : MonoBehaviour
         GameObject newBeacon = Instantiate(beaconPrefab, BeaconOrigin.position + position, Quaternion.identity, transform);
         newBeacon.name = $"Beacon_{spawnedBeaconPositions.Count}";
         newBeacon.GetComponent<HoverInteractionBeacon>().BeaconGen = gameObject;
+
+        //Inherit manager data so it knows what beacon is selected and isnt.
+        newBeacon.GetComponent<HoverInteractionBeacon>().StarshipNavManager = StarshipNav;
         newBeacon.GetComponent<HoverInteractionBeacon>().BeaconIndex = BeaconIndex;
 
         // Store position into the index tracker for future proximity verification loops
