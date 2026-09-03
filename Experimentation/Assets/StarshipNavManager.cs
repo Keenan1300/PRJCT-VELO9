@@ -24,6 +24,7 @@ public class StarshipNavManager : MonoBehaviour
     public GameObject BeaconGenerator;
     public GameObject ShipIcon;
     public GameObject TargettingIcon;
+    public GameObject NavMenuUI;
 
     // Keeps track of already spawned positions
     public List<Vector3> spawnedBeaconPositions = new List<Vector3>();
@@ -90,7 +91,13 @@ public class StarshipNavManager : MonoBehaviour
         float TravelO2Cost = (O2ConsumptionDistance/2) * TotalCrewMates * O2CostMultiplier;
         Mathf.Clamp(TravelO2Cost, MinimalO2Cost, MaximalO2Cost);
 
+        //For nice round... dont have to deal with annoying long numbers
+        TravelFuelCost = Mathf.Ceil(TravelFuelCost * 10f) / 10f;
+        TravelO2Cost = Mathf.Ceil(TravelO2Cost * 10f) / 10f;
+
+
         Debug.Log("This trip would cost" + TravelFuelCost + " fuel units.. and " + TravelO2Cost + " O2 units");
+        NavMenuUI.GetComponent<NavMenu>().ShowJumpCosts(TravelO2Cost, TravelFuelCost);
     }
 
     //Consider 'inhabited beacon' over transform.position...

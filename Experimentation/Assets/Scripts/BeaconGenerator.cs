@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
@@ -34,6 +35,8 @@ public class BeaconGenerator : MonoBehaviour
     public GameObject Target;
     public GameObject ShipIcon;
     public LineRenderer LineRenderer;
+
+  
     
 
 
@@ -42,6 +45,8 @@ public class BeaconGenerator : MonoBehaviour
 
     private void Start()
     {
+       
+
         LineRenderer = GetComponent<LineRenderer>();
         LineRenderer.enabled = false;
         LineRenderer.positionCount = 2;
@@ -150,6 +155,7 @@ public class BeaconGenerator : MonoBehaviour
 
     public void MoveTarget(Vector3 MoveLocation) 
     {
+
         Target.transform.position = MoveLocation;
         LineRenderer.SetPosition(0, ShipIcon.transform.position);
         LineRenderer.SetPosition(1, MoveLocation);

@@ -15,10 +15,16 @@ public class NavMenu : MonoBehaviour
     public GameObject Menu;
     public GameObject Player;
 
-    //ShowResources
+    //Show Current Resources
     public TextMeshProUGUI FuelGauge;
     public TextMeshProUGUI O2Guage;
 
+    //CostBar - For preview jump costs before theyre made
+    public GameObject CostBar;
+    public TextMeshProUGUI FuelCost;
+    public TextMeshProUGUI O2Cost;
+
+    //Updates current resource data
     public GameObject StarshipManager;
     public float fuelvalue;
     public float O2Value;
@@ -26,14 +32,24 @@ public class NavMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        CostBar.SetActive(false);
         UpdateCargoData();
     }
 
-    // Update is called once per frame
-    void Update()
+    //for UX signifier only
+    public void ShowJumpCosts(float O2costnum, float fuelcostnum)
     {
-        
+        //show cost to player
+        CostBar.SetActive(true);
+        O2Cost.text = "-" + O2costnum.ToString();
+        FuelCost.text = "-" + fuelcostnum.ToString();
     }
+    public void HideJumpCosts()
+    {
+        //show cost to player
+        CostBar.SetActive(false);
+    }
+
 
     public void UpdateCargoData()
     {

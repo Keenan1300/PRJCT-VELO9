@@ -25,6 +25,7 @@ public class StorageMenu : MonoBehaviour
     public int Inventoryslots = 6;
 
     //UI
+    public TextMeshProUGUI CargoEffects;
     public TextMeshProUGUI CargoDescription;
     public TextMeshProUGUI CargoName;
     public TextMeshProUGUI FuelGauge;
@@ -51,6 +52,7 @@ public class StorageMenu : MonoBehaviour
         UpdateCargoData();
         CargoDescription.text = null;
         CargoName.text = null;
+        CargoEffects.text = null;
     }
 
     // Update is called once per frame
@@ -81,9 +83,13 @@ public class StorageMenu : MonoBehaviour
         {
             CargoName.text = "No Object data";
             CargoDescription.text = "No Object description";
+            CargoEffects.text = "No Effects";
             return;
         }
 
+
+
+        //ExtraDetails
         CargoName.text = CargoData.CargoName;
         CargoName.text = CargoData.Description;
 
@@ -137,6 +143,7 @@ public class StorageMenu : MonoBehaviour
             }
         }
     }
+        //USE THIS FOR TEXT CHANGES
         public void CurrentSelectedCargodata(int Index)
         {
             ClearSelection();
@@ -144,15 +151,38 @@ public class StorageMenu : MonoBehaviour
             //Refer back to manager
             SelectedCargoItem = StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[Index];
             StarshipManager.GetComponent<StarshipInventoryTracker>().SelectionIndex = Index;
-            CargoDescription.text = SelectedCargoItem.Description;
-            CargoName.text = SelectedCargoItem.CargoName;
-            SFX.clip = SelectSound;
-            SFX.Play();
+
+
+
+            //Check what effects to include
+            if (SelectedCargoItem.O2Refill > 0)
+            {
+                CargoEffects.text = "Refills 02 +" + SelectedCargoItem.O2Refill.ToString();
+            }
+
+            //Check what effects to include
+            if (SelectedCargoItem.FuelRefill > 0)
+            {
+                CargoEffects.text = "Refills Fuel +" + SelectedCargoItem.FuelRefill.ToString();
+            }
+
+            //Check what effects to include
+            if (SelectedCargoItem.O2Refill > 0 && SelectedCargoItem.FuelRefill > 0)
+            {
+                CargoEffects.text = $"Refills Fuel +{SelectedCargoItem.FuelRefill} And 02 +{SelectedCargoItem.O2Refill}";
+            }
+
+            //Other Data
+                CargoDescription.text = SelectedCargoItem.Description;
+                CargoName.text = SelectedCargoItem.CargoName;
+                SFX.clip = SelectSound;
+                SFX.Play();
+
         }
         
-        //Clear Pre-existing selection
-        public void ClearSelection()
-         {
+            //Clear Pre-existing selection
+            public void ClearSelection()
+             {
             StarshipManager.GetComponent<StarshipInventoryTracker>().SelectionIndex = Inventoryslots + 1;
             SelectedCargoItem = null;
             CargoDescription.text = null;
