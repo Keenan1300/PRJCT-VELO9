@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.Rendering.GPUSort;
 
 public class StarshipInventoryTracker : MonoBehaviour
@@ -18,6 +19,9 @@ public class StarshipInventoryTracker : MonoBehaviour
     //Tell me whats currently selected
     public int SelectionIndex;
 
+    public float StartingO2Value;
+    public float StartingFuel;
+
     [Header("Critical Resource Logistics")]
     public float O2Value;
     public float fuelValue;
@@ -27,6 +31,11 @@ public class StarshipInventoryTracker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Debug purposes
+        O2Value = StartingO2Value;
+        fuelValue = StartingFuel;
+
+
         SelectionIndex = CargoCapacity + 1;
     }
 
@@ -114,6 +123,21 @@ public class StarshipInventoryTracker : MonoBehaviour
         //visualize this change
         CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
     }
+
+    //For adding or removing Resources from events... or Cargo, crew, etc
+    public void AdjustO2(float O2Change)
+    {
+        O2Value += O2Change;
+        Mathf.Clamp(fuelValue, 0, 100);
+    }
+
+    public void AdjustFuel(float FuelChange)
+    {
+        fuelValue += FuelChange;
+        Mathf.Clamp(fuelValue, 0, 100);
+    }
+
+
 
 
 }

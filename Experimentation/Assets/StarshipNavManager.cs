@@ -29,6 +29,8 @@ public class StarshipNavManager : MonoBehaviour
     public List<Vector3> spawnedBeaconPositions = new List<Vector3>();
     
     public Vector3 SelectedBeaconLoc;
+    public Vector3 InhabitedBeaconLoc;
+    public Transform StarOrigin;
 
     //Jump costs
     public float MinimalJumpCost;
@@ -41,6 +43,8 @@ public class StarshipNavManager : MonoBehaviour
     public float MinimalO2Cost;
     public float MaximalO2Cost;
     public float O2CostMultiplier;
+
+    public int CurrentShipIndex;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -63,29 +67,28 @@ public class StarshipNavManager : MonoBehaviour
     public void RefreshData()
     {
         spawnedBeaconPositions = BeaconGenerator.GetComponent<BeaconGenerator>().spawnedBeaconPositions;
-
+        CurrentShipIndex = BeaconGenerator.GetComponent<BeaconGenerator>().EntryBeaconIndex;
+        InhabitedBeaconLoc = spawnedBeaconPositions[CurrentShipIndex];
     }
 
     public void PerformJumpCalculations(int index)
     {
         //Gather Vectors
         SelectedBeaconLoc = spawnedBeaconPositions[index];
+        InhabitedBeaconLoc = spawnedBeaconPositions[CurrentShipIndex];
 
         //fuel
-        Vector3 Direction =  ShipIcon.transform.position - SelectedBeaconLoc;
-        //float TravelDistance = Direction.magnitude;
-        float TravelDistance = Vector3.Distance(SelectedBeaconLoc.normalized, ShipIcon.transform.position.normalized);
-        //Here is where jump calc is had
-        Mathf.Clamp(TravelDistance,MinimalJumpCost, MaximalJumpCost);
-       
-        float TravelFuelCost = TravelDistance * JumpCostMultiplier;
+        float TravelDistance = Vector3.Distance(InhabitedBeaconLoc, SelectedBeaconLoc);
 
+        //Here is where jump calc is had
+        float TravelFuelCost = TravelDistance * JumpCostMultiplier;
+        Mathf.Clamp(TravelFuelCost, MinimalJumpCost, MaximalJumpCost);
 
         //life support
-        //float O2ConsumptionDistance = Vector3.Distance(ShipIcon.transform.position, SelectedBeaconLoc);
-        float O2ConsumptionDistance = Direction.magnitude;
-        Mathf.Clamp(O2ConsumptionDistance,MinimalO2Cost, MaximalO2Cost);
-        float TravelO2Cost = O2ConsumptionDistance * TotalCrewMates;
+        float O2ConsumptionDistance = Vector3.Distance(ShipIcon.transform.position, SelectedBeaconLoc);
+       
+        float TravelO2Cost = (O2ConsumptionDistance/2) * TotalCrewMates * O2CostMultiplier;
+        Mathf.Clamp(TravelO2Cost, MinimalO2Cost, MaximalO2Cost);
 
         Debug.Log("This trip would cost" + TravelFuelCost + " fuel units.. and " + TravelO2Cost + " O2 units");
     }

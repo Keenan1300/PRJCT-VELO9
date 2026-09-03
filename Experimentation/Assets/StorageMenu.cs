@@ -36,8 +36,8 @@ public class StorageMenu : MonoBehaviour
     public CargoData SelectedCargoItem;
 
     //Displayed resources
-    public float fuelvalue;
-    public float O2Value;
+    private float fuelvalue;
+    private float O2Value;
 
     //SFX
     public AudioClip SelectSound;

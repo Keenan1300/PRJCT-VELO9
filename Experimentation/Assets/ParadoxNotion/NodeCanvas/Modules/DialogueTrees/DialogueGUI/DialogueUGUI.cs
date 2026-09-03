@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.EventSystems;
+using UnityEditor;
 
 namespace NodeCanvas.DialogueTrees.UI.Examples
 {
-
     public class DialogueUGUI : MonoBehaviour, IPointerClickHandler
     {
+       
 
         public Locales language;
 
@@ -26,6 +27,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
         [Header("Input Options")]
         public bool skipOnInput;
         public bool waitForInput;
+
 
         //Group...
         [Header("Subtitles")]
@@ -61,6 +63,8 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
         void OnDisable() { UnSubscribe(); }
 
         void Subscribe() {
+
+            
             DialogueTree.OnDialogueStarted += OnDialogueStarted;
             DialogueTree.OnDialoguePaused += OnDialoguePaused;
             DialogueTree.OnDialogueFinished += OnDialogueFinished;
@@ -95,6 +99,10 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
             if (BackgroundUI != null)
             {
                 BackgroundUI.SetActive(true);
+                
+
+               
+
             }
 
             //nothing special...

@@ -25,6 +25,10 @@ public class BeaconGenerator : MonoBehaviour
     float yspot;
     float Lyspot;
 
+    //Entry Exit
+    public int EntryBeaconIndex;
+    public int ExitBeaconIndex;
+
     //Beacon Nav Overlay
     public GameObject ExitSign;
     public GameObject Target;
@@ -171,10 +175,13 @@ public class BeaconGenerator : MonoBehaviour
             {
                 lowestXspot = spawnedBeaconPositions[i].x;
                 Lyspot = spawnedBeaconPositions[i].y;
+                EntryBeaconIndex = i;
             }
 
         }
 
+        //Assign to ship nav!
+        StarshipNav.CurrentShipIndex = EntryBeaconIndex;
 
         //find exit beacon -coordinate with highest x value-
         for (int i = 0; i < BeaconCount; i++)
@@ -183,20 +190,20 @@ public class BeaconGenerator : MonoBehaviour
             {
                 highestXspot = spawnedBeaconPositions[i].x;
                 yspot = spawnedBeaconPositions[i].y;
+                ExitBeaconIndex = i;
             }
 
         }
 
         //Target
-        Vector3 EntryLocation = new Vector3(lowestXspot, Lyspot,0f);
-        Target.transform.position = BeaconOrigin.position + EntryLocation;
+        Target.transform.position = BeaconOrigin.position + spawnedBeaconPositions[EntryBeaconIndex];
 
         //Spawn ship icon here
-        ShipIcon.transform.position = BeaconOrigin.position + EntryLocation;
+        ShipIcon.transform.position = BeaconOrigin.position + spawnedBeaconPositions[EntryBeaconIndex];
 
-        Vector3 ExitBeaconLoc = new Vector3(highestXspot, yspot, 0f);
+      
 
-        GameObject ExitBeacon = Instantiate(ExitSign, BeaconOrigin.position + ExitBeaconLoc, Quaternion.identity, transform);
+        GameObject ExitBeacon = Instantiate(ExitSign, BeaconOrigin.position + spawnedBeaconPositions[ExitBeaconIndex], Quaternion.identity, transform);
         ExitBeacon.name = $"ExitBeacon";
 
     
