@@ -47,6 +47,9 @@ public class CSVparser
             Cargo.Value = float.Parse(Splitdata[7]);
             Cargo.Cost = float.Parse(Splitdata[8]);
 
+            //Consider automating mesh, materials, and Icon via a name convention.. use Resource.Find
+
+
             //Try not to touch where cargo file is held
             AssetDatabase.CreateAsset(Cargo, $"Assets/Resources/Cargo/{Cargo.CargoName}.asset");
 
@@ -56,9 +59,7 @@ public class CSVparser
     }
 
 
-    [MenuItem("Utilities/RefreshCargoDatainFiles")]
-
-
+    [MenuItem("Utilities/RefreshCrewDatainFiles")]
     public static void RefreshCrewDatainFiles()
     {
 

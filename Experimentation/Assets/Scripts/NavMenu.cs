@@ -26,8 +26,8 @@ public class NavMenu : MonoBehaviour
 
     //Updates current resource data
     public GameObject StarshipManager;
-    public float fuelvalue;
-    public float O2Value;
+    public float Displayfuelvalue;
+    public float DisplayO2Value;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,11 +36,30 @@ public class NavMenu : MonoBehaviour
         UpdateCargoData();
     }
 
+    //needed for consistency actions
+    private void OnEnable()
+    {
+        UpdateCargoData();
+    }
+
     //for UX signifier only
     public void ShowJumpCosts(float O2costnum, float fuelcostnum)
     {
-        //show cost to player
-        CostBar.SetActive(true);
+        //flare
+        if (O2costnum > 0 && fuelcostnum > 0)
+        {
+            O2Cost.color = Color.red;
+            FuelCost.color = Color.red;
+        }
+        else
+        {
+            O2Cost.color = Color.grey;
+            FuelCost.color = Color.grey;
+        }
+
+
+            //show cost to player
+            CostBar.SetActive(true);
         O2Cost.text = "-" + O2costnum.ToString();
         FuelCost.text = "-" + fuelcostnum.ToString();
     }
@@ -56,14 +75,19 @@ public class NavMenu : MonoBehaviour
 
         //Ensure resource display remains accurate on screen
         StarshipInventoryTracker StarshipManagerScript = StarshipManager.GetComponent<StarshipInventoryTracker>();
-        fuelvalue = StarshipManagerScript.fuelValue;
-        O2Value = StarshipManagerScript.O2Value;
+        Displayfuelvalue = StarshipManagerScript.fuelValue;
+        DisplayO2Value = StarshipManagerScript.O2Value;
+
+
+        //For nice round... dont have to deal with annoying long numbers
+        Displayfuelvalue = Mathf.Ceil(Displayfuelvalue * 10f) / 10f;
+        DisplayO2Value = Mathf.Ceil(DisplayO2Value * 10f) / 10f;
 
         //connect to text
-        FuelGauge.text = fuelvalue.ToString();
-        O2Guage.text = O2Value.ToString();
+        FuelGauge.text = Displayfuelvalue.ToString();
+        O2Guage.text = DisplayO2Value.ToString();
 
-
+        ShowJumpCosts(0,0);
 
     }
 

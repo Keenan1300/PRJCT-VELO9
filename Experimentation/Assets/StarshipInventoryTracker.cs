@@ -16,6 +16,9 @@ public class StarshipInventoryTracker : MonoBehaviour
     public GameObject CargoVisuals;
     public GameObject CargoUIVisuals;
 
+    //manages what can and cant be done
+    public bool ItemSelected;
+
     //Tell me whats currently selected
     public int SelectionIndex;
 
@@ -76,6 +79,29 @@ public class StarshipInventoryTracker : MonoBehaviour
         }
     }
 
+    //what happens when a cargo unit it 'used'
+    public void ConsumeCargo()
+    {
+        //Make sure player cant 'use' non-existent cargo
+        if (ItemSelected)
+        {
+            CargoData Cargo = CargoUIVisuals.GetComponent<StorageMenu>().SelectedCargoItem;
+
+            //Check what this cargo 'does'
+
+            fuelValue += Cargo.FuelRefill;
+            O2Value += Cargo.O2Refill;
+
+            CargoUIVisuals.GetComponent<StorageMenu>().UpdateCargoData();
+        }
+        else 
+        {
+            Debug.Log("No item selected!");
+        }
+
+        //Add section that clears effect text!
+
+    }
 
 
     public void GenerateCargo(CargoData item)
@@ -103,8 +129,8 @@ public class StarshipInventoryTracker : MonoBehaviour
 
     public void ClearSelectedCargo()
     {
-        StarshipInventory[SelectionIndex] = null;
-
+        // Cant do this -> StarshipInventory[SelectionIndex] = null;
+        ItemSelected = false;
         //visualize this change
         CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
         CargoUIVisuals.GetComponent<StorageMenu>().UpdateCargoData();
@@ -142,6 +168,8 @@ public class StarshipInventoryTracker : MonoBehaviour
 
 }
 
+
+//DEBUG/TOOLS OPTIONS BELOW
 
 public class MyCustomMenu
 {

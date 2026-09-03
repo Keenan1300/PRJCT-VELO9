@@ -21,6 +21,7 @@ public class StarshipNavManager : MonoBehaviour
 
     //nav holders
     public int SelectedBeacon;
+
     public GameObject BeaconGenerator;
     public GameObject ShipIcon;
     public GameObject TargettingIcon;
@@ -47,10 +48,18 @@ public class StarshipNavManager : MonoBehaviour
 
     public int CurrentShipIndex;
 
+    public float TravelO2Cost;
+    public float TravelFuelCost;
+
+    //Where to consume resources from
+    private StarshipInventoryTracker StarshipInventory;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
+       // InhabitedBeaconLoc = SelectedBeaconLoc;
         RefreshData();
     }
 
@@ -69,7 +78,12 @@ public class StarshipNavManager : MonoBehaviour
     {
         spawnedBeaconPositions = BeaconGenerator.GetComponent<BeaconGenerator>().spawnedBeaconPositions;
         CurrentShipIndex = BeaconGenerator.GetComponent<BeaconGenerator>().EntryBeaconIndex;
-        InhabitedBeaconLoc = spawnedBeaconPositions[CurrentShipIndex];
+     
+        //Fix here for list count
+        if (CurrentShipIndex > -1 && CurrentShipIndex < spawnedBeaconPositions.Count + 1)
+        {
+            InhabitedBeaconLoc = spawnedBeaconPositions[CurrentShipIndex];
+        }
     }
 
     public void PerformJumpCalculations(int index)
@@ -82,13 +96,13 @@ public class StarshipNavManager : MonoBehaviour
         float TravelDistance = Vector3.Distance(InhabitedBeaconLoc, SelectedBeaconLoc);
 
         //Here is where jump calc is had
-        float TravelFuelCost = TravelDistance * JumpCostMultiplier;
+        TravelFuelCost = TravelDistance * JumpCostMultiplier;
         Mathf.Clamp(TravelFuelCost, MinimalJumpCost, MaximalJumpCost);
 
         //life support
         float O2ConsumptionDistance = Vector3.Distance(ShipIcon.transform.position, SelectedBeaconLoc);
        
-        float TravelO2Cost = (O2ConsumptionDistance/2) * TotalCrewMates * O2CostMultiplier;
+        TravelO2Cost = (O2ConsumptionDistance/2) * TotalCrewMates * O2CostMultiplier;
         Mathf.Clamp(TravelO2Cost, MinimalO2Cost, MaximalO2Cost);
 
         //For nice round... dont have to deal with annoying long numbers
@@ -101,4 +115,42 @@ public class StarshipNavManager : MonoBehaviour
     }
 
     //Consider 'inhabited beacon' over transform.position...
+
+    public void PerformJump()
+    {
+        StarshipInventoryTracker FlightResources = gameObject.GetComponent<StarshipInventoryTracker>();
+
+        //If the ship isnt targeting its own spot
+        if (SelectedBeaconLoc != InhabitedBeaconLoc)
+        {
+            //If the ship has enough resources to make the jump...
+            if (FlightResources.O2Value > TravelO2Cost && FlightResources.fuelValue > TravelFuelCost)
+            {
+                //Crucial for reseting jump calc
+                //index
+                SelectedBeacon = CurrentShipIndex;
+
+                //Location Data
+                InhabitedBeaconLoc = SelectedBeaconLoc;
+
+
+
+                FlightResources.O2Value -= TravelO2Cost;
+                FlightResources.fuelValue -= TravelFuelCost;
+
+                ShipIcon.transform.position = TargettingIcon.transform.position;
+               
+
+                //Reset Costs
+                TravelO2Cost = 0;
+                TravelFuelCost = 0;
+
+                NavMenuUI.GetComponent<NavMenu>().UpdateCargoData();
+            }
+            else
+            {
+                Debug.Log("Not Enough Resources to complete jump...");
+            }
+        }
+    }
 }

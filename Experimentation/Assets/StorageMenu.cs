@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class StorageMenu : MonoBehaviour
 {
 
+
     public Button EscapeButton;
     public Button Eject;
     public GameObject Menu;
@@ -46,13 +47,25 @@ public class StorageMenu : MonoBehaviour
     private AudioSource SFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
         SFX = GetComponent<AudioSource>();
         UpdateCargoData();
-        CargoDescription.text = null;
-        CargoName.text = null;
-        CargoEffects.text = null;
+
+        if (CargoDescription != null) 
+        { 
+            CargoDescription.text = null;
+        }
+
+        if (CargoName != null)
+        {
+            CargoName.text = null;
+        }
+
+        if (CargoEffects != null)
+        {
+            CargoEffects.text = null;
+        }
     }
 
     // Update is called once per frame
@@ -152,6 +165,7 @@ public class StorageMenu : MonoBehaviour
             SelectedCargoItem = StarshipManager.GetComponent<StarshipInventoryTracker>().StarshipInventory[Index];
             StarshipManager.GetComponent<StarshipInventoryTracker>().SelectionIndex = Index;
 
+            StarshipManager.GetComponent<StarshipInventoryTracker>().ItemSelected = true;
 
 
             //Check what effects to include
