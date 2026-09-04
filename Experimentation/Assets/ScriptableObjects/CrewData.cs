@@ -9,7 +9,7 @@ public class CrewData : ScriptableObject
     public int CrewID;
     public string Description;
     public string CrewName;
-    public string Race;
+    public string Species;
     public string Talent;
     public bool EngineSkill;
     public bool LSSkill;

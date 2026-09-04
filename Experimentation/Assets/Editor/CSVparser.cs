@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using static UnityEngine.Rendering.GPUSort;
 
 public class CSVparser
 {
@@ -100,8 +103,24 @@ public class CSVparser
             Crew.Value = float.Parse(Splitdata[11]);
             Crew.Cost = float.Parse(Splitdata[12]);
 
+
+            //For 3D layer... only using Resource finder for parsing..
+            //Note that mesh and gameobjects should be handled differently for crew... consider random generation over strict finder based on names.
+
+            //Find all icons from resource.. the number of these is the max in range
+            //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
+            int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
+
+            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}{RandomGen}_Icon");
+            Crew.CrewMaterial = Resources.Load<Material>($"Crew/Species/{Crew.Species}/Materials/{Crew.Species}{RandomGen}_Icon");
+            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}_Icon");
+
+            // ie Human7_Icon.png
+            // Drucoid3_Icon.png
+
+
             //Try not to touch where cargo file is held
-            AssetDatabase.CreateAsset(Crew, $"Assets/Resources/Crew/{Crew.Race}.asset");
+            AssetDatabase.CreateAsset(Crew, $"Assets/Resources/Crew/{Crew.Species}.asset");
 
         }
 
