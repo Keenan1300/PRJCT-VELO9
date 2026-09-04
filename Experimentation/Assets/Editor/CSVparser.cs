@@ -47,6 +47,11 @@ public class CSVparser
             Cargo.Value = float.Parse(Splitdata[7]);
             Cargo.Cost = float.Parse(Splitdata[8]);
 
+            //For 3D layer... only using Resource finder for parsing..
+            Cargo.Icon = Resources.Load<Sprite>("Icons/"+Cargo.CargoName+"_Icon");
+            Cargo.Material = Resources.Load<Material>("Materials/" + Cargo.CargoName + "_material");
+            Cargo.Mesh = Resources.Load<Mesh>("Meshes/"+Cargo.CargoName + "_mesh");
+
             //Consider automating mesh, materials, and Icon via a name convention.. use Resource.Find
 
 

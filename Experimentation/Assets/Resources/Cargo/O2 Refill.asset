@@ -19,7 +19,7 @@ MonoBehaviour:
   O2Refill: 20
   FuelRefill: 0
   MoraleRefill: 0
-  Mesh: {fileID: -5495902117074765545, guid: 4848ca4b575343142a118908b209a58b, type: 3}
+  Mesh: {fileID: 4300000, guid: d74fef52a7b471749963b518d8c84a6a, type: 2}
   Material: {fileID: 2100000, guid: 55a119cc61ef61a4285936b3d9f6fa9b, type: 2}
   Icon: {fileID: 21300000, guid: c056f705656e0eb45b09060dfd0204bf, type: 3}
   Value: 50
