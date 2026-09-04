@@ -114,7 +114,8 @@ public class CSVparser
             // Drucoid3_Icon.png
 
             //Dialogue Aspect
-
+            //Crew.NPCDialgoue
+            //Crew.NPCDialgoueBB = Resources.Load<GameObject>(
 
 
 
