@@ -90,22 +90,17 @@ public class CSVparser
             CrewData Crew = ScriptableObject.CreateInstance<CrewData>();
 
 
-            Crew.CrewID = int.Parse(Splitdata[0]);
-            Crew.CrewName = Splitdata[1];
-            Crew.Description = Splitdata[2];
-            Crew.Talent = Splitdata[3];
-            Crew.EngineSkill = bool.Parse(Splitdata[4]);
-            Crew.LSSkill = bool.Parse(Splitdata[5]);
-            Crew.CargoSkill = bool.Parse(Splitdata[6]);
-            Crew.O2Drain = float.Parse(Splitdata[7]);
-            Crew.StartingTrust = float.Parse(Splitdata[8]);
-            Crew.TrustBar = float.Parse(Splitdata[9]);
-            Crew.Value = float.Parse(Splitdata[11]);
-            Crew.Cost = float.Parse(Splitdata[12]);
+       
+           
+            
 
 
             //For 3D layer... only using Resource finder for parsing..
             //Note that mesh and gameobjects should be handled differently for crew... consider random generation over strict finder based on names.
+
+
+
+            //Visual Aspect
 
             //Find all icons from resource.. the number of these is the max in range
             //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
@@ -118,9 +113,33 @@ public class CSVparser
             // ie Human7_Icon.png
             // Drucoid3_Icon.png
 
+            //Dialogue Aspect
+
+
+
+
+            //Attributes and Skill
+            Crew.Talent = Splitdata[3];
+            Crew.EngineSkill = bool.Parse(Splitdata[4]);
+            Crew.LSSkill = bool.Parse(Splitdata[5]);
+            Crew.CargoSkill = bool.Parse(Splitdata[6]);
+            Crew.O2Drain = float.Parse(Splitdata[7]);
+
+            Crew.StartingTrust = float.Parse(Splitdata[8]);
+            Crew.TrustBar = float.Parse(Splitdata[9]);
+
+            //Passive Data
+            Crew.CrewID = int.Parse(Splitdata[0]);
+            Crew.CrewName = Splitdata[1];
+            Crew.Description = Splitdata[2];
+    
+            Crew.Value = float.Parse(Splitdata[11]);
+            Crew.Cost = float.Parse(Splitdata[12]);
+
+
 
             //Try not to touch where cargo file is held
-            AssetDatabase.CreateAsset(Crew, $"Assets/Resources/Crew/{Crew.Species}.asset");
+            AssetDatabase.CreateAsset(Crew, $"Assets/Resources/Crew/CrewAssets/{Crew.Species}.asset");
 
         }
 
