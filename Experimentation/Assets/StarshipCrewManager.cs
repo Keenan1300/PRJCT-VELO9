@@ -1,10 +1,12 @@
 using NUnit.Framework;
+//using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class StarshipCrewManager : MonoBehaviour
 {
+    private Dictionary<string, bool> StarshipPositions = new Dictionary<string, bool>();
 
     public List<CrewData> CrewList;
     public int MaxCrewOccupancy;
@@ -12,7 +14,15 @@ public class StarshipCrewManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //Station Spots
+        StarshipPositions.Add("EngineStation", false);
+        StarshipPositions.Add("LSStation", false);
+        StarshipPositions.Add("CargoStation", false);
+
+        //Non-Station Spots
+        StarshipPositions.Add("EmptySpot1", false);
+        StarshipPositions.Add("EmptySpot2", false);
+        StarshipPositions.Add("EmptySpot3", false);
     }
 
     // Update is called once per frame

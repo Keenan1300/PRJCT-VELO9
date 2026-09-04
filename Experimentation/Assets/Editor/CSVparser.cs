@@ -164,18 +164,13 @@ public class CSVparser
 
 
             //Safety net
-            if (Splitdata.Length != 12)
+            if (Splitdata.Length != 4)
             {
                 Debug.Log(s + " has incorrect data values");
                 return;
             }
 
             BeaconData Beacon = ScriptableObject.CreateInstance<BeaconData>();
-
-
-
-
-
 
 
             //For 3D layer... only using Resource finder for parsing..
@@ -200,9 +195,9 @@ public class CSVparser
 
 
             //Attributes and Skill
-            Beacon.EventName = Splitdata[3];
-            Beacon.IsPartOfQuest = bool.Parse(Splitdata[4]);
-            Beacon.SectorofSpawn = Splitdata[8];
+            Beacon.EventName = Splitdata[1];
+            Beacon.IsPartOfQuest = bool.Parse(Splitdata[2]);
+            Beacon.SectorofSpawn = Splitdata[3];
 
             //Passive Data
             Beacon.EventID = int.Parse(Splitdata[0]);
@@ -210,8 +205,8 @@ public class CSVparser
 
 
 
-            //Try not to touch where cargo file is held
-            AssetDatabase.CreateAsset(Beacon, $"Assets/Resources/Crew/CrewAssets/{Beacon.EventName}.asset");
+            //Try not to touch where file is held
+            AssetDatabase.CreateAsset(Beacon, $"Assets/Resources/Navigation/CrewAssets/Sectors/{Beacon.SectorofSpawn}/{Beacon.EventName}.asset");
 
         }
 

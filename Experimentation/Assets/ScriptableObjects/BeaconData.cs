@@ -6,6 +6,7 @@ using UnityEngine;
 public class BeaconData : ScriptableObject
 {
     [Header("Beacon Event Data")]
+
     public int EventID;
     public string EventName;
     public bool IsPartOfQuest;
