@@ -104,7 +104,7 @@ public class StorageMenu : MonoBehaviour
 
         //ExtraDetails
         CargoName.text = CargoData.CargoName;
-        CargoName.text = CargoData.Description;
+        CargoDescription.text = CargoData.Description;
 
     }
 
@@ -201,6 +201,7 @@ public class StorageMenu : MonoBehaviour
             SelectedCargoItem = null;
             CargoDescription.text = null;
             CargoName.text = null;
+            CargoEffects.text = null;
     }
 
     public void ClearAllCargo() 

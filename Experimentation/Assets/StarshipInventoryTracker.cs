@@ -129,7 +129,8 @@ public class StarshipInventoryTracker : MonoBehaviour
 
     public void ClearSelectedCargo()
     {
-        // Cant do this -> StarshipInventory[SelectionIndex] = null;
+        //need this
+        StarshipInventory[SelectionIndex] = null;
         ItemSelected = false;
         //visualize this change
         CargoVisuals.GetComponent<CargoManager>().UpdateCargoData();
@@ -171,15 +172,13 @@ public class StarshipInventoryTracker : MonoBehaviour
 
 //DEBUG/TOOLS OPTIONS BELOW
 
-public class MyCustomMenu
+public class DebugCargoMenu
 {
     StarshipInventoryTracker StarshipTracker;
 
     // This creates a new top-level menu named "Utilities" with an item named "Perform Task"
 
-
-
-    [MenuItem("Utilities/GenerateRandomCargo")]
+    [MenuItem("Utilities/Cargo/GenerateRandomCargo")]
     public static void GenerateRandomCargo()
     {
         //Find Cargo script
@@ -208,7 +207,7 @@ public class MyCustomMenu
 
 
 
-    [MenuItem("Utilities/ClearAllCargo")]
+    [MenuItem("Utilities/Cargo/ClearAllCargo")]
     public static void ClearAllCargo()
     {
 

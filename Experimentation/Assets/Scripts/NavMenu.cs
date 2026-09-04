@@ -14,6 +14,7 @@ public class NavMenu : MonoBehaviour
     //public Button JumpButton;
     public GameObject Menu;
     public GameObject Player;
+    public GameObject JumpButton;
 
     //Show Current Resources
     public TextMeshProUGUI FuelGauge;
@@ -29,17 +30,20 @@ public class NavMenu : MonoBehaviour
     public float Displayfuelvalue;
     public float DisplayO2Value;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        CostBar.SetActive(false);
-        UpdateCargoData();
-    }
 
     //needed for consistency actions
     private void OnEnable()
     {
+        CostBar.SetActive(false);
+        JumpButton.SetActive(false);
         UpdateCargoData();
+    }
+
+
+    private void OnDisable()
+    {
+        //ensures player cant do 'blind jump' bug
+        StarshipManager.GetComponent<StarshipNavManager>().beaconselected = false;
     }
 
     //for UX signifier only
@@ -58,15 +62,17 @@ public class NavMenu : MonoBehaviour
         }
 
 
-            //show cost to player
+        //show cost to player
+            JumpButton.SetActive(true);
             CostBar.SetActive(true);
-        O2Cost.text = "-" + O2costnum.ToString();
-        FuelCost.text = "-" + fuelcostnum.ToString();
+            O2Cost.text = "-" + O2costnum.ToString();
+            FuelCost.text = "-" + fuelcostnum.ToString();
     }
     public void HideJumpCosts()
     {
-        //show cost to player
+        //hide cost to player
         CostBar.SetActive(false);
+        JumpButton.SetActive(false);
     }
 
 
@@ -87,7 +93,7 @@ public class NavMenu : MonoBehaviour
         FuelGauge.text = Displayfuelvalue.ToString();
         O2Guage.text = DisplayO2Value.ToString();
 
-        ShowJumpCosts(0,0);
+        //ShowJumpCosts(0,0);
 
     }
 

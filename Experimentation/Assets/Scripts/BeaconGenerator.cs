@@ -63,6 +63,7 @@ public class BeaconGenerator : MonoBehaviour
 
         BeaconCount = Random.Range(12, 20);
         GenerateSpaceMap();
+        StarshipNav.SectorSpawnData();
     }
 
     private void GenerateSpaceMap()

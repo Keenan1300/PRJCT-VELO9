@@ -12,9 +12,9 @@ public class CSVparser
     private static string CrewDataPath = "/Editor/CSVs/CrewDataValues.csv";
 
 
-    //[MenuItem("Utilities/GenerateCargo")]
+    //Handle Cargo Data type
 
-    [MenuItem("Utilities/RefreshCargoDatainFiles")]
+    [MenuItem("Utilities/Parser/RefreshCargoDatainFiles")]
 
 
     public static void RefreshCargoDatainFiles()
@@ -59,7 +59,9 @@ public class CSVparser
     }
 
 
-    [MenuItem("Utilities/RefreshCrewDatainFiles")]
+    //HANDLE CREW DATA TYPE
+
+    [MenuItem("Utilities/Parser/RefreshCrewDatainFiles")]
     public static void RefreshCrewDatainFiles()
     {
 

@@ -51,33 +51,49 @@ public class StarshipNavManager : MonoBehaviour
     public float TravelO2Cost;
     public float TravelFuelCost;
 
+    //Ensure player cant jump when nothing selected
+    public bool beaconselected;
+
     //Where to consume resources from
     private StarshipInventoryTracker StarshipInventory;
 
+    //SFX
+    public AudioClip WarpSound;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
-       // InhabitedBeaconLoc = SelectedBeaconLoc;
+        // InhabitedBeaconLoc = SelectedBeaconLoc;
+        beaconselected = false;
         RefreshData();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        
+        // InhabitedBeaconLoc = SelectedBeaconLoc;
+        ChangeselectedBeacon(CurrentShipIndex);
     }
+
+
 
     public void ChangeselectedBeacon(int BeaconIndex)
     {
         SelectedBeacon = BeaconIndex;
+        TargettingIcon.transform.position = spawnedBeaconPositions[BeaconIndex];
     }
 
-    public void RefreshData()
+    //Starting
+
+    public void SectorSpawnData()
     {
         spawnedBeaconPositions = BeaconGenerator.GetComponent<BeaconGenerator>().spawnedBeaconPositions;
         CurrentShipIndex = BeaconGenerator.GetComponent<BeaconGenerator>().EntryBeaconIndex;
+
+    }
+    public void RefreshData()
+    {
+     
      
         //Fix here for list count
         if (CurrentShipIndex > -1 && CurrentShipIndex < spawnedBeaconPositions.Count + 1)
@@ -112,6 +128,8 @@ public class StarshipNavManager : MonoBehaviour
 
         Debug.Log("This trip would cost" + TravelFuelCost + " fuel units.. and " + TravelO2Cost + " O2 units");
         NavMenuUI.GetComponent<NavMenu>().ShowJumpCosts(TravelO2Cost, TravelFuelCost);
+
+        beaconselected = true;
     }
 
     //Consider 'inhabited beacon' over transform.position...
@@ -120,15 +138,18 @@ public class StarshipNavManager : MonoBehaviour
     {
         StarshipInventoryTracker FlightResources = gameObject.GetComponent<StarshipInventoryTracker>();
 
-        //If the ship isnt targeting its own spot
-        if (SelectedBeaconLoc != InhabitedBeaconLoc)
+        AudioSource SoundFX = gameObject.GetComponent<AudioSource>();
+       
+
+        //If the ship isnt targeting its own spot, and selected beacon
+        if (SelectedBeaconLoc != InhabitedBeaconLoc && beaconselected == true)
         {
             //If the ship has enough resources to make the jump...
             if (FlightResources.O2Value > TravelO2Cost && FlightResources.fuelValue > TravelFuelCost)
             {
                 //Crucial for reseting jump calc
                 //index
-                SelectedBeacon = CurrentShipIndex;
+                 CurrentShipIndex = SelectedBeacon;
 
                 //Location Data
                 InhabitedBeaconLoc = SelectedBeaconLoc;
@@ -146,6 +167,7 @@ public class StarshipNavManager : MonoBehaviour
                 TravelFuelCost = 0;
 
                 NavMenuUI.GetComponent<NavMenu>().UpdateCargoData();
+                SoundFX.PlayOneShot(WarpSound);
             }
             else
             {
