@@ -12,6 +12,8 @@ public class CargoData : ScriptableObject
     public float O2Refill;
     public float FuelRefill;
     public float MoraleRefill;
+
+    //visuals
     public Mesh Mesh;
     public Material Material;
     public Sprite Icon;

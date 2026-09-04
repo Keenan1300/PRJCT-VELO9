@@ -1,3 +1,4 @@
+using NodeCanvas.Framework;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ public class CSVparser
 
     private static string CargoDataPath = "/Editor/CSVs/CargoDataValues.csv";
     private static string CrewDataPath = "/Editor/CSVs/CrewDataValues.csv";
-
+    private static string BeaconDataPath = "Editor/CSVs/BeaconDataValues.csv";
 
     //Handle Cargo Data type
 
@@ -147,4 +148,73 @@ public class CSVparser
         AssetDatabase.SaveAssets();
     }
 
+
+    //HANDLE BEACON DATA TYPE
+
+    [MenuItem("Utilities/Parser/RefreshBeaconDatainFiles")]
+    public static void RefreshBeaconDatainFiles()
+    {
+
+        string[] alllines = File.ReadAllLines(Application.dataPath + BeaconDataPath);
+        Debug.Log("Generating BeaconEvents...");
+
+        foreach (string s in alllines)
+        {
+            string[] Splitdata = s.Split(',');
+
+
+            //Safety net
+            if (Splitdata.Length != 12)
+            {
+                Debug.Log(s + " has incorrect data values");
+                return;
+            }
+
+            BeaconData Beacon = ScriptableObject.CreateInstance<BeaconData>();
+
+
+
+
+
+
+
+            //For 3D layer... only using Resource finder for parsing..
+            //Note that mesh and gameobjects should be handled differently for crew... consider random generation over strict finder based on names.
+
+
+            //Find all icons from resource.. the number of these is the max in range
+            //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
+            //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Beacon.Species}/Icons").Length);
+
+            Beacon.Icon = Resources.Load<Sprite>($"Navigation/Sectors/{Beacon.SectorofSpawn}/{Beacon.EventName}_Icon");
+            Beacon.BeaconEvent = Resources.Load<AssetBlackboard>($"Navigation/Sectors/{Beacon.SectorofSpawn}/{Beacon.EventName}_EventTree");
+            Beacon.BeaconEventBB = Resources.Load<Blackboard>($"Navigation/Sectors/{Beacon.SectorofSpawn}/{Beacon.EventName}/{Beacon.EventName}_BB");
+
+            // ie Human7_Icon.png
+            // Drucoid3_Icon.png
+
+            //Dialogue Aspect
+            //Crew.NPCDialgoue
+            //Crew.NPCDialgoueBB = Resources.Load<GameObject>(
+
+
+
+            //Attributes and Skill
+            Beacon.EventName = Splitdata[3];
+            Beacon.IsPartOfQuest = bool.Parse(Splitdata[4]);
+            Beacon.SectorofSpawn = Splitdata[8];
+
+            //Passive Data
+            Beacon.EventID = int.Parse(Splitdata[0]);
+           
+
+
+
+            //Try not to touch where cargo file is held
+            AssetDatabase.CreateAsset(Beacon, $"Assets/Resources/Crew/CrewAssets/{Beacon.EventName}.asset");
+
+        }
+
+        AssetDatabase.SaveAssets();
+    }
 }
