@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7765726220046859281}
   - component: {fileID: 7563129857384097630}
   m_Layer: 3
-  m_Name: Crewmate1
+  m_Name: Naalketek1
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

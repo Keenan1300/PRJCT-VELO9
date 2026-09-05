@@ -1,3 +1,5 @@
+using NodeCanvas.DialogueTrees;
+using NodeCanvas.Framework;
 using NUnit.Framework;
 //using System;
 using System.Collections.Generic;
@@ -6,34 +8,48 @@ using UnityEngine;
 
 public class StarshipCrewManager : MonoBehaviour
 {
+    //To be given to crew
+    public GameObject TrustBar;
+    public GameObject Player;
 
-    public List<(string station, bool Occupied, int LocationIndex, Transform stationposition)> StarshipPositions = new List<(string, bool, int, Transform)>();
 
-    public List<CrewData> CrewList;
+    [System.Serializable]
+
+    //for one station.. one crew
+    public class CrewPositions
+    {
+        public string station;
+        public bool Occupied;
+        public Transform StationSpot;
+        public CrewData Crew;
+    }
+
+
+    public CrewPositions[] StarshipPositions;
+
+
+
+    //public List<(string station, bool Occupied, int LocationIndex, Transform stationposition)> StarshipPositions = new List<(string, bool, int, Transform)>();
+
+
+    public class PlayerData { public int Score; }
+
+   
     public int MaxCrewOccupancy;
-
-    public List<Transform> StationSpots;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        //Station Spots - Unity doesnt show Duble Lists in inspector...
-
-        //0
-        StarshipPositions.Add(("EngineStation", false,0, StationSpots[0]));
-        //1
-        StarshipPositions.Add(("LSStation", false, 1, StationSpots[1]));
-        //2
-        StarshipPositions.Add(("CargoStation", false,2, StationSpots[2]));
-        //3
-        //Non-Station Spots
-        StarshipPositions.Add(("EmptySpot1", false,3, StationSpots[3]));
-        //4
-        StarshipPositions.Add(("EmptySpot2", false,4, StationSpots[4]));
-        //5 
-        StarshipPositions.Add(("EmptySpot3", false, 5,StationSpots[5]));
+        //number to spot association
+        StarshipPositions[0].station = "Engine Station";
+        StarshipPositions[1].station = "LS Station";
+        StarshipPositions[2].station = "Cargo Station";
+        StarshipPositions[3].station = "Empty1";
+        StarshipPositions[4].station = "Empty2";
+        StarshipPositions[5].station = "Empty3";
+    
 
     }
 
@@ -49,7 +65,7 @@ public class StarshipCrewManager : MonoBehaviour
     public void GenerateRandomCrew()
     {
         //Simply pick a random crew file from folder
-        CrewData[] AllItems = Resources.LoadAll<CrewData>("Crew");
+        CrewData[] AllItems = Resources.LoadAll<CrewData>("Crew/CrewAssets");
 
         if (AllItems.Length > 0)
         {
@@ -72,16 +88,27 @@ public class StarshipCrewManager : MonoBehaviour
     {
         //Make space for crew!!
 
-        for (int i = 0; i < StarshipPositions.Count; i++)
+        for (int i = 0; i < MaxCrewOccupancy; i++)
         {
             if (StarshipPositions[i].Occupied == false)
             {
-                //Will make crew.. place them in appropriate spot
-                crew.locationIndex = StarshipPositions[i].LocationIndex;
-                GameObject Crewmate = Instantiate(crew.CrewMesh);
-                Crewmate.transform.position = StationSpots[i].position;
+                //Save their spot
+                StarshipPositions[i].Occupied = true;
+                StarshipPositions[i].Crew = crew;
 
-                Debug.Log($"Found spot at {StarshipPositions[i].station}.. Which is index {StarshipPositions[i].LocationIndex}");
+                //Will make crew.. place them in appropriate spot
+                crew.locationIndex = i;
+                GameObject Crewmate = Instantiate(crew.CrewMesh, StarshipPositions[i].StationSpot);
+
+                //Here we populate Blackboard, Dialogue Tree,
+
+                //Give crewmate scene context
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("StarshipManager", gameObject.GetComponent<StarshipInventoryTracker>());
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("Player", Player);
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("TrustBar", TrustBar);
+                Crewmate.GetComponent<DialogueTreeController>().SetActorReference("Player", Player.GetComponent<DialogueActor>());
+
+                //Debug.Log($"Found spot at {StarshipPositions[i].station}.. Which is index {StarshipPositions[i].LocationIndex}");
                 break;
             }
             else
@@ -98,9 +125,17 @@ public class StarshipCrewManager : MonoBehaviour
 
 
     //Eliminate all crew
-
     public void ClearAllCrew()
     {
+        //Make Crew no longer exist, and clear their spot
+        for (int i = 0; i < MaxCrewOccupancy; i++)
+        {
+            StarshipPositions[i].Occupied = false;
+            StarshipPositions[i].Crew = null;
+            GameObject crew = GameObject.FindWithTag("NPC");
+            DestroyImmediate(crew);
+        }
+
 
     }
 }
@@ -129,7 +164,7 @@ public class DebugCrewMenu
         }
         else
         {
-            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+            Debug.LogWarning("Could not find a crewsystem script in the current scene!");
         }
     }
 
@@ -155,5 +190,8 @@ public class DebugCrewMenu
 
 
     }
+
+
+
 
 }

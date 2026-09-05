@@ -77,7 +77,7 @@ public class CSVparser
     {
 
         string[] alllines = File.ReadAllLines(Application.dataPath + CrewDataPath);
-        Debug.Log("Generating Cargo...");
+        Debug.Log("Generating Crew...");
         foreach (string s in alllines)
         {
             string[] Splitdata = s.Split(',');
@@ -121,42 +121,20 @@ public class CSVparser
             }
 
 
-            //For 3D layer... only using Resource finder for parsing..
-            //Note that mesh and gameobjects should be handled differently for crew... consider random generation over strict finder based on names.
-
-
-
             //Visual Aspect
 
             //Find all icons from resource.. the number of these is the max in range
             //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
-            int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
+            int RandomGen = 1;
+            //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
 
             Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}{RandomGen}_Icon");
             Crew.CrewMaterial = Resources.Load<Material>($"Crew/Species/{Crew.Species}/Materials/{Crew.Species}{RandomGen}_material");
-            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}_mesh");
+            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}");
 
             // ie Human7_Icon.png
             // Drucoid3_Icon.png
 
-            //Dialogue Aspect
-            //Crew.NPCDialgoue
-            //Crew.NPCDialgoueBB = Resources.Load<GameObject>(
-
-
-
-            //Attributes and Skill
-
-            //This is where you introduce talent CSV...
-            //THIS DATA SHOULD BE IN INSTANCE CREATION...
-            //Crew.NumOfTalents = Random.Range(1,4);
-
-            //for (int i = 0; i < Crew.NumOfTalents; i++) 
-            //{
-
-            //   GenerateTrait(in Crew.Species, out string TraitName);
-            //   Crew.Talents.Add(TraitName);
-            //}
 
             Crew.CrewID = int.Parse(Splitdata[0]);
             Crew.Species = Splitdata[2];
@@ -183,6 +161,9 @@ public class CSVparser
 
         AssetDatabase.SaveAssets();
     }
+
+
+
 
 
     //HANDLE BEACON DATA TYPE
