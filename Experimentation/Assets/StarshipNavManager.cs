@@ -65,6 +65,7 @@ public class StarshipNavManager : MonoBehaviour
     void OnEnable()
     {
         // InhabitedBeaconLoc = SelectedBeaconLoc;
+        SectorSpawnData();
         beaconselected = false;
         RefreshData();
     }
@@ -72,7 +73,10 @@ public class StarshipNavManager : MonoBehaviour
     void OnDisable()
     {
         // InhabitedBeaconLoc = SelectedBeaconLoc;
-        ChangeselectedBeacon(CurrentShipIndex);
+        if (CurrentShipIndex != -1 && CurrentShipIndex < spawnedBeaconPositions.Count)
+        {
+            ChangeselectedBeacon(CurrentShipIndex);
+        }
     }
 
 
@@ -96,7 +100,7 @@ public class StarshipNavManager : MonoBehaviour
      
      
         //Fix here for list count
-        if (CurrentShipIndex > -1 && CurrentShipIndex < spawnedBeaconPositions.Count + 1)
+        if (CurrentShipIndex > -1 && CurrentShipIndex < spawnedBeaconPositions.Count)
         {
             InhabitedBeaconLoc = spawnedBeaconPositions[CurrentShipIndex];
         }

@@ -6,23 +6,26 @@ using UnityEngine;
 
 public class StarshipCrewManager : MonoBehaviour
 {
-    private Dictionary<string, bool> StarshipPositions = new Dictionary<string, bool>();
+
+    public List<(string station, bool Occupied)> StarshipPositions = new List<(string, bool)>();
 
     public List<CrewData> CrewList;
     public int MaxCrewOccupancy;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Station Spots
-        StarshipPositions.Add("EngineStation", false);
-        StarshipPositions.Add("LSStation", false);
-        StarshipPositions.Add("CargoStation", false);
+
+         //Station Spots
+        StarshipPositions.Add(("EngineStation", false));
+        StarshipPositions.Add(("LSStation", false));
+        StarshipPositions.Add(("CargoStation", false));
 
         //Non-Station Spots
-        StarshipPositions.Add("EmptySpot1", false);
-        StarshipPositions.Add("EmptySpot2", false);
-        StarshipPositions.Add("EmptySpot3", false);
+        StarshipPositions.Add(("EmptySpot1", false));
+        StarshipPositions.Add(("EmptySpot2", false));
+        StarshipPositions.Add(("EmptySpot3", false));
     }
 
     // Update is called once per frame
