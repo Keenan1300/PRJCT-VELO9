@@ -16,7 +16,6 @@ public class CrewData : ScriptableObject
 
     //Rare crew will have more talents...
     public int NumOfTalents;
-    public string TraitRarity;
     public List<string> Talents = new List<string>();
 
     public float O2Drain;

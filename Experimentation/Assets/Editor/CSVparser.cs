@@ -84,7 +84,7 @@ public class CSVparser
 
 
             //Safety net
-            if (Splitdata.Length != 12)
+            if (Splitdata.Length != 11)
             {
                 Debug.Log(s + " has incorrect data values");
                 return;
@@ -94,7 +94,7 @@ public class CSVparser
 
 
 
-
+            //have this on instance enable
             void GenerateTrait(in string Species, out string TraitName)
             {
                 //Take this crew's species, see what applies based on it
@@ -148,27 +148,31 @@ public class CSVparser
             //Attributes and Skill
 
             //This is where you introduce talent CSV...
-            Crew.NumOfTalents = Random.Range(1,4);
+            //THIS DATA SHOULD BE IN INSTANCE CREATION...
+            //Crew.NumOfTalents = Random.Range(1,4);
 
-            for (int i = 0; i < Crew.NumOfTalents; i++) 
-            {
+            //for (int i = 0; i < Crew.NumOfTalents; i++) 
+            //{
 
-               GenerateTrait(in Crew.Species, out string TraitName);
-               Crew.Talents.Add(TraitName);
-            }
+            //   GenerateTrait(in Crew.Species, out string TraitName);
+            //   Crew.Talents.Add(TraitName);
+            //}
 
-            Crew.O2Drain = float.Parse(Splitdata[7]);
+            Crew.CrewID = int.Parse(Splitdata[0]);
+            Crew.Species = Splitdata[2];
 
-            Crew.StartingTrust = float.Parse(Splitdata[8]);
-            Crew.TrustBar = float.Parse(Splitdata[9]);
+            Crew.O2Drain = float.Parse(Splitdata[5]);
+
+            Crew.StartingTrust = float.Parse(Splitdata[6]);
+            Crew.TrustBar = float.Parse(Splitdata[7]);
 
             //Passive Data
             Crew.CrewID = int.Parse(Splitdata[0]);
             Crew.CrewName = Splitdata[1];
-            Crew.Description = Splitdata[2];
+            //Crew.Description = Splitdata[2];
     
-            Crew.Value = float.Parse(Splitdata[11]);
-            Crew.Cost = float.Parse(Splitdata[12]);
+            Crew.Value = float.Parse(Splitdata[9]);
+            Crew.Cost = float.Parse(Splitdata[10]);
 
 
 
