@@ -7,36 +7,48 @@ using UnityEngine;
 public class StarshipCrewManager : MonoBehaviour
 {
 
-    public List<(string station, bool Occupied)> StarshipPositions = new List<(string, bool)>();
+    public List<(string station, bool Occupied, int LocationIndex, Transform stationposition)> StarshipPositions = new List<(string, bool, int, Transform)>();
 
     public List<CrewData> CrewList;
     public int MaxCrewOccupancy;
+
+    public List<Transform> StationSpots;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-         //Station Spots
-        StarshipPositions.Add(("EngineStation", false));
-        StarshipPositions.Add(("LSStation", false));
-        StarshipPositions.Add(("CargoStation", false));
+        //Station Spots - Unity doesnt show Duble Lists in inspector...
 
+        //0
+        StarshipPositions.Add(("EngineStation", false,0, StationSpots[0]));
+        //1
+        StarshipPositions.Add(("LSStation", false, 1, StationSpots[1]));
+        //2
+        StarshipPositions.Add(("CargoStation", false,2, StationSpots[2]));
+        //3
         //Non-Station Spots
-        StarshipPositions.Add(("EmptySpot1", false));
-        StarshipPositions.Add(("EmptySpot2", false));
-        StarshipPositions.Add(("EmptySpot3", false));
+        StarshipPositions.Add(("EmptySpot1", false,3, StationSpots[3]));
+        //4
+        StarshipPositions.Add(("EmptySpot2", false,4, StationSpots[4]));
+        //5 
+        StarshipPositions.Add(("EmptySpot3", false, 5,StationSpots[5]));
+
     }
 
-    // Update is called once per frame
-    void Update()
+
+    //I was here, about to go there
+    public void CrewPositionChange()
     {
-        
+
     }
+
+
 
     public void GenerateRandomCrew()
     {
-        //Search folder 'cargo' for cargo data
+        //Simply pick a random crew file from folder
         CrewData[] AllItems = Resources.LoadAll<CrewData>("Crew");
 
         if (AllItems.Length > 0)
@@ -58,7 +70,30 @@ public class StarshipCrewManager : MonoBehaviour
     //Needed for debug reasons
     public void GenerateCrew(CrewData crew)
     {
+        //Make space for crew!!
 
+        for (int i = 0; i < StarshipPositions.Count; i++)
+        {
+            if (StarshipPositions[i].Occupied == false)
+            {
+                //Will make crew.. place them in appropriate spot
+                crew.locationIndex = StarshipPositions[i].LocationIndex;
+                GameObject Crewmate = Instantiate(crew.CrewMesh);
+                Crewmate.transform.position = StationSpots[i].position;
+
+                Debug.Log($"Found spot at {StarshipPositions[i].station}.. Which is index {StarshipPositions[i].LocationIndex}");
+                break;
+            }
+            else
+            {
+                Debug.Log("location occupied... finding available spot");
+            }
+
+        }
+
+
+
+      
     }
 
 

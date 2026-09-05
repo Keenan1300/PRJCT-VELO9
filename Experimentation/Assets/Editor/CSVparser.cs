@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using static Codice.Client.Common.Connection.AskCredentialsToUser;
 using static UnityEngine.Rendering.GPUSort;
 
 public class CSVparser
@@ -14,7 +15,8 @@ public class CSVparser
 
     private static string CargoDataPath = "/Editor/CSVs/CargoDataValues.csv";
     private static string CrewDataPath = "/Editor/CSVs/CrewDataValues.csv";
-    private static string BeaconDataPath = "Editor/CSVs/BeaconDataValues.csv";
+    private static string BeaconDataPath = "/Editor/CSVs/BeaconDataValues.csv";
+    private static string TraitDataPath = "/Editor/CSVs/TraitDataValues.csv";
 
     //Handle Cargo Data type
 
@@ -91,9 +93,32 @@ public class CSVparser
             CrewData Crew = ScriptableObject.CreateInstance<CrewData>();
 
 
-       
-           
-            
+
+
+            void GenerateTrait(in string Species, out string TraitName)
+            {
+                //Take this crew's species, see what applies based on it
+
+                //What traits can humans access?
+                if(Species == "Human")
+                {
+
+                }
+
+                //What traits can Drucoids access?
+                if (Species == "Drucoid")
+                {
+
+                }
+
+                if (Species == "Naalketek");
+                {
+
+                }
+
+                TraitName = Species;
+                return;
+            }
 
 
             //For 3D layer... only using Resource finder for parsing..
@@ -108,8 +133,8 @@ public class CSVparser
             int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
 
             Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}{RandomGen}_Icon");
-            Crew.CrewMaterial = Resources.Load<Material>($"Crew/Species/{Crew.Species}/Materials/{Crew.Species}{RandomGen}_Icon");
-            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}_Icon");
+            Crew.CrewMaterial = Resources.Load<Material>($"Crew/Species/{Crew.Species}/Materials/{Crew.Species}{RandomGen}_material");
+            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}_mesh");
 
             // ie Human7_Icon.png
             // Drucoid3_Icon.png
@@ -121,10 +146,17 @@ public class CSVparser
 
 
             //Attributes and Skill
-            Crew.Talent = Splitdata[3];
-            Crew.EngineSkill = bool.Parse(Splitdata[4]);
-            Crew.LSSkill = bool.Parse(Splitdata[5]);
-            Crew.CargoSkill = bool.Parse(Splitdata[6]);
+
+            //This is where you introduce talent CSV...
+            Crew.NumOfTalents = Random.Range(1,4);
+
+            for (int i = 0; i < Crew.NumOfTalents; i++) 
+            {
+
+               GenerateTrait(in Crew.Species, out string TraitName);
+               Crew.Talents.Add(TraitName);
+            }
+
             Crew.O2Drain = float.Parse(Splitdata[7]);
 
             Crew.StartingTrust = float.Parse(Splitdata[8]);
@@ -173,10 +205,6 @@ public class CSVparser
             BeaconData Beacon = ScriptableObject.CreateInstance<BeaconData>();
 
 
-            //For 3D layer... only using Resource finder for parsing..
-            //Note that mesh and gameobjects should be handled differently for crew... consider random generation over strict finder based on names.
-
-
             //Find all icons from resource.. the number of these is the max in range
             //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
             //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Beacon.Species}/Icons").Length);
@@ -207,6 +235,51 @@ public class CSVparser
 
             //Try not to touch where file is held
             AssetDatabase.CreateAsset(Beacon, $"Assets/Resources/Navigation/CrewAssets/Sectors/{Beacon.SectorofSpawn}/{Beacon.EventName}.asset");
+
+        }
+
+        AssetDatabase.SaveAssets();
+    }
+
+
+
+
+    [MenuItem("Utilities/Parser/RefreshTraitsDatainFiles")]
+    public static void RefreshTraitDatainFiles()
+    {
+
+        string[] alllines = File.ReadAllLines(Application.dataPath + TraitDataPath);
+        Debug.Log("Generating Traits...");
+
+        foreach (string s in alllines)
+        {
+            string[] Splitdata = s.Split(',');
+
+
+            //Safety net
+            if (Splitdata.Length != 9)
+            {
+                Debug.Log(s + " has incorrect data values");
+                return;
+            }
+
+            TraitData Trait = ScriptableObject.CreateInstance<TraitData>();
+
+
+            //Find all icons from resource.. the number of these is the max in range
+            //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
+            //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Beacon.Species}/Icons").Length);
+            Trait.TraitID = int.Parse(Splitdata[0]);
+            Trait.TraitName = Splitdata[1];
+            Trait.Icon = Resources.Load<Sprite>($"Assets/Resources/Crew/Traits/Icons/{Trait.TraitName}_Icon");
+            Trait.Effect = Splitdata[3];
+            Trait.Rarity = Splitdata[2];
+
+
+
+
+            //Try not to touch where file is held
+            AssetDatabase.CreateAsset(Trait, $"Assets/Resources/Crew/Traits/{Trait.Rarity}/{Trait.TraitName}.asset");
 
         }
 

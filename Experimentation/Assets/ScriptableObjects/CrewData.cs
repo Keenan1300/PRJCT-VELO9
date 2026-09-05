@@ -1,5 +1,7 @@
 using NodeCanvas.DialogueTrees;
 using NodeCanvas.Framework;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CrewData", menuName = "Scriptable Objects/CrewData")]
@@ -7,14 +9,18 @@ public class CrewData : ScriptableObject
 {
     [Header("Crew Data")]
     public int CrewID;
+
     public string Description;
     public string CrewName;
     public string Species;
-    public string Talent;
-    public bool EngineSkill;
-    public bool LSSkill;
-    public bool CargoSkill;
+
+    //Rare crew will have more talents...
+    public int NumOfTalents;
+    public string TraitRarity;
+    public List<string> Talents = new List<string>();
+
     public float O2Drain;
+
     public float StartingTrust;
     public float TrustBar;
 
@@ -22,6 +28,9 @@ public class CrewData : ScriptableObject
     public GameObject CrewMesh;
     public Material CrewMaterial;
     public Sprite Icon;
+
+    //used for station purposes
+    public int locationIndex;
 
     //NPC Dialogues
     public DialogueTreeController NPCDialogueSkeleton;

@@ -13991,6 +13991,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CrewList: []
   MaxCrewOccupancy: 0
+  StationSpots:
+  - {fileID: 989175365}
+  - {fileID: 1162377541}
+  - {fileID: 1610427723}
+  - {fileID: 1408039891}
+  - {fileID: 287133127}
+  - {fileID: 973993891}
 --- !u!1 &1437006955
 GameObject:
   m_ObjectHideFlags: 0
