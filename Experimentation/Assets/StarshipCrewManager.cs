@@ -131,7 +131,7 @@ public class StarshipCrewManager : MonoBehaviour
     }
 
     //have this on instance enable
-    void GenerateTrait(in string Species, out TraitData Trait)
+    public void GenerateTrait(in string Species, out TraitData Trait)
     {
         //Take this crew's species, see what applies based on it
 
@@ -146,7 +146,7 @@ public class StarshipCrewManager : MonoBehaviour
         }
 
         //What traits can Drucoids access?
-        if (Species == "Drucoid")
+        else if (Species == "Drucoid")
         {
             //TraitData ;
             int RandomTraitPull = Random.Range(0, DrucoidTraits.Count);
@@ -154,7 +154,17 @@ public class StarshipCrewManager : MonoBehaviour
             return;
         }
 
-        if (Species == "Naalketek") ;
+        //What traits can Anthropoda access?
+        else if (Species == "Anthropoda")
+        {
+            //TraitData ;
+            int RandomTraitPull = Random.Range(0, AnthropodaTraits.Count);
+            Trait = AnthropodaTraits[RandomTraitPull];
+            return;
+        }
+
+        //What traits can Naalketek access?
+        else if (Species == "Naalketek") 
         {
             //TraitData ;
             int RandomTraitPull = Random.Range(0, NaalketekTraits.Count);
@@ -162,8 +172,7 @@ public class StarshipCrewManager : MonoBehaviour
             return;
         }
 
-        //TraitName = Species;
-        return;
+        Trait = NaalketekTraits[0];
     }
 
     //Eliminate all crew

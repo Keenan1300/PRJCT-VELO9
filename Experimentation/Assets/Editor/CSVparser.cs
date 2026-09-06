@@ -77,6 +77,8 @@ public class CSVparser
     {
 
         string[] alllines = File.ReadAllLines(Application.dataPath + CrewDataPath);
+
+
         Debug.Log("Generating Crew...");
         foreach (string s in alllines)
         {
@@ -91,25 +93,6 @@ public class CSVparser
             }
 
             CrewData Crew = ScriptableObject.CreateInstance<CrewData>();
-
-
-
-           
-
-
-            //Visual Aspect
-
-            //Find all icons from resource.. the number of these is the max in range
-            //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
-            int RandomGen = 1;
-            //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
-
-            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}_Icon");
-            Crew.CrewMaterial = Resources.Load<Material>("Crew/Species/"+(Crew.Species)+"/Materials/"+(Crew.Species)+(RandomGen)+"_material");
-            Crew.CrewMesh = Resources.Load<GameObject>("Crew/Species/"+(Crew.Species)+"/Meshes/"+(Crew.Species)+"1");
-
-            // ie Human7_Icon.png
-            // Drucoid3_Icon.png
 
 
             Crew.CrewID = int.Parse(Splitdata[0]);
@@ -128,6 +111,28 @@ public class CSVparser
             Crew.Value = float.Parse(Splitdata[9]);
             Crew.Cost = float.Parse(Splitdata[10]);
 
+
+
+            //Visual Aspect
+
+            //Find all icons from resource.. the number of these is the max in range
+            //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
+            int RandomGen = 1;
+            //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
+
+            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}_Icon");
+
+            GameObject CrewM = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}");
+
+            if (CrewM == null)
+            {
+                Debug.Log(CrewM + " game obj doesnt exist... Species is" + Crew.Species);
+            }
+
+            Crew.CrewMesh = CrewM;
+
+            // ie Human7_Icon.png
+            // Drucoid3_Icon.png
 
 
             //Try not to touch where cargo file is held

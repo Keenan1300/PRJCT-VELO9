@@ -23,7 +23,7 @@ MonoBehaviour:
   TrustBar: 90
   CrewMesh: {fileID: 1120085077003714315, guid: 84bd08c518b864043849a677959e3110, type: 3}
   CrewMaterial: {fileID: 0}
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 868a8f0990db703418ea67d0fdfc0b31, type: 3}
   locationIndex: 0
   NPCDialogueSkeleton: {fileID: 0}
   NPCDialgoueBB: {fileID: 0}

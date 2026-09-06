@@ -17304,11 +17304,6 @@ Transform:
   - {fileID: 1162377541}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1740255596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1377208783621562376, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-  m_PrefabInstance: {fileID: 2041125012555949260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756904546
 GameObject:
   m_ObjectHideFlags: 0
@@ -20564,7 +20559,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1740255596}
+    TrackingTarget: {fileID: 1103202095516894404}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -20990,6 +20985,11 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &1103202095516894404 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 638070441253078200, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+  m_PrefabInstance: {fileID: 6444950604462211811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1143468118016509315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21020,6 +21020,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1430138154899889095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7845878009980695265, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+  m_PrefabInstance: {fileID: 6444950604462211811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1532085259321937922
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21254,213 +21259,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &2041125012555949260
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1120085077003714315, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_Name
-      value: Crewmate1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1120085077003714315, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544468295058640142, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_boundGraphObjectReferences.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8196871477707741140}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"CrewmateMesh":{"_value":1,"_name":"CrewmateMesh","_id":"fc0fb85a-86e3-45c2-afed-520819909c48","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Player":{"_value":2,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Trustworthiness":{"_value":100.0,"_name":"Trustworthiness","_id":"51f8b35b-f16a-4339-acfd-bd01b6d9fdfe","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"StartingTrust":{"_value":100.0,"_name":"StartingTrust","_id":"c3b19dde-74dc-493f-8970-f0cff282a373","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TrustBar":{"_value":3,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"EngineStation":{"_value":4,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"LifeSupportStation":{"_value":5,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StorageStation":{"_value":6,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"NoStation1":{"_value":7,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":8,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StarshipManager":{"_value":9,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _objectReferences.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8196871477707741139}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[3]'
-      value: 
-      objectReference: {fileID: 4622047239933182987}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[4]'
-      value: 
-      objectReference: {fileID: 989175365}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[5]'
-      value: 
-      objectReference: {fileID: 1162377541}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[6]'
-      value: 
-      objectReference: {fileID: 1610427723}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[7]'
-      value: 
-      objectReference: {fileID: 1408039891}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[8]'
-      value: 
-      objectReference: {fileID: 8787328834653888871}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_objectReferences.Array.data[9]'
-      value: 
-      objectReference: {fileID: 1431910357}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[1]._json
-      value: '{"_value":1,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[4]._json
-      value: '{"_value":1,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[5]._json
-      value: '{"_value":1,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[6]._json
-      value: '{"_value":1,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[7]._json
-      value: '{"_value":1,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[8]._json
-      value: '{"_value":1,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[10]._json
-      value: '{"_value":1,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[1]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[4]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[5]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[6]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[7]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[8]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: _serializedVariables.Array.data[10]._references.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[1]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8196871477707741139}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[4]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4622047239933182987}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[5]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 989175365}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[6]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1162377541}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[7]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1610427723}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[8]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1408039891}
-    - target: {fileID: 3599290193828028769, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: '_serializedVariables.Array.data[10]._references.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1431910357}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860252845850761915, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
 --- !u!23 &2083007810039911745
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22735,6 +22533,209 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8871286377951850838}
   m_CullTransparentMesh: 1
+--- !u!1001 &6444950604462211811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1913335510660080871, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_boundGraphObjectReferences.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8196871477707741140}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066894872764815353, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedBlackboard
+      value: '{"_variables":{"CrewmateMesh":{"_value":1,"_name":"CrewmateMesh","_id":"fc0fb85a-86e3-45c2-afed-520819909c48","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Player":{"_value":2,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Trustworthiness":{"_value":100.0,"_name":"Trustworthiness","_id":"51f8b35b-f16a-4339-acfd-bd01b6d9fdfe","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"StartingTrust":{"_value":100.0,"_name":"StartingTrust","_id":"c3b19dde-74dc-493f-8970-f0cff282a373","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TrustBar":{"_value":3,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"EngineStation":{"_value":4,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"LifeSupportStation":{"_value":5,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StorageStation":{"_value":6,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"NoStation1":{"_value":7,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":8,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StarshipManager":{"_value":9,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _objectReferences.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8196871477707741139}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4622047239933182987}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[4]'
+      value: 
+      objectReference: {fileID: 989175365}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1162377541}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1610427723}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1408039891}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1430138154899889095}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1431910357}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[1]._json
+      value: '{"_value":1,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[4]._json
+      value: '{"_value":1,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[5]._json
+      value: '{"_value":1,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[6]._json
+      value: '{"_value":1,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[7]._json
+      value: '{"_value":1,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[8]._json
+      value: '{"_value":1,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[10]._json
+      value: '{"_value":1,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[1]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[4]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[5]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[6]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[7]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[8]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[10]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[1]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8196871477707741139}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[4]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4622047239933182987}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[5]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 989175365}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[6]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1162377541}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[7]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1610427723}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[8]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1408039891}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[10]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1431910357}
+    - target: {fileID: 7845878009980695265, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: m_Name
+      value: Crewmate1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
 --- !u!33 &6610237157803039492
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23103,11 +23104,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &8787328834653888871 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1120085077003714315, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
-  m_PrefabInstance: {fileID: 2041125012555949260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8821718453780301735
 GameObject:
   m_ObjectHideFlags: 0
@@ -23192,7 +23188,7 @@ SceneRoots:
   - {fileID: 543450653302542239}
   - {fileID: 1246114884}
   - {fileID: 1721507573}
-  - {fileID: 2041125012555949260}
+  - {fileID: 6444950604462211811}
   - {fileID: 1921137069}
   - {fileID: 333906158}
   - {fileID: 1431910356}
