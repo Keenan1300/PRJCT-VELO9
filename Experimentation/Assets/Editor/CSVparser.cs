@@ -114,13 +114,12 @@ public class CSVparser
 
 
             //Visual Aspect
-
             //Find all icons from resource.. the number of these is the max in range
             //random num, for consistency, will need to be used accross other aspects for visual continuity (aka making sure icon isnt too dissimilar to 3D mesh)
             int RandomGen = 1;
             //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
 
-            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}_Icon");
+            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}{RandomGen}_Icon");
 
             GameObject CrewM = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}");
 

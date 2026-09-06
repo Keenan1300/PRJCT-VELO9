@@ -3,8 +3,11 @@ using NodeCanvas.Framework;
 using NUnit.Framework;
 //using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using NodeCanvas;
 
 public class StarshipCrewManager : MonoBehaviour
 {
@@ -19,6 +22,10 @@ public class StarshipCrewManager : MonoBehaviour
     public List<TraitData> AnthropodaTraits;
     public List<TraitData> NaalketekTraits;
 
+    //public ScriptableObject DefaultNPCDialogue;
+
+    public DialogueTree SourceDefault;
+
     [System.Serializable]
 
     //for one station.. one crew
@@ -30,8 +37,13 @@ public class StarshipCrewManager : MonoBehaviour
         public CrewData Crew;
     }
 
+    public Transform Spawnlocation;
 
     public CrewPositions[] StarshipPositions;
+
+    [Header("Visual Trait Icons - Dialogue")]
+    public List<Image> TraitsIcons;
+
 
     public int MaxCrewOccupancy;
 
@@ -47,7 +59,8 @@ public class StarshipCrewManager : MonoBehaviour
         StarshipPositions[3].station = "Empty1";
         StarshipPositions[4].station = "Empty2";
         StarshipPositions[5].station = "Empty3";
-    
+
+      
 
     }
 
@@ -84,8 +97,7 @@ public class StarshipCrewManager : MonoBehaviour
     //Needed for debug reasons
     public void GenerateCrew(CrewData crew)
     {
-        //Make space for crew!!
-
+        //Make space for crew!! INITIAL PLACEMENT
         for (int i = 0; i < MaxCrewOccupancy; i++)
         {
             if (StarshipPositions[i].Occupied == false)
@@ -94,9 +106,11 @@ public class StarshipCrewManager : MonoBehaviour
                 StarshipPositions[i].Occupied = true;
                 StarshipPositions[i].Crew = crew;
 
+                //how much traits a crewmate gets
+                crew.NumOfTalents = Random.Range(1, 3);
 
                 //what talents does this person have?
-                for(i = 0; i < crew.NumOfTalents; i++)
+                for(int e = 0; e < crew.NumOfTalents; e++)
                 {
                     GenerateTrait(crew.Species, out TraitData TraitName);
                     crew.Talents.Add(TraitName);
@@ -104,15 +118,35 @@ public class StarshipCrewManager : MonoBehaviour
 
                 //Will make crew.. place them in appropriate spot
                 crew.locationIndex = i;
-                GameObject Crewmate = Instantiate(crew.CrewMesh, StarshipPositions[i].StationSpot);
+
+                Spawnlocation = StarshipPositions[i].StationSpot.transform;
+                GameObject Crewmate = Instantiate(crew.CrewMesh);
+                Crewmate.transform.SetParent(Spawnlocation,false);
+                //Crewmate.transform.position = Spawnlocation.position;
 
                 //Here we populate Blackboard, Dialogue Tree,
+
+
+                DialogueTree Default = Instantiate(SourceDefault);
+                Default.name = SourceDefault.name;
+                //DialogueTree Default = DefaultNPCDialogue.GetComponent<DialogueTree>();
+                //DialogueTree clonedGraph = Instantiate(Default);
+
+                Crewmate.GetComponent<DialogueTreeController>().graph = Default;
+                Crewmate.GetComponent<DialogueTreeController>().SetActorReference("Player", Player.GetComponent<DialogueActor>());
+                Crewmate.GetComponent<DialogueTreeController>().blackboard = Crewmate.GetComponent<Blackboard>();
 
                 //Give crewmate scene context
                 Crewmate.GetComponent<Blackboard>().SetVariableValue("StarshipManager", gameObject.GetComponent<StarshipInventoryTracker>());
                 Crewmate.GetComponent<Blackboard>().SetVariableValue("Player", Player);
                 Crewmate.GetComponent<Blackboard>().SetVariableValue("TrustBar", TrustBar);
-                Crewmate.GetComponent<DialogueTreeController>().SetActorReference("Player", Player.GetComponent<DialogueActor>());
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("CrewData", crew);
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("Talents",crew.Talents);
+                Crewmate.GetComponent<Blackboard>().SetVariableValue("TraitIconList", TraitsIcons);
+
+         
+
+
 
 
                 //Debug.Log($"Found spot at {StarshipPositions[i].station}.. Which is index {StarshipPositions[i].LocationIndex}");
@@ -120,6 +154,7 @@ public class StarshipCrewManager : MonoBehaviour
             }
             else
             {
+
                 Debug.Log("location occupied... finding available spot");
             }
 

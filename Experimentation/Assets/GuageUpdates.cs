@@ -20,6 +20,7 @@ public class GuageUpdates : MonoBehaviour
     public GameObject StarshipManager;
     public GameObject DialogueUI;
 
+    public List<Sprite> TraitsIcons;
   
 
 
