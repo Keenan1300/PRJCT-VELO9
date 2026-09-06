@@ -94,31 +94,7 @@ public class CSVparser
 
 
 
-            //have this on instance enable
-            void GenerateTrait(in string Species, out string TraitName)
-            {
-                //Take this crew's species, see what applies based on it
-
-                //What traits can humans access?
-                if(Species == "Human")
-                {
-
-                }
-
-                //What traits can Drucoids access?
-                if (Species == "Drucoid")
-                {
-
-                }
-
-                if (Species == "Naalketek");
-                {
-
-                }
-
-                TraitName = Species;
-                return;
-            }
+           
 
 
             //Visual Aspect
@@ -128,9 +104,9 @@ public class CSVparser
             int RandomGen = 1;
             //int RandomGen = Random.Range(0, Resources.LoadAll<Sprite>($"Crew/Species/{Crew.Species}/Icons").Length);
 
-            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}{RandomGen}_Icon");
-            Crew.CrewMaterial = Resources.Load<Material>($"Crew/Species/{Crew.Species}/Materials/{Crew.Species}{RandomGen}_material");
-            Crew.CrewMesh = Resources.Load<GameObject>($"Crew/Species/{Crew.Species}/Meshes/{Crew.Species}{RandomGen}");
+            Crew.Icon = Resources.Load<Sprite>($"Crew/Species/{Crew.Species}/Icons/{Crew.Species}_Icon");
+            Crew.CrewMaterial = Resources.Load<Material>("Crew/Species/"+(Crew.Species)+"/Materials/"+(Crew.Species)+(RandomGen)+"_material");
+            Crew.CrewMesh = Resources.Load<GameObject>("Crew/Species/"+(Crew.Species)+"/Meshes/"+(Crew.Species)+"1");
 
             // ie Human7_Icon.png
             // Drucoid3_Icon.png

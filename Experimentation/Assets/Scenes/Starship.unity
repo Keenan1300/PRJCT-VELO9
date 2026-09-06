@@ -13991,6 +13991,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrustBar: {fileID: 4622047239933182987}
   Player: {fileID: 8196871477707741139}
+  HumanTraits:
+  - {fileID: 11400000, guid: 0c5f586ae0a2ee34ba9120d3b25f0b69, type: 2}
+  - {fileID: 11400000, guid: 721a1ab70ecb5c849b99c2b9bad6fccb, type: 2}
+  - {fileID: 11400000, guid: ce8e49596321f1443a92e9d9adcc539b, type: 2}
+  - {fileID: 11400000, guid: 6f4f791b3390be24ca63cf4ae9411c22, type: 2}
+  - {fileID: 11400000, guid: 0ccdfd0b280127343934081e62ce671c, type: 2}
+  - {fileID: 11400000, guid: aa4760880e5dacf408f3191b3d216709, type: 2}
+  - {fileID: 11400000, guid: 5e6699bb6be8deb448111cb98b627a00, type: 2}
+  - {fileID: 11400000, guid: 9a730c3a85154604e98cc16db109613f, type: 2}
+  - {fileID: 11400000, guid: d8b9ffa7ae108b549959fc4bc3a3a126, type: 2}
+  - {fileID: 11400000, guid: 88dacf178c3116947999ed198c1c5f9c, type: 2}
+  - {fileID: 11400000, guid: 98eaa258af5bc614aa25f35b7257fcf1, type: 2}
+  - {fileID: 11400000, guid: 534e2035003564a4c9ea9c1ddc91dff6, type: 2}
+  - {fileID: 11400000, guid: fabdcb544fb87a546a154f24f7ed4ffb, type: 2}
+  - {fileID: 11400000, guid: 6801ef064cf5a574ab2ab767b3c0c6d1, type: 2}
+  - {fileID: 11400000, guid: b7d0a809fc06c8e47939ba8b4cfee6bb, type: 2}
+  DrucoidTraits:
+  - {fileID: 11400000, guid: 31e8077c2a5dd0c4e89af78e50d5f559, type: 2}
+  - {fileID: 11400000, guid: 534e2035003564a4c9ea9c1ddc91dff6, type: 2}
+  - {fileID: 11400000, guid: adb7ab1aa9f07094da9ed2a4b5c549f6, type: 2}
+  - {fileID: 11400000, guid: fabdcb544fb87a546a154f24f7ed4ffb, type: 2}
+  - {fileID: 11400000, guid: 6801ef064cf5a574ab2ab767b3c0c6d1, type: 2}
+  - {fileID: 11400000, guid: b7d0a809fc06c8e47939ba8b4cfee6bb, type: 2}
+  - {fileID: 11400000, guid: fa56d16b0047574408ad691b952d5dc4, type: 2}
+  - {fileID: 11400000, guid: 5aa5307bc6f4e754494dfe0ac305031b, type: 2}
+  - {fileID: 11400000, guid: b9e8490f540486b47b4060ff89064df3, type: 2}
+  - {fileID: 11400000, guid: 208a79f2f2ad8a84780c0420dcdeb801, type: 2}
+  - {fileID: 11400000, guid: 99ab03cd83158bc4491240d3cf4b0987, type: 2}
+  - {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+  - {fileID: 11400000, guid: 721a1ab70ecb5c849b99c2b9bad6fccb, type: 2}
+  - {fileID: 11400000, guid: 6f4f791b3390be24ca63cf4ae9411c22, type: 2}
+  AnthropodaTraits:
+  - {fileID: 11400000, guid: 256b3f6326709a04e9e08ea0ffec7de3, type: 2}
+  - {fileID: 11400000, guid: d1aabf8e0c5d9e446a6a80d60b0692ae, type: 2}
+  - {fileID: 11400000, guid: a987477dbe6911b4bbe81c870093822d, type: 2}
+  - {fileID: 11400000, guid: a3593fdce1aee2c498ad6d344efeceb2, type: 2}
+  - {fileID: 11400000, guid: 3e71b69765aafcd4bab16b34b4bcb500, type: 2}
+  - {fileID: 11400000, guid: be8f5b1a8374886428e272e0faffb411, type: 2}
+  - {fileID: 11400000, guid: d8617ca6a2762b74fb98d4a46b522853, type: 2}
+  - {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+  NaalketekTraits:
+  - {fileID: 11400000, guid: 31e8077c2a5dd0c4e89af78e50d5f559, type: 2}
+  - {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+  - {fileID: 11400000, guid: 5e6699bb6be8deb448111cb98b627a00, type: 2}
+  - {fileID: 11400000, guid: 88dacf178c3116947999ed198c1c5f9c, type: 2}
+  - {fileID: 11400000, guid: 98eaa258af5bc614aa25f35b7257fcf1, type: 2}
+  - {fileID: 11400000, guid: adb7ab1aa9f07094da9ed2a4b5c549f6, type: 2}
+  - {fileID: 11400000, guid: b7d0a809fc06c8e47939ba8b4cfee6bb, type: 2}
+  - {fileID: 11400000, guid: b9e8490f540486b47b4060ff89064df3, type: 2}
+  - {fileID: 11400000, guid: 208a79f2f2ad8a84780c0420dcdeb801, type: 2}
+  - {fileID: 11400000, guid: 9a730c3a85154604e98cc16db109613f, type: 2}
   StarshipPositions:
   - station: Engine Station
     Occupied: 0

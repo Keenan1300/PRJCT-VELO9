@@ -21,7 +21,7 @@ MonoBehaviour:
   O2Drain: 1
   StartingTrust: 50
   TrustBar: 100
-  CrewMesh: {fileID: 0}
+  CrewMesh: {fileID: 1120085077003714315, guid: 0d1a92ef05121aa41a0e66803a301f32, type: 3}
   CrewMaterial: {fileID: 0}
   Icon: {fileID: 0}
   locationIndex: 0

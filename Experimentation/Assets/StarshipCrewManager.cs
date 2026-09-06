@@ -13,6 +13,12 @@ public class StarshipCrewManager : MonoBehaviour
     public GameObject Player;
 
 
+    //TraitClass
+    public List<TraitData> HumanTraits;
+    public List<TraitData> DrucoidTraits;
+    public List<TraitData> AnthropodaTraits;
+    public List<TraitData> NaalketekTraits;
+
     [System.Serializable]
 
     //for one station.. one crew
@@ -27,14 +33,6 @@ public class StarshipCrewManager : MonoBehaviour
 
     public CrewPositions[] StarshipPositions;
 
-
-
-    //public List<(string station, bool Occupied, int LocationIndex, Transform stationposition)> StarshipPositions = new List<(string, bool, int, Transform)>();
-
-
-    public class PlayerData { public int Score; }
-
-   
     public int MaxCrewOccupancy;
 
 
@@ -96,6 +94,14 @@ public class StarshipCrewManager : MonoBehaviour
                 StarshipPositions[i].Occupied = true;
                 StarshipPositions[i].Crew = crew;
 
+
+                //what talents does this person have?
+                for(i = 0; i < crew.NumOfTalents; i++)
+                {
+                    GenerateTrait(crew.Species, out TraitData TraitName);
+                    crew.Talents.Add(TraitName);
+                }
+
                 //Will make crew.. place them in appropriate spot
                 crew.locationIndex = i;
                 GameObject Crewmate = Instantiate(crew.CrewMesh, StarshipPositions[i].StationSpot);
@@ -107,6 +113,7 @@ public class StarshipCrewManager : MonoBehaviour
                 Crewmate.GetComponent<Blackboard>().SetVariableValue("Player", Player);
                 Crewmate.GetComponent<Blackboard>().SetVariableValue("TrustBar", TrustBar);
                 Crewmate.GetComponent<DialogueTreeController>().SetActorReference("Player", Player.GetComponent<DialogueActor>());
+
 
                 //Debug.Log($"Found spot at {StarshipPositions[i].station}.. Which is index {StarshipPositions[i].LocationIndex}");
                 break;
@@ -123,6 +130,41 @@ public class StarshipCrewManager : MonoBehaviour
       
     }
 
+    //have this on instance enable
+    void GenerateTrait(in string Species, out TraitData Trait)
+    {
+        //Take this crew's species, see what applies based on it
+
+        //What traits can humans access?
+        if (Species == "Human")
+        {
+            //TraitData ;
+            int RandomTraitPull = Random.Range(0, HumanTraits.Count);
+            Trait = HumanTraits[RandomTraitPull];
+            return;
+
+        }
+
+        //What traits can Drucoids access?
+        if (Species == "Drucoid")
+        {
+            //TraitData ;
+            int RandomTraitPull = Random.Range(0, DrucoidTraits.Count);
+            Trait = DrucoidTraits[RandomTraitPull];
+            return;
+        }
+
+        if (Species == "Naalketek") ;
+        {
+            //TraitData ;
+            int RandomTraitPull = Random.Range(0, NaalketekTraits.Count);
+            Trait = NaalketekTraits[RandomTraitPull];
+            return;
+        }
+
+        //TraitName = Species;
+        return;
+    }
 
     //Eliminate all crew
     public void ClearAllCrew()
