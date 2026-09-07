@@ -1548,7 +1548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.DialogueTrees.DialogueTree","nodes":[{"_action":{"lookTarget":{"_name":"Player","_targetVariableID":"d5c9fd05-d107-4967-912a-389a053d1ae8"},"overrideAgent":{"_type":"UnityEngine.Transform","_name":"CrewmateMesh","_targetVariableID":"fc0fb85a-86e3-45c2-afed-520819909c48"},"$type":"NodeCanvas.Tasks.Actions.LookAt"},"_position":{"x":402.8376,"y":-34.24207},"$type":"NodeCanvas.DialogueTrees.ActionNode","$id":"0"},{"statement":{"_text":"Need
+  _boundGraphSerialization: '{"type":"NodeCanvas.DialogueTrees.DialogueTree","nodes":[{"_action":{"actions":[{"lookTarget":{"_name":"Player","_targetVariableID":"d5c9fd05-d107-4967-912a-389a053d1ae8"},"overrideAgent":{"_type":"UnityEngine.Transform","_name":"CrewmateMesh","_targetVariableID":"fc0fb85a-86e3-45c2-afed-520819909c48"},"$type":"NodeCanvas.Tasks.Actions.LookAt"},{"method":{"_baseInfo":"GuageUpdates|ConvertTraitsIntoImageIcons|System.Void","_paramsInfo":"System.Collections.Generic.List`1[[TraitData,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"parameters":[{"_type":"System.Collections.Generic.List`1[[TraitData,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","_name":"Talents","_targetVariableID":"99662db2-b2db-45a5-a0a0-798608d4bfc4"}],"returnValue":{},"overrideAgent":{"_type":"GuageUpdates","_name":"Visualizer","_targetVariableID":"ba7aac3f-3e9a-4481-98e3-dcb7cd009259"},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":284.4405,"y":-112.9047},"$type":"NodeCanvas.DialogueTrees.ActionNode","$id":"0"},{"statement":{"_text":"Need
     something from me commander?"},"_actorName":"Crewmate","_actorParameterID":"f5ef6043-ac4a-4337-bb4b-02409e820809","_UID":"883823dd-41bb-4816-b73c-3cc22c8e6802","_position":{"x":346.8074,"y":62.36638},"$type":"NodeCanvas.DialogueTrees.StatementNode","$id":"1"},{"availableChoices":[{"statement":{"_text":"Status
     Report"}},{"statement":{"_text":"Command"}},{"statement":{"_text":"Question"}},{"statement":{"_text":"*END
     CHAT*"}},{"statement":{"_text":"<color=red>Sentence</color>"}}],"_UID":"1999a8b1-47af-4700-842d-26c6973bc03c","_position":{"x":376.1566,"y":357.3655},"$type":"NodeCanvas.DialogueTrees.MultipleChoiceNode","$id":"2"},{"statement":{"_text":"Ship
@@ -1587,8 +1589,8 @@ MonoBehaviour:
     _version: 3.33
     _category: 
     _comments: 
-    _translation: {x: 623, y: -706}
-    _zoomFactor: 0.64138716
+    _translation: {x: 129, y: 315}
+    _zoomFactor: 0.7500831
   _firstActivation: 0
   _enableAction: 1
   _disableAction: 2
@@ -1621,7 +1623,12 @@ MonoBehaviour:
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"NoStation1":{"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":2,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StarshipManager":{"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Talents":{"_value":[],"_name":"Talents","_id":"99662db2-b2db-45a5-a0a0-798608d4bfc4","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[TraitData,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+    Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TraitIcons":{"_value":[],"_name":"TraitIcons","_id":"51760dea-3adc-432f-8ac8-717e877bdf5b","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Visualizer":{"_name":"Visualizer","_id":"ba7aac3f-3e9a-4481-98e3-dcb7cd009259","$type":"NodeCanvas.Framework.Variable`1[[GuageUpdates,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 5815948412904174395}
@@ -1664,6 +1671,17 @@ MonoBehaviour:
   - _json: '{"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
+  - _json: '{"_value":[],"_name":"Talents","_id":"99662db2-b2db-45a5-a0a0-798608d4bfc4","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[TraitData,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+      Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_value":[],"_name":"TraitIcons","_id":"51760dea-3adc-432f-8ac8-717e877bdf5b","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"Visualizer","_id":"ba7aac3f-3e9a-4481-98e3-dcb7cd009259","$type":"NodeCanvas.Framework.Variable`1[[GuageUpdates,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
 --- !u!114 &7673155465247549513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,6 +1697,8 @@ MonoBehaviour:
   DialogueTreeCont: {fileID: 1913335510660080871}
   cursor: {fileID: 0}
   stopDistance: 0
+  DialogueUIDisplay: {fileID: 0}
+  TraitData: {fileID: 0}
   Trustworthiness: 100
   talkpos: {fileID: 5066894872764815353}
   Player: {fileID: 0}

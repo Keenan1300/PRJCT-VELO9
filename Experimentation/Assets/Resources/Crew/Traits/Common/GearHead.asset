@@ -16,4 +16,4 @@ MonoBehaviour:
   TraitName: GearHead
   Rarity: Common
   Effect: WIP
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 60a952fed6724964e9abf958a5dbb851, type: 3}

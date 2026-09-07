@@ -16,10 +16,8 @@ MonoBehaviour:
   Description: 
   CrewName: 
   Species: Naalketek
-  NumOfTalents: 2
-  Talents:
-  - {fileID: 11400000, guid: 208a79f2f2ad8a84780c0420dcdeb801, type: 2}
-  - {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+  NumOfTalents: 0
+  Talents: []
   O2Drain: -1
   StartingTrust: 70
   TrustBar: 90

@@ -16,4 +16,4 @@ MonoBehaviour:
   TraitName: Naiive
   Rarity: Common
   Effect: WIP
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: c6359910580ac694581cdf91abe9891e, type: 3}

@@ -6,11 +6,14 @@ using System.Linq;
 using UnityEngine.EventSystems;
 using UnityEditor;
 
+
 namespace NodeCanvas.DialogueTrees.UI.Examples
 {
     public class DialogueUGUI : MonoBehaviour, IPointerClickHandler
     {
-       
+
+        public List<GameObject> TraitIcons;
+        public GameObject CrewManager;
 
         public Locales language;
 
@@ -79,6 +82,9 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
             DialogueTree.OnSubtitlesRequest -= OnSubtitlesRequest;
             DialogueTree.OnMultipleChoiceRequest -= OnMultipleChoiceRequest;
         }
+
+
+
 
         void Hide() {
 

@@ -1,10 +1,13 @@
 using NodeCanvas.DialogueTrees;
 using NodeCanvas.Framework;
+using NUnit.Framework;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections.Generic;
 using static UnityEditor.PlayerSettings;
 
 public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -14,6 +17,10 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public Texture2D cursor;
     public float stopDistance;
+
+    //Display traits
+    public GameObject DialogueUIDisplay;
+    public TraitData TraitData;
 
     //Used in dialogue interaction
     public float Trustworthiness = 100f;
@@ -77,6 +84,7 @@ public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     }
 
+   
 
     public void OnPointerEnter(PointerEventData eventData)
     {

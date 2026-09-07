@@ -16,4 +16,4 @@ MonoBehaviour:
   TraitName: Coward
   Rarity: Common
   Effect: WIP
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 6439726540cca3b4eb6196175dba8b84, type: 3}

@@ -16,4 +16,4 @@ MonoBehaviour:
   TraitName: Haggler
   Rarity: Uncommon
   Effect: WIP
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 74e917ee3ecd7104481909318746624d, type: 3}

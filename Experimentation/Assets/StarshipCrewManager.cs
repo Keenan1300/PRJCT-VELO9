@@ -14,6 +14,7 @@ public class StarshipCrewManager : MonoBehaviour
     //To be given to crew
     public GameObject TrustBar;
     public GameObject Player;
+    public GameObject Visualizer;
 
 
     //TraitClass
@@ -42,7 +43,7 @@ public class StarshipCrewManager : MonoBehaviour
     public CrewPositions[] StarshipPositions;
 
     [Header("Visual Trait Icons - Dialogue")]
-    public List<Image> TraitsIcons;
+    public List<GameObject> TraitsIcons;
 
 
     public int MaxCrewOccupancy;
@@ -129,6 +130,7 @@ public class StarshipCrewManager : MonoBehaviour
 
                 DialogueTree Default = Instantiate(SourceDefault);
                 Default.name = SourceDefault.name;
+
                 //DialogueTree Default = DefaultNPCDialogue.GetComponent<DialogueTree>();
                 //DialogueTree clonedGraph = Instantiate(Default);
 
@@ -137,14 +139,31 @@ public class StarshipCrewManager : MonoBehaviour
                 Crewmate.GetComponent<DialogueTreeController>().blackboard = Crewmate.GetComponent<Blackboard>();
 
                 //Give crewmate scene context
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("StarshipManager", gameObject.GetComponent<StarshipInventoryTracker>());
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("Player", Player);
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("TrustBar", TrustBar);
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("CrewData", crew);
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("Talents",crew.Talents);
-                Crewmate.GetComponent<Blackboard>().SetVariableValue("TraitIconList", TraitsIcons);
 
-         
+                Blackboard ContextReferenceBoard = GetComponent<Blackboard>();
+                Blackboard NewCrewTree = Crewmate.GetComponent<Blackboard>();
+
+                foreach (var sourceVar in ContextReferenceBoard.GetVariables())
+                {
+
+                    NewCrewTree.AddVariable(sourceVar.name, sourceVar.varType).value = sourceVar.value;
+
+                }
+
+                Crewmate.GetComponent<DialogueTreeController>().blackboard = NewCrewTree;
+
+                
+
+                //Ensure created object inherits crew data
+                Crewmate.GetComponent<DialogueTreeController>().blackboard.SetVariableValue("CrewData", crew);
+                NewCrewTree.SetVariableValue("Talents",crew.Talents);
+                NewCrewTree.SetVariableValue("TraitIcons", TraitsIcons);
+                NewCrewTree.SetVariableValue("Visualizer", Visualizer.GetComponent<GuageUpdates>());
+                Crewmate.GetComponent<DialogueTreeController>().graph.blackboard.SetVariableValue("Visualizer", Visualizer.GetComponent<GuageUpdates>());
+                Crewmate.GetComponent<DialogueTreeController>().graph.blackboard.SetVariableValue("Talents", crew.Talents);
+
+
+
 
 
 

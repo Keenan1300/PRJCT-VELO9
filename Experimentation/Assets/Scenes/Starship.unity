@@ -496,7 +496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110534970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4711,7 +4711,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460506466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7907,6 +7907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2b17e84c4df7d4c890f25c7c265c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TraitIcons: []
+  CrewManager: {fileID: 0}
   language: 0
   skipOnInput: 0
   waitForInput: 1
@@ -9548,6 +9550,11 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &976407316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5815948412904174395, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+  m_PrefabInstance: {fileID: 6444950604462211811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &989175364
 GameObject:
   m_ObjectHideFlags: 0
@@ -13242,7 +13249,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362079629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -14020,6 +14027,7 @@ GameObject:
   - component: {fileID: 1431910358}
   - component: {fileID: 1431910360}
   - component: {fileID: 1431910359}
+  - component: {fileID: 1431910361}
   m_Layer: 0
   m_Name: StarshipManager
   m_TagString: Untagged
@@ -14216,6 +14224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrustBar: {fileID: 4622047239933182987}
   Player: {fileID: 8196871477707741139}
+  Visualizer: {fileID: 8821718453780301735}
   HumanTraits:
   - {fileID: 11400000, guid: 0c5f586ae0a2ee34ba9120d3b25f0b69, type: 2}
   - {fileID: 11400000, guid: 721a1ab70ecb5c849b99c2b9bad6fccb, type: 2}
@@ -14295,12 +14304,100 @@ MonoBehaviour:
     StationSpot: {fileID: 973993891}
     Crew: {fileID: 0}
   TraitsIcons:
-  - {fileID: 1652775909}
-  - {fileID: 1362079631}
-  - {fileID: 2072691908}
-  - {fileID: 460506468}
-  - {fileID: 110534972}
+  - {fileID: 1652775907}
+  - {fileID: 1362079629}
+  - {fileID: 2072691906}
+  - {fileID: 460506466}
+  - {fileID: 110534970}
   MaxCrewOccupancy: 6
+--- !u!114 &1431910361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431910355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: '{"_variables":{"CrewmateMesh":{"_value":1,"_name":"CrewmateMesh","_id":"fc0fb85a-86e3-45c2-afed-520819909c48","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Player":{"_value":2,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Trustworthiness":{"_value":100.0,"_name":"Trustworthiness","_id":"51f8b35b-f16a-4339-acfd-bd01b6d9fdfe","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"StartingTrust":{"_value":100.0,"_name":"StartingTrust","_id":"c3b19dde-74dc-493f-8970-f0cff282a373","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TrustBar":{"_value":3,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"EngineStation":{"_value":4,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"LifeSupportStation":{"_value":5,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StorageStation":{"_value":6,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"NoStation1":{"_value":7,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":8,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StarshipManager":{"_value":9,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 976407316}
+  - {fileID: 8196871477707741139}
+  - {fileID: 4622047239933182987}
+  - {fileID: 989175365}
+  - {fileID: 1162377541}
+  - {fileID: 1610427723}
+  - {fileID: 1408039891}
+  - {fileID: 1430138154899889095}
+  - {fileID: 1431910357}
+  _serializedVariables:
+  - _json: '{"_value":1,"_name":"CrewmateMesh","_id":"fc0fb85a-86e3-45c2-afed-520819909c48","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 976407316}
+  - _json: '{"_value":1,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 8196871477707741139}
+  - _json: '{"_value":100.0,"_name":"Trustworthiness","_id":"51f8b35b-f16a-4339-acfd-bd01b6d9fdfe","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_value":100.0,"_name":"StartingTrust","_id":"c3b19dde-74dc-493f-8970-f0cff282a373","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_value":1,"_name":"TrustBar","_id":"d64f573a-5a3b-4d4e-a192-71b5309fad07","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 4622047239933182987}
+  - _json: '{"_value":1,"_name":"EngineStation","_id":"763af3c9-465f-4850-8d5c-352eab7f39c4","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 989175365}
+  - _json: '{"_value":1,"_name":"LifeSupportStation","_id":"d1a5cb93-a7ed-4e4c-8d8f-4a99820dfd7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1162377541}
+  - _json: '{"_value":1,"_name":"StorageStation","_id":"e6fba9a1-de28-4cd9-bc2c-e017a9b2afef","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1610427723}
+  - _json: '{"_value":1,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1408039891}
+  - _json: '{"_value":1,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1430138154899889095}
+  - _json: '{"_value":1,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1431910357}
 --- !u!1 &1437006955
 GameObject:
   m_ObjectHideFlags: 0
@@ -17042,7 +17139,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652775907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -20572,7 +20669,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072691906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -22971,11 +23068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1913335510660080871, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _boundGraphSource._translation.x
-      value: -65
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1913335510660080871, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _boundGraphSource._translation.y
-      value: 97
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 1913335510660080871, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: '_boundGraphObjectReferences.Array.data[2]'
@@ -23034,11 +23131,16 @@ PrefabInstance:
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"NoStation1":{"_value":7,"_name":"NoStation1","_id":"f4fb6841-9d36-4e28-a3d5-a18867a826d2","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Self":{"_value":8,"_name":"Self","_id":"00282d23-69a5-4f45-8af8-31831543c837","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"StarshipManager":{"_value":9,"_name":"StarshipManager","_id":"f70cd396-8b0d-4f30-9d57-0b8362e47672","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.MonoBehaviour,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"CrewData":{"_value":10,"_name":"CrewData","_id":"47e80599-0d11-4319-9a13-1d8c9212614f","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.ScriptableObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Talents":{"_value":[11,12,13],"_name":"Talents","_id":"53ee3281-54e4-4f5e-8e0d-d33b3bc79a9f","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[TraitData,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"TraitIconList":{"_value":[14,15,16,17,18],"_name":"TraitIconList","_id":"6e538e5b-ac63-4f29-ba93-5a52c1c4a0ab","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _objectReferences.Array.size
-      value: 10
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: '_objectReferences.Array.data[2]'
@@ -23072,6 +23174,46 @@ PrefabInstance:
       propertyPath: '_objectReferences.Array.data[9]'
       value: 
       objectReference: {fileID: 1431910357}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d66fb57acc4f7348bb055a8b0f930cc, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 208a79f2f2ad8a84780c0420dcdeb801, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 98eaa258af5bc614aa25f35b7257fcf1, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[14]'
+      value: 
+      objectReference: {fileID: 1652775907}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[15]'
+      value: 
+      objectReference: {fileID: 1362079629}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[16]'
+      value: 
+      objectReference: {fileID: 2072691906}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[17]'
+      value: 
+      objectReference: {fileID: 460506466}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_objectReferences.Array.data[18]'
+      value: 
+      objectReference: {fileID: 110534970}
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _serializedVariables.Array.data[1]._json
       value: '{"_value":1,"_name":"Player","_id":"d5c9fd05-d107-4967-912a-389a053d1ae8","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
@@ -23108,6 +23250,23 @@ PrefabInstance:
         UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
       objectReference: {fileID: 0}
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[11]._json
+      value: '{"_value":1,"_name":"CrewData","_id":"47e80599-0d11-4319-9a13-1d8c9212614f","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.ScriptableObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[12]._json
+      value: '{"_value":[1,2,3],"_name":"Talents","_id":"53ee3281-54e4-4f5e-8e0d-d33b3bc79a9f","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[TraitData,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[13]._json
+      value: '{"_value":[1,2,3,4,5],"_name":"TraitIconList","_id":"6e538e5b-ac63-4f29-ba93-5a52c1c4a0ab","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _serializedVariables.Array.data[1]._references.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -23134,6 +23293,18 @@ PrefabInstance:
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: _serializedVariables.Array.data[10]._references.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[11]._references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[12]._references.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: _serializedVariables.Array.data[13]._references.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: '_serializedVariables.Array.data[1]._references.Array.data[1]'
@@ -23163,6 +23334,42 @@ PrefabInstance:
       propertyPath: '_serializedVariables.Array.data[10]._references.Array.data[1]'
       value: 
       objectReference: {fileID: 1431910357}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[11]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d66fb57acc4f7348bb055a8b0f930cc, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[12]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 208a79f2f2ad8a84780c0420dcdeb801, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[12]._references.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f7741bb027a0c3140be0578018f35d1d, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[12]._references.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 98eaa258af5bc614aa25f35b7257fcf1, type: 2}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[13]._references.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1652775907}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[13]._references.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1362079629}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[13]._references.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2072691906}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[13]._references.Array.data[4]'
+      value: 
+      objectReference: {fileID: 460506466}
+    - target: {fileID: 5294018217562592431, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
+      propertyPath: '_serializedVariables.Array.data[13]._references.Array.data[5]'
+      value: 
+      objectReference: {fileID: 110534970}
     - target: {fileID: 7845878009980695265, guid: 66f1bfa66b0b21d439286133b1093cd8, type: 3}
       propertyPath: m_Name
       value: Crewmate1
@@ -23575,7 +23782,18 @@ MonoBehaviour:
   O2Value: 0
   StarshipManager: {fileID: 0}
   DialogueUI: {fileID: 806612220}
-  TraitsIcons: []
+  TraitsIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Icons:
+  - {fileID: 1652775907}
+  - {fileID: 1362079629}
+  - {fileID: 2072691906}
+  - {fileID: 460506466}
+  - {fileID: 110534970}
 --- !u!1 &8871286377951850838
 GameObject:
   m_ObjectHideFlags: 0

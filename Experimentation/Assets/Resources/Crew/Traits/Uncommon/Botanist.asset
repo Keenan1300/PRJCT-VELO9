@@ -16,4 +16,4 @@ MonoBehaviour:
   TraitName: Botanist
   Rarity: Uncommon
   Effect: WIP
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 85aff5b2e01307a4f8a99c7a7f3e13bb, type: 3}

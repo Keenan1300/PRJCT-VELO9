@@ -21,8 +21,31 @@ public class GuageUpdates : MonoBehaviour
     public GameObject DialogueUI;
 
     public List<Sprite> TraitsIcons;
-  
+    public List<GameObject> Icons;
 
+
+
+    public void ConvertTraitsIntoImageIcons(List<TraitData> Traits)
+    {
+        for (int i = 0; i < Traits.Count; i++)
+        {
+            Icons[i].GetComponent<Image>().enabled = true;
+            Icons[i].GetComponent<Image>().sprite = Traits[i].Icon;
+
+        }
+
+    }
+
+    public void TurnOffTraitsIcon(List<TraitData> Traits, List<GameObject> Icons)
+    {
+        for (int i = 0; i < Traits.Count; i++)
+        {
+            Icons[i].SetActive(false);
+
+
+        }
+
+    }
 
     private void OnEnable()
     {
