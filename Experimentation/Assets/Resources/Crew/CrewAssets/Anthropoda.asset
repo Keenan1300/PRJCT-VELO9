@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: 
   CrewName: 
   Species: Anthropoda
-  NumOfTalents: 0
+  NumOfTalents: 1
   Talents: []
   O2Drain: 1
   StartingTrust: 70
