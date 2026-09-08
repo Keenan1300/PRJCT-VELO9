@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CrewID: 3
   Description: 
-  CrewName: 
+  CrewName: Kaazaakplethkik
   Species: Naalketek
-  NumOfTalents: 0
-  Talents: []
+  NumOfTalents: 1
+  Talents:
+  - {fileID: 11400000, guid: b7d0a809fc06c8e47939ba8b4cfee6bb, type: 2}
   O2Drain: -1
   StartingTrust: 70
   TrustBar: 90

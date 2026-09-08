@@ -20,19 +20,27 @@ public class GuageUpdates : MonoBehaviour
     public GameObject StarshipManager;
     public GameObject DialogueUI;
 
+    public GameObject TrustBar;
+
     public List<Sprite> TraitsIcons;
     public List<GameObject> Icons;
 
+    public Text CrewName;
 
 
-    public void ConvertTraitsIntoImageIcons(List<TraitData> Traits)
+
+    public void UpdateUItoMakeNPCData(List<TraitData> Traits, CrewData crew)
     {
+        //Update Talents Icons
         for (int i = 0; i < Traits.Count; i++)
         {
             Icons[i].GetComponent<Image>().enabled = true;
+            Icons[i].GetComponent<TraitDescriptionHover>().Tdata = Traits[i];
             Icons[i].GetComponent<Image>().sprite = Traits[i].Icon;
-
         }
+
+        //Update Crew Name
+        CrewName.GetComponent<Text>().text = crew.CrewName;
 
     }
 

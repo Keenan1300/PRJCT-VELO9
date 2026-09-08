@@ -161,8 +161,8 @@ public class StarshipCrewManager : MonoBehaviour
                 NewCrewTree.SetVariableValue("Visualizer", Visualizer.GetComponent<GuageUpdates>());
                 Crewmate.GetComponent<DialogueTreeController>().graph.blackboard.SetVariableValue("Visualizer", Visualizer.GetComponent<GuageUpdates>());
                 Crewmate.GetComponent<DialogueTreeController>().graph.blackboard.SetVariableValue("Talents", crew.Talents);
-
-
+                Crewmate.GetComponent<DialogueTreeController>().graph.blackboard.SetVariableValue("CrewD", crew);
+               // Crewmate.GetComponent<DialogueTreeController>().Actor
 
 
 
