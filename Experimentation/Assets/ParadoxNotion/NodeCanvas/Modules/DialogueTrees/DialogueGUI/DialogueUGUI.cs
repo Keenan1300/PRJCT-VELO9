@@ -13,7 +13,7 @@ namespace NodeCanvas.DialogueTrees.UI.Examples
     {
 
         public List<GameObject> TraitIcons;
-        public GameObject CrewManager;
+        //public GameObject CrewManager;
 
         public Locales language;
 

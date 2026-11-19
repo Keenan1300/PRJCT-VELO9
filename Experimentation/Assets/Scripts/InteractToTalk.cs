@@ -8,7 +8,7 @@ using UnityEngine.Assertions.Comparers;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using static UnityEditor.PlayerSettings;
+//using static UnityEditor.PlayerSettings;
 
 public class InteractToTalk : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {

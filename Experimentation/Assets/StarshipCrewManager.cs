@@ -246,57 +246,57 @@ public class StarshipCrewManager : MonoBehaviour
 }
 
 
-public class DebugCrewMenu
-{
-    [MenuItem("Utilities/Crew/GenerateRandomCrew")]
-    public static void GenerateRandomCrew()
-    {
-        //Find Cargo script
-        StarshipCrewManager CrewSystem = Object.FindFirstObjectByType<StarshipCrewManager>();
+//public class DebugCrewMenu
+//{
+//    //[MenuItem("Utilities/Crew/GenerateRandomCrew")]
+//    public static void GenerateRandomCrew()
+//    {
+//        //Find Cargo script
+//        StarshipCrewManager CrewSystem = Object.FindFirstObjectByType<StarshipCrewManager>();
 
 
-        if (CrewSystem != null)
-        {
-            //Execute the function on it
-            CrewSystem.GenerateRandomCrew();
-           
-
-            // Tell Unity that the scene changed so it saves properly
-            EditorUtility.SetDirty(CrewSystem);
-            
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CrewSystem.gameObject.scene);
-            
-        }
-        else
-        {
-            Debug.LogWarning("Could not find a crewsystem script in the current scene!");
-        }
-    }
-
-    [MenuItem("Utilities/Crew/ClearAllCrew")]
-    public static void ClearAllCrew()
-    {
-
-        StarshipCrewManager CrewSystem = Object.FindFirstObjectByType<StarshipCrewManager>();
+//        if (CrewSystem != null)
+//        {
+//            //Execute the function on it
+//            CrewSystem.GenerateRandomCrew();
 
 
+//            // Tell Unity that the scene changed so it saves properly
+//            EditorUtility.SetDirty(CrewSystem);
 
-        if (CrewSystem != null)
-        {
-            CrewSystem.ClearAllCrew();
-        
-            EditorUtility.SetDirty(CrewSystem);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CrewSystem.gameObject.scene);
-        }
-        else
-        {
-            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
-        }
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CrewSystem.gameObject.scene);
 
+//        }
+//        else
+//        {
+//            Debug.LogWarning("Could not find a crewsystem script in the current scene!");
+//        }
+//    }
 
-    }
+//    //[MenuItem("Utilities/Crew/ClearAllCrew")]
+//    public static void ClearAllCrew()
+//    {
+
+//        StarshipCrewManager CrewSystem = Object.FindFirstObjectByType<StarshipCrewManager>();
 
 
 
+//        if (CrewSystem != null)
+//        {
+//            CrewSystem.ClearAllCrew();
 
-}
+//            EditorUtility.SetDirty(CrewSystem);
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CrewSystem.gameObject.scene);
+//        }
+//        else
+//        {
+//            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+//        }
+
+
+//    }
+
+
+
+
+//}

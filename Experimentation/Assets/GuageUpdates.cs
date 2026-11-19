@@ -12,8 +12,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class GuageUpdates : MonoBehaviour
 {
-    public TextMeshProUGUI FuelGauge;
-    public TextMeshProUGUI O2Guage;
+    //public TextMeshProUGUI FuelGauge;
+    //public TextMeshProUGUI O2Guage;
     //Displayed resources
     public float fuelvalue;
     public float O2Value;
@@ -57,7 +57,7 @@ public class GuageUpdates : MonoBehaviour
 
     private void OnEnable()
     {
-        DialogueUI.GetComponent<StorageMenu>().UpdateCargoData();
+       // DialogueUI.GetComponent<StorageMenu>().UpdateCargoData();
     }
 
 }

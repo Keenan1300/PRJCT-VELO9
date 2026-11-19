@@ -172,68 +172,67 @@ public class StarshipInventoryTracker : MonoBehaviour
 
 //DEBUG/TOOLS OPTIONS BELOW
 
-public class DebugCargoMenu
-{
-    StarshipInventoryTracker StarshipTracker;
+//public class DebugCargoMenu
+//{
+//    StarshipInventoryTracker StarshipTracker;
 
-    // This creates a new top-level menu named "Utilities" with an item named "Perform Task"
+//    // This creates a new top-level menu named "Utilities" with an item named "Perform Task"
 
-    [MenuItem("Utilities/Cargo/GenerateRandomCargo")]
-    public static void GenerateRandomCargo()
-    {
-        //Find Cargo script
-        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+//    //[MenuItem("Utilities/Cargo/GenerateRandomCargo")]
+//    public static void GenerateRandomCargo()
+//    {
+//        //Find Cargo script
+//        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
 
-        //Find UI Cargo script
-        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
+//        //Find UI Cargo script
+//        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
 
-        if (CargoSystem != null && UICargoSystem != null)
-        {
-            //Execute the function on it
-            CargoSystem.GenerateRandomCargo();
-            UICargoSystem.UpdateCargoData();
+//        if (CargoSystem != null && UICargoSystem != null)
+//        {
+//            //Execute the function on it
+//            CargoSystem.GenerateRandomCargo();
+//            UICargoSystem.UpdateCargoData();
 
-            // Tell Unity that the scene changed so it saves properly
-            EditorUtility.SetDirty(CargoSystem);
-            EditorUtility.SetDirty(UICargoSystem);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
-        }
-        else
-        {
-            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
-        }
-    }
-
-
-
-    [MenuItem("Utilities/Cargo/ClearAllCargo")]
-    public static void ClearAllCargo()
-    {
-
-        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
+//            // Tell Unity that the scene changed so it saves properly
+//            EditorUtility.SetDirty(CargoSystem);
+//            EditorUtility.SetDirty(UICargoSystem);
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
+//        }
+//        else
+//        {
+//            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+//        }
+//    }
 
 
-        //Find UI Cargo script
-        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
+
+//    //[MenuItem("Utilities/Cargo/ClearAllCargo")]
+//    public static void ClearAllCargo()
+//    {
+
+//        StarshipInventoryTracker CargoSystem = Object.FindFirstObjectByType<StarshipInventoryTracker>();
 
 
-        if (CargoSystem != null)
-        {
-            CargoSystem.ClearAllCargo();
-            UICargoSystem.ClearAllCargo();
-
-            EditorUtility.SetDirty(CargoSystem);
-            EditorUtility.SetDirty(UICargoSystem);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
-            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
-        }
-        else
-        {
-            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
-        }
+//        //Find UI Cargo script
+//        StorageMenu UICargoSystem = Object.FindFirstObjectByType<StorageMenu>();
 
 
-    }
+//        if (CargoSystem != null)
+//        {
+//            CargoSystem.ClearAllCargo();
+//            UICargoSystem.ClearAllCargo();
 
-}
+//            EditorUtility.SetDirty(CargoSystem);
+//            EditorUtility.SetDirty(UICargoSystem);
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(CargoSystem.gameObject.scene);
+//            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UICargoSystem.gameObject.scene);
+//        }
+//        else
+//        {
+//            Debug.LogWarning("Could not find a InventorySystem script in the current scene!");
+//        }
+
+        
+//    }}
+

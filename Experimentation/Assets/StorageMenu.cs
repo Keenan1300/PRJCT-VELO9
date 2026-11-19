@@ -50,7 +50,7 @@ public class StorageMenu : MonoBehaviour
     void OnEnable()
     {
         SFX = GetComponent<AudioSource>();
-        UpdateCargoData();
+        //UpdateCargoData();
 
         if (CargoDescription != null) 
         { 

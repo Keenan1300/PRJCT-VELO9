@@ -10,6 +10,7 @@ public class PilotStation : MonoBehaviour
     public GameObject Menu;
     public Collider Collider;
     public  bool inrange;
+    public bool endPrototype;
     public UnityEvent FreezeLook;
     public AudioSource ConsoleOpenNoise;
    
@@ -21,7 +22,10 @@ public class PilotStation : MonoBehaviour
         ConsoleOpenNoise = GetComponent<AudioSource>();
         Popup.SetActive(false);
         inrange = false;
-        Menu.SetActive(false);
+        if (endPrototype)
+        {
+            Menu.SetActive(false);
+        }
     }
 
 
@@ -43,11 +47,24 @@ public class PilotStation : MonoBehaviour
     {
         if( inrange == true && Input.GetKey(KeyCode.E))
         {
-            FreezeLook.Invoke();
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
-            ConsoleOpenNoise.Play();
-            Menu.SetActive(true);
-           
+            if (!endPrototype)
+            {
+                FreezeLook.Invoke();
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                ConsoleOpenNoise.Play();
+                Menu.SetActive(true);
+            }
+            else
+            {
+             #if UNITY_EDITOR
+                // Exits Play Mode in the Unity Editor
+                UnityEditor.EditorApplication.isPlaying = false;
+              #else
+            // Shuts down the built application
+            Application.Quit();
+            #endif
+            }
+
 
         }
     }
