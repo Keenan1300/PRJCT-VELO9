@@ -41,4 +41,11 @@ public class CrewData : ScriptableObject
     public float Value;
     public float Cost;
 
+
+    // For future reference: Enum: public Attitude attitude;
+
 }
+//public enum Attitude
+//{
+//    Asshole, niceguy, incel
+//}

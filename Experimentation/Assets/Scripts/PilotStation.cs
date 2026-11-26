@@ -43,7 +43,8 @@ public class PilotStation : MonoBehaviour
     {
         if( inrange == true && Input.GetKey(KeyCode.E))
         {
-            FreezeLook.Invoke();
+            //FreezeLook.Invoke();
+            EventCore.OnComputerInteract();
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             ConsoleOpenNoise.Play();
             Menu.SetActive(true);

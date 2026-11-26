@@ -115,9 +115,17 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
+        private void OnEnable()
+        {
+			EventCore.OnComputerInteract += FreezeLook;
+        }
+        private void OnDisable()
+        {
+            EventCore.OnComputerInteract -= FreezeLook;
+        }
 
 
-		public void FreezeLook()
+        public void FreezeLook()
 		{
 			Talking = true;
             UnityEngine.Cursor.lockState = CursorLockMode.None;
